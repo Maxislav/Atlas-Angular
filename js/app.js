@@ -1,13 +1,20 @@
 var app = new function () {
-    var header;
-    var html
+    var header, footer;
+   // var html
+    var headerString
+    var footerString
 
-    this.init = function (_html) {
+    this.init = function (_header, _footer) {
         header = $('.header')
-        html = _html;
+        footer = $('.footer')
+        headerString = _header;
+        footerString = _footer
+
         initScreen()
-        renderHeader()
         initMap()
+        renderHeader()
+        renderFooter()
+
 
     }
 
@@ -20,12 +27,24 @@ var app = new function () {
 
 
     function renderHeader() {
-
-        header.html($.tmpl(html))
+        header.html($.tmpl(headerString))
+        require([
+            'controller/header'
+        ], function(js){
+            new js(header)
+        })
+    }
+    function renderFooter(){
+        footer.html($.tmpl(footerString))
+        require([
+            'controller/footer'
+        ],function(js){
+            new js(footer)
+        })
     }
 
     function initMap(){
-        var map = L.map('map').setView([50.39, 30.46], 14);
+        map = L.map('map').setView([50.39, 30.46], 14);
         L.tileLayer('http://otile3.mqcdn.com/tiles/1.0.0/{id}/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -34,6 +53,16 @@ var app = new function () {
             id: 'osm'
         }).addTo(map);
 
+
+    }
+    this.elements = function(el){
+        var objEls = {}
+        el.find('*').each(function(){
+            if($(this).attr('name')){
+                objEls[$(this).attr('name')] = $(this)
+            }
+        })
+        return objEls
 
     }
 }

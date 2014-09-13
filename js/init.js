@@ -3,11 +3,12 @@ requirejs.config({
     baseUrl: '',
     paths: {
         app: 'js/app',
-        jquery: 'lib/jquery/jquery-1.3.2.min',
+        jquery: 'lib/jquery/jquery-1.11.1',
         leaflet: 'lib/leaflet/leaflet',
         text: 'lib/require/text',
         tmpl: 'lib/jquery/jquery.tmpl.min',
-        header: 'item/header.html'
+        header: 'item/header.html',
+        footer: 'item/footer.html'
     },
     shim: {
 
@@ -30,8 +31,9 @@ requirejs.config({
 
 
 require([
-    'text!header'
-], function (html) {
-    app.init(html)
+    'text!header',
+    'text!footer'
+], function (header, footer) {
+    app.init(header, footer)
 })
 

@@ -1,14 +1,28 @@
 .index>.header{
   font-size: 16px;
   color: #ffffff;
+  .button{
+    height: 30px;
+    padding: 0 5px;
+  }
   .left-menu{
     position: absolute;
     left: 0;
-    height: 30px;
+   // height: 30px;
+
   }
   .right-menu{
     position: absolute;
     right: 0;
-    height: 30px;
+
+  }
+  .content{
+    &>div{
+      display: none;
+      opacity: 0;
+      width: 200px;
+      float: left;
+      background: #ffffff;
+    }
   }
 }

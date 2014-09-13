@@ -53,7 +53,8 @@ module.exports = function (grunt) {
                 files: {
                     "build/login.css": [
                         "css/login.less",
-                        'item/header.less'
+                        'item/header.less',
+                        'item/footer.less'
                     ]
                 }
             }
@@ -64,7 +65,8 @@ module.exports = function (grunt) {
                 // Which files to watch (all .less files recursively in the less directory)
                 files: [
                     'css/login.less',
-                    'item/header.less'
+                    'item/header.less',
+                    'item/footer.less'
                 ],
                 tasks: ['less:login'],
                 options: {
