@@ -59,6 +59,10 @@ var app = new function () {
                 objEls[$(this).attr('name')] = $(this)
             }
         })
+        if(el.attr('name')){
+            objEls[el.attr('name')] = el
+        }
+
         return objEls
 
     }

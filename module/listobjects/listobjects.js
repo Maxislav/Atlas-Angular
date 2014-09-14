@@ -1,11 +1,11 @@
 define(function(){
-	return function(_el, _rowStrting){
+	return function(_el, _rowStrting, _descString){
 
 		var el = null;
 		var points = null;
 		var rowStrting = null;
 		var elsObj = {}
-
+         var description;
 
 		renderList()
 
@@ -32,7 +32,32 @@ define(function(){
 				elsObj[points[i].id] = tmpl
 				event(tmpl)
 			}
+            var tmpl = $.tmpl(_descString)
+            el.append(tmpl)
+            description = app.elements(tmpl)
+            eventDesc()
 		}
+
+        function eventDesc(){
+            description.title.on('click',function(){
+                if(description.parms.height()){
+                    description.parms.sizeTo(5,0)
+                }else{
+                    description.parms.sizeTo(5,el.height()/2)
+                }
+            })
+        }
+
+        this.resize = function(success){
+            if(description.parms.height()){
+                description.parms.sizeTo(5, 0, function(){
+                    success && success()
+                    description.parms.sizeTo(5,el.height()/2)
+                })
+            }else{
+                success && success()
+            }
+        }
 
 		function event(el){
 			el.on('click', function(){
@@ -43,6 +68,7 @@ define(function(){
 				}
 				el.addClass('active')
 			})
+
 		}
 
 

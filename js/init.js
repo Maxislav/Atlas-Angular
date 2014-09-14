@@ -8,7 +8,8 @@ requirejs.config({
         text: 'lib/require/text',
         tmpl: 'lib/jquery/jquery.tmpl.min',
         header: 'item/header.html',
-        footer: 'item/footer.html'
+        footer: 'item/footer.html',
+        sizeTo: 'lib/lmax/sizeTo'
     },
     shim: {
 
@@ -17,8 +18,14 @@ requirejs.config({
                 'jquery'
             ]
         },
+        sizeTo: {
+            deps: [
+                'jquery'
+            ]
+        },
         'text!header': {
             deps: [
+                'sizeTo',
                 'jquery',
                 'leaflet',
                 'tmpl',

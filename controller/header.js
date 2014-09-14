@@ -6,6 +6,7 @@ define(function () {
 		var listZone;
 		var mathGroup;
 		var contentHeight = $(window).height()-50
+        var listobjects;
 
 		events()
 		function init(success) {
@@ -19,9 +20,10 @@ define(function () {
 			]
 			require([
 				'module/listobjects/listobjects',
-				'text!module/listobjects/row.html'
-			],function(js, html){
-				new js(elObj.list, html)
+				'text!module/listobjects/row.html',
+                'text!module/listobjects/description.html'
+			],function(js, html, desc){
+                listobjects = 	new js(elObj.list, html, desc)
 			})
 
 			success && success()
@@ -40,11 +42,16 @@ define(function () {
 				vhide(elObj.list)
 			})
 			elObj.btnTrack.on('click', function () {
-				vhide(elObj.track)
+                listobjects.resize( function() {
+                        vhide(elObj.track)
+                })
 			})
 		}
 
 		function vhide(el) {
+
+
+
 			if (el.is(':visible')) {
 				el.fadeTo(200, 0, function () {
 					el.css({
@@ -56,6 +63,8 @@ define(function () {
 				el.css({display: 'block'}).fadeTo(200, 1)
 				resize()
 			}
+
+
 			function resize(){
 				var c = 0
 				for(var i = 0; i<mathGroup.length; i++){
