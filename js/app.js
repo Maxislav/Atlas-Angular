@@ -47,12 +47,9 @@ var app = new function () {
         map = L.map('map').setView([50.39, 30.46], 14);
         L.tileLayer('http://otile3.mqcdn.com/tiles/1.0.0/{id}/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
             id: 'osm'
         }).addTo(map);
-
 
     }
     this.elements = function(el){

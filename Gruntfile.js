@@ -54,7 +54,8 @@ module.exports = function (grunt) {
                     "build/login.css": [
                         "css/login.less",
                         'item/header.less',
-                        'item/footer.less'
+                        'item/footer.less',
+						'module/listobjects/listobjects.less'
                     ]
                 }
             }
@@ -66,7 +67,8 @@ module.exports = function (grunt) {
                 files: [
                     'css/login.less',
                     'item/header.less',
-                    'item/footer.less'
+                    'item/footer.less',
+					'module/listobjects/listobjects.less'
                 ],
                 tasks: ['less:login'],
                 options: {
