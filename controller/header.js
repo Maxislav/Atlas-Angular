@@ -1,5 +1,5 @@
 define(function () {
-	return function (_header) {
+	return function (_header, _content) {
 		var el = null;
 		var elObj = null;
 		var listObj;
@@ -10,20 +10,25 @@ define(function () {
 
 		events()
 		function init(success) {
-			el = _header;
+			el = $('.index');
 			elObj = app.elements(_header)
 
-			mathGroup = [
+			/*mathGroup = [
 				elObj.zone,
 				elObj.list,
 				elObj.track
-			]
+			]*/
+
+			/*for(var i = 0; i<mathGroup.length; i++){
+				mathGroup[i].height(contentHeight)
+			}*/
 			require([
 				'module/listobjects/listobjects',
 				'text!module/listobjects/row.html',
-                'text!module/listobjects/description.html'
-			],function(js, html, desc){
-                listobjects = 	new js(elObj.list, html, desc)
+                'text!module/listobjects/description.html',
+				'text!module/listobjects/listobjects.html'
+			],function(js, html, desc, listobj){
+                listobjects = 	new js(elObj.list, html, desc, listobj)
 			})
 
 			success && success()
@@ -42,9 +47,7 @@ define(function () {
 				vhide(elObj.list)
 			})
 			elObj.btnTrack.on('click', function () {
-                listobjects.resize( function() {
-                        vhide(elObj.track)
-                })
+				vhide(elObj.track)
 			})
 		}
 
@@ -57,27 +60,15 @@ define(function () {
 					el.css({
 						display: 'none'
 					})
-					resize()
+					//resize()
 				})
 			} else {
 				el.css({display: 'block'}).fadeTo(200, 1)
-				resize()
+				//resize()
 			}
 
 
-			function resize(){
-				var c = 0
-				for(var i = 0; i<mathGroup.length; i++){
-					if(mathGroup[i].is(':visible')){
-						c++
-					}
-				}
-				for(var i = 0; i<mathGroup.length; i++){
-					if(mathGroup[i].is(':visible')){
-						mathGroup[i].height(contentHeight/c)
-					}
-				}
-			}
+
 		}
 	}
 })

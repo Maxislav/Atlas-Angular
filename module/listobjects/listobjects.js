@@ -43,7 +43,7 @@ define(function(){
                 if(description.parms.height()){
                     description.parms.sizeTo(5,0)
                 }else{
-                    description.parms.sizeTo(5,el.height()/2)
+                    description.parms.sizeTo(20,el.height()/2)
                 }
             })
         }
