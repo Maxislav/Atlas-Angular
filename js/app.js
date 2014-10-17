@@ -45,11 +45,36 @@ var app = new function () {
 
     function initMap(){
         map = L.map('map').setView([50.39, 30.46], 14);
-        L.tileLayer('http://otile3.mqcdn.com/tiles/1.0.0/{id}/{z}/{x}/{y}.png', {
+
+
+        L.Util.template = function (str, data) {
+            return str.replace(/\{ *([\w_]+) *\}/g, function (str, key) {
+                var value = data[key];
+                if (!data.hasOwnProperty(key)) {
+                    throw new Error('No value provided for variable ' + str);
+                } else if (typeof value === 'function') {
+                    value = value(data);
+                }
+
+                return value;
+            });
+        }
+
+        L.tileLayer('http://{s}{hash}.wikimapia.org/?x={x}&y={y}&zoom={z}&r=7071412&type=&lng=1', {
+            // Fix L.Util.template to use this
+            hash: function (data) {
+                return data.x % 4 + (data.y % 4) *4;
+            }
+            , subdomains : 'i'
+            , maxZoom: 18
+            , attribution: '<a href="http://wikimapia.org" target="_blank">Wikimapia.org</a>'
+        }).addTo(map);
+
+        /*L.tileLayer('http://otile3.mqcdn.com/tiles/1.0.0/{id}/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
             id: 'osm'
-        }).addTo(map);
+        }).addTo(map);*/
 
     }
     this.elements = function(el){
