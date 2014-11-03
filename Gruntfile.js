@@ -7,24 +7,42 @@ module.exports = function (grunt) {
             main: {
                 src: [
                     'lib/leaflet/leaflet.js'
-
                 ],
                 dest: 'build/scripts.js'
             }
+
         },
 
         // Сжимаем
         uglify: {
             options: {
-                //  sourceMap: true
+                  sourceMap: true
             },
             main: {
                 files: {
                     // Результат задачи concat
                     'build/scripts.min.js': '<%= concat.main.dest %>'
                 }
+            },
+            index: {
+                files: {
+                    'build/index.min.js': 'js/index.js'
+                }
             }
+
         },
+
+        /*uglifyIndex: {
+            options: {
+                 sourceMap: true
+            },
+            main: {
+                files: {
+                    'build/index.min.js': 'js/index.js'
+                }
+            }
+        },*/
+
 
         less: {
             development: {
@@ -41,6 +59,7 @@ module.exports = function (grunt) {
                         "lib/jquery/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css",
                         "dist/leaflet.css"
                     ]
+
                 }
             },
             login: {
@@ -58,7 +77,21 @@ module.exports = function (grunt) {
 						'module/listobjects/listobjects.less'
                     ]
                 }
+            },
+            index: {
+                options: {
+                    compress: true,
+                    yuicompress: true,
+                    optimization: 2
+
+                },
+                files: {
+                    "build/index.css": [
+                        "css/index.less"
+                    ]
+                }
             }
+
         },
 
         watch: {
@@ -74,6 +107,16 @@ module.exports = function (grunt) {
                 options: {
                     nospawn: true
                 }
+            },
+            index:{
+                files: ['css/index.less'],
+                tasks: ['less:index'],
+                options: {nospawn: true}
+            },
+            indexJs :{
+                files: ['js/index.js']  ,
+                tasks: ['uglify:index'],
+                options: {nospawn: true}
             }
         },
         _watch: {
@@ -113,5 +156,5 @@ module.exports = function (grunt) {
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
-    grunt.registerTask('default', ['less:login', 'watch:login']);
+    grunt.registerTask('default', ['uglify:index','less:login', 'less:index', 'watch:login',  'watch:index']);
 };
