@@ -1,1 +1,1 @@
-*{margin:0;padding:0}body{background:black}.form-login{background:#1e90ff;width:300px;height:200px;border-radius:50%}
+*{margin:0;padding:0}body{background:black;height:100%}html{height:100%}.form-login{background:#1e90ff;margin:10px auto;width:300px;height:200px;border-radius:50%}.table{display:table;height:100%}.table-cell{display:table-cell;vertical-align:middle}.table.form{margin:0 auto}

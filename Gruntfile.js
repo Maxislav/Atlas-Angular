@@ -15,16 +15,19 @@ module.exports = function (grunt) {
 
         // Сжимаем
         uglify: {
-            options: {
+            /*options: {
                   sourceMap: true
-            },
-            main: {
+            },*/
+            /*main: {
                 files: {
                     // Результат задачи concat
                     'build/scripts.min.js': '<%= concat.main.dest %>'
                 }
-            },
-            index: {
+            },*/
+            indexUg: {
+                options: {
+                    sourceMap: true
+                },
                 files: {
                     'build/index.min.js': 'js/index.js'
                 }
@@ -78,7 +81,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            index: {
+            indexCss: {
                 options: {
                     compress: true,
                     yuicompress: true,
@@ -108,18 +111,18 @@ module.exports = function (grunt) {
                     nospawn: true
                 }
             },
-            index:{
+            indexCss:{
                 files: ['css/index.less'],
-                tasks: ['less:index'],
+                tasks: ['less:indexCss'],
                 options: {nospawn: true}
             },
             indexJs :{
                 files: ['js/index.js']  ,
-                tasks: ['uglify:index'],
+                tasks: ['uglify'],
                 options: {nospawn: true}
             }
-        },
-        _watch: {
+        }
+       /* _watch: {
             styles: {
                 // Which files to watch (all .less files recursively in the less directory)
                 files: [
@@ -143,7 +146,7 @@ module.exports = function (grunt) {
                     nospawn: true
                 }
             }
-        }
+        }*/
     });
 
     // Загрузка плагинов, установленных с помощью npm install
@@ -156,5 +159,5 @@ module.exports = function (grunt) {
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
-    grunt.registerTask('default', ['uglify:index','less:login', 'less:index', 'watch:login',  'watch:index']);
+    grunt.registerTask('default', ['uglify','less:login', 'watch']);
 };
