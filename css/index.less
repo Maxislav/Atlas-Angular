@@ -5,6 +5,8 @@
 body{
   background: black;
   height: 100%;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 html{
   height: 100%;
@@ -12,13 +14,15 @@ html{
 .form-login{
   background: #1e90ff;
   margin: 10px auto;
-  width: 300px;
+  width: 400px;
   height: 200px;
   border-radius: 50%;
+  box-shadow: 0 0 10px white;
 }
 .table{
   display: table;
   height: 100%;
+  width: 100%;
 }
 .table-cell{
   display: table-cell;
@@ -26,4 +30,24 @@ html{
 }
 .table.form{
   margin: 0 auto;
+}
+input{
+  padding: 3px 5px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  &:focus{
+    box-shadow: 0 0 10px white;
+  }
+}
+
+.fields{
+  text-align: center;
+
+  .tag{
+    margin: 5px auto 2px;
+  }
+  .reg{
+    margin-top: 10px;
+  }
 }
