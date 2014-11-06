@@ -22,9 +22,7 @@ html {
  // height: 200px;
 
   color: #ffffff;
-  input{
-    width: 200px;
-  }
+
 }
 
 .table {
@@ -47,6 +45,7 @@ input {
   border-radius: 3px;
   border: none;
   outline: none;
+  width: 100%;
   &:focus {
     box-shadow: 0 0 10px white;
   }
@@ -73,7 +72,10 @@ input {
 
   transition: 0.3s;
 }
-
+.box-input{
+  margin-left: 131px;
+  padding-right: 10px;
+}
 .helpdiv {
   text-align: center;
   position: absolute;
@@ -196,4 +198,12 @@ a:hover, a:active {
     }
   }
 
+  .box-input{
+    margin-left: inherit;
+    padding-right: 10px;
+  }
+  .button{
+    padding: 5px 0;
+    width: 100%;
+  }
 }
