@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: black;
+  height: 100%;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+html {
+  height: 100%;
+}
+
+.form-login {
+  background: rgba(199, 236, 255, 0.85);
+  margin: 0px auto;
+  padding: 20px;
+  width: 400px;
+ // height: 200px;
+
+  color: black;
+
+}
+
+.table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table.form {
+  margin: 0 auto;
+}
+
+input {
+  padding: 3px 5px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  width: 100%;
+  &:focus {
+    box-shadow: 0 0 10px white;
+  }
+}
+
+
+  .tag1 {
+    margin: 0px 0 2px 0;
+  }
+.tag2 {
+  margin: 5px 0 2px 0;
+}
+.reg {
+  margin-left: 130px;
+}
+
+.hide {
+  opacity: 0;
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+
+  transition: 0.3s;
+}
+.box-input{
+  margin-left: 131px;
+  padding-right: 10px;
+}
+.helpdiv {
+  text-align: center;
+  position: absolute;
+  margin-top: 20px;
+  width: 100%;
+  input {
+    left: 50%;
+    width: 200px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+
+  overflow: hidden;
+}
+
+li {
+  width: 212px;
+}
+
+a:link, a:visited {
+  display: block;
+  padding: 3px 5px;
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+a:hover, a:active {
+  border: 2px solid #FF6C00;
+}
+.logo{
+
+  margin-right: 10px;
+  width: 120px;
+  float: left;
+  height: 100%;
+
+ color: #ffffff;
+  .img{
+    background: url("../img/logo.png") no-repeat center;
+    height: 120px;
+    width: 120px;
+    background-size: 100% 100%;
+  }
+  .data{
+    padding-bottom: 5px;
+    background-color: #FF6C00;
+    .title{
+      font-size: 11px;
+      text-align: center;
+    }
+    .phone{
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      margin: 3px;
+    }
+  }
+}
+
+
+
+.button{
+  margin: 10px 0;
+  background: red;
+
+  border-top: 1px solid #ec8464;
+  border-left: 1px solid #ed7143;
+  box-shadow: 0px 1px 2px #959595;
+  text-shadow: -1px 1px 2px #a2242f;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 5px 10px;
+  width: 248px;
+  font-size: 15px;
+-moz-user-select: -moz-none;
+-o-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
+  &:active{
+    background: #ff1829;
+
+    text-shadow: 0 0 2px white,  0 0 10px white, 0 0 10px white;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .tag1{
+    margin-top: 10px;
+  }
+  .form-login{
+    width: 80%;
+  }
+  .clear{
+    clear: both;
+  }
+  .reg{
+    margin-left: inherit;
+  }
+  .logo{
+    width: 100%;
+   height: 50px;
+    .img{
+      float: left;
+      width: 50px;
+      height: 50px;
+    }
+    .data{
+      height: 50px;
+      margin-left: 50px;
+      padding-bottom: 0;
+    }
+  }
+
+  .box-input{
+    margin-left: inherit;
+    padding-right: 10px;
+  }
+  .button{
+    padding: 5px 0;
+    width: 100%;
+  }
+}

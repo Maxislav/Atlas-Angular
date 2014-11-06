@@ -102,6 +102,16 @@ module.exports = function (grunt) {
             }
 
         },
+        replace: {
+            example: {
+                src: ['css/index.less'],             // source files array (supports minimatch)
+                dest: 'css/index_replace.less',             // destination directory or file
+                replacements: [{
+                    from: '/img/logo.png',                   // string replacement
+                    to: '/img/logo.png'
+                }]
+            }
+        },
 
         watch: {
             login: {
@@ -160,10 +170,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');//
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
+    grunt.loadNpmTasks('grunt-text-replace');
     //grunt.loadNpmTasks('grunt-yui-compressor');
 
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
     grunt.registerTask('default', ['uglify:md5', 'uglify:indexUg' ,'less:login', 'watch']);
+    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'watch']);
 };
