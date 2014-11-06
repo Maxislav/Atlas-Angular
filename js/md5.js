@@ -1,9 +1,3 @@
-var app = {
-    el: null,
-    init: function(){
-         // alert('d')
-    }
-}
 function md5 ( string ) {	// Calculate the md5 hash of a string
         function RotateLeft(lValue, iShiftBits) {
             return (lValue<<iShiftBits) | (lValue>>>(32-iShiftBits));

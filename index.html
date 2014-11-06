@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
+    <title>Atlas</title>
+    <link rel="shortcut icon" href="img/icon.png" />
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, height=device-height,minimum-scale=1.0, maximum-scale=4.0">
@@ -12,7 +15,7 @@
 
     <!--<script type="text/javascript" src="build/index.min.js"></script>-->
     <script src="lib/angular/angular.min.js"></script>
-    <script src="js/controllers_index.js"></script>
+    <script src="build/index.min.js"></script>
 
 </head>
 <body ng-controller="events">
@@ -23,60 +26,62 @@
 <div class="table form">
     <div class="table-cell">
 
+        <form>
 
-        <div id="form" class="form-login">
-            <div class="logo">
-                <div class="img">
 
-                </div>
-                <div class="data">
-                    <div class="title">
-                        Телефон диспетчера:
-                    </div>
-                    <div class="phone">
-                        (097)900-999-0
+            <div id="form" class="form-login">
+                <div class="logo">
+                    <div class="img">
 
                     </div>
+                    <div class="data">
+                        <div class="title">
+                            Телефон диспетчера:
+                        </div>
+                        <div class="phone">
+                            (097)900-999-0
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+
+                </div>
+                <div class="tag1">
+                    {{login}}
+                </div>
+                <div class="box-input">
+                    <input type="text" ng-model="loginin" ng-change="change(loginin, 'text')"
+                           ng-focus="show(loginin, 'text')"
+                           ng-blur="hide()">
+
+                </div>
+
+                <div class="tag2">
+                    {{pass}}
+                </div>
+                <div class="box-input">
+                    <input type="password" ng-model="passin" ng-change="change(passin, 'password')"
+                           ng-focus="show(passin, 'password')" ng-blur="hide()">
+                </div>
+
+                <div class="reg box-button">
+                    <div class="button">
+                        Enter
+                    </div>
+                </div>
+
+
+                <div class="reg">
+                    <ul>
+                        <li><a href="#home">Регистрация</a></li>
+                        <li><a href="#news">Форум</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                    <!--<a href="registarion.html">Регистрация</a>-->
                 </div>
             </div>
-            <div class="clear">
-
-            </div>
-            <div class="tag1">
-                {{login}}
-            </div>
-            <div class="box-input">
-                <input type="text" ng-model="loginin" ng-change="change(loginin, 'text')" ng-focus="show(loginin, 'text')"
-                       ng-blur="hide()">
-
-            </div>
-
-            <div class="tag2">
-                {{pass}}
-            </div>
-            <div class="box-input">
-            <input type="password" ng-model="passin" ng-change="change(passin, 'password')" ng-focus="show(passin, 'password')" ng-blur="hide()">
-            </div>
-
-            <div class="reg box-button">
-                <div class="button">
-                    Enter
-                </div>
-            </div>
-
-
-            <div class="reg">
-                <ul>
-                    <li><a href="#home">Регистрация</a></li>
-                    <li><a href="#news">Новости</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                    <li><a href="#about">О нас</a></li>
-                </ul>
-                <!--<a href="registarion.html">Регистрация</a>-->
-            </div>
-
-
-        </div>
+        </form>
     </div>
 </div>
 </body>

@@ -21,7 +21,7 @@ html {
   width: 400px;
  // height: 200px;
 
-  color: #ffffff;
+  color: black;
 
 }
 
@@ -119,6 +119,7 @@ a:hover, a:active {
   float: left;
   height: 100%;
 
+ color: #ffffff;
   .img{
     background: url("../img/logo.png") no-repeat center;
     height: 120px;
@@ -145,28 +146,27 @@ a:hover, a:active {
 
 .button{
   margin: 10px 0;
-  background: #a4d241;
-  background: -moz-linear-gradient(top, #a4d241 1%, #76a91a 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #a4d241), color-stop(100%, #76a91a));
-  background: -webkit-linear-gradient(top, #a4d241 1%, #76a91a 100%);
-  background: -o-linear-gradient(top, #a4d241 1%, #76a91a 100%);
-  background: -ms-linear-gradient(top, #a4d241 1%, #76a91a 100%);
-  background: linear-gradient(to bottom, #a4d241 1%, #76a91a 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a4d241', endColorstr='#76a91a', GradientType=0);
-  border-top: 1px solid #D5EC6A;
-  border-left: 1px solid #C0ED45;
+  background: red;
+
+  border-top: 1px solid #ec8464;
+  border-left: 1px solid #ed7143;
   box-shadow: 0px 1px 2px #959595;
-  text-shadow: -1px 1px 2px #7ba22c;
+  text-shadow: -1px 1px 2px #a2242f;
   text-align: center;
   cursor: pointer;
   color: #ffffff;
   padding: 5px 10px;
-  width: 190px;
+  width: 248px;
   font-size: 15px;
+-moz-user-select: -moz-none;
+-o-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
   &:active{
-    background: #76a91a;
-    color: #cacad1;
-    text-shadow: 0 0 2px #cacad1;
+    background: #ff1829;
+
+    text-shadow: 0 0 2px white,  0 0 10px white, 0 0 10px white;
   }
 }
 

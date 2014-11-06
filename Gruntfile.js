@@ -24,28 +24,34 @@ module.exports = function (grunt) {
                     'build/scripts.min.js': '<%= concat.main.dest %>'
                 }
             },*/
-            indexUg: {
+            md5: {
                 options: {
                     sourceMap: true
                 },
                 files: {
-                    'build/index.min.js': 'js/index.js'
+                    'build/md5.min.js':
+                        [
+                            'js/md5.js'
+                        ]
                 }
+            },
+
+            indexUg: {
+                options: {
+                    sourceMap: true,
+                    mangle: false
+                },
+                files: {
+                    'build/index.min.js':
+                        [
+                                'build/md5.min.js',
+                            'js/controllers_index.js'
+                        ]
+                }
+
             }
 
         },
-
-        /*uglifyIndex: {
-            options: {
-                 sourceMap: true
-            },
-            main: {
-                files: {
-                    'build/index.min.js': 'js/index.js'
-                }
-            }
-        },*/
-
 
         less: {
             development: {
@@ -159,5 +165,5 @@ module.exports = function (grunt) {
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
-    grunt.registerTask('default', ['uglify','less:login', 'watch']);
+    grunt.registerTask('default', ['uglify:md5', 'uglify:indexUg' ,'less:login', 'watch']);
 };
