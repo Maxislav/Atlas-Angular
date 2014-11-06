@@ -1,43 +1,76 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en" ng-app="app">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height,minimum-scale=1.0, maximum-scale=4.0">
-    <meta name="MobileOptimized"  />
-    <meta name="PalmComputingPlatform" content="true" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, height=device-height,minimum-scale=1.0, maximum-scale=4.0">
+    <meta name="MobileOptimized"/>
+    <meta name="PalmComputingPlatform" content="true"/>
 
     <link rel="stylesheet" href="build/index.css"/>
 
-    <script type="text/javascript" src="build/index.min.js"></script>
 
+    <!--<script type="text/javascript" src="build/index.min.js"></script>-->
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/controllers_index.js"></script>
 
 </head>
-<body onload="app.init()">
-        <div class="table form">
-            <div class="table-cell">
-                <div id="form" class="form-login">
-                    <div class="table">
-                        <div class="table-cell fields">
-                            <div class="tag">
-                                Login
-                            </div>
-                            <input type="text">
-                            <div  class="tag">
-                                Pass
-                            </div>
-                            <input type="password">
+<body ng-controller="events">
+<div class="helpdiv" ng-class="classVhide">
+    <input type="{{typehelp}}" ng-model="helpin" readonly>
+</div>
 
-                               <div class="reg">
-                                   <a href="registarion.html">Регистрация</a>
-                               </div>
-
-                        </div>
-                    </div>
+<div class="table form">
+    <div class="table-cell">
 
 
+        <div id="form" class="form-login">
+            <div class="logo">
+                <div class="img">
 
                 </div>
+                <div class="data">
+                    <div class="title">
+                        Телефон диспетчера:
+                    </div>
+                    <div class="phone">
+                        (097)900-999-0
+
+                    </div>
+                </div>
             </div>
+            <div class="tag1">
+                {{login}}
+            </div>
+            <input type="text" ng-model="loginin" ng-change="change(loginin, 'text')" ng-focus="show(loginin, 'text')"
+                   ng-blur="hide()">
+
+            <div class="tag2">
+                {{pass}}
+            </div>
+            <input type="password" ng-model="passin" ng-change="change(passin, 'password')" ng-focus="show(passin, 'password')" ng-blur="hide()">
+
+
+            <div class="reg box-button">
+                <div class="button">
+                    Enter
+                </div>
+            </div>
+
+
+            <div class="reg">
+                <ul>
+                    <li><a href="#home">Регистрация</a></li>
+                    <li><a href="#news">Новости</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#about">О нас</a></li>
+                </ul>
+                <!--<a href="registarion.html">Регистрация</a>-->
+            </div>
+
+
         </div>
+    </div>
+</div>
 </body>
 </html>
