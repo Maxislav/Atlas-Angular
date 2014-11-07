@@ -1,5 +1,4 @@
 module.exports = function (grunt) {
-
     // Задачи
     grunt.initConfig({
         // Склеиваем
@@ -10,20 +9,9 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/scripts.js'
             }
-
         },
-
         // Сжимаем
         uglify: {
-            /*options: {
-                  sourceMap: true
-            },*/
-            /*main: {
-                files: {
-                    // Результат задачи concat
-                    'build/scripts.min.js': '<%= concat.main.dest %>'
-                }
-            },*/
             md5: {
                 options: {
                     sourceMap: true
@@ -35,7 +23,6 @@ module.exports = function (grunt) {
                         ]
                 }
             },
-
             indexUg: {
                 options: {
                     sourceMap: true,
@@ -44,7 +31,7 @@ module.exports = function (grunt) {
                 files: {
                     'build/index.min.js':
                         [
-                                'build/md5.min.js',
+                             'build/md5.min.js',
                             'js/controllers_index.js'
                         ]
                 }
@@ -52,7 +39,6 @@ module.exports = function (grunt) {
             }
 
         },
-
         less: {
             development: {
                 options: {
@@ -99,16 +85,28 @@ module.exports = function (grunt) {
                         "css/index.less"
                     ]
                 }
-            }
+            },
+            indexCssMy: {
+                options: {
+                    compress: true,
+                    yuicompress: true,
+                    optimization: 2
 
+                },
+                files: {
+                    "build/index.css": [
+                        "css/index_my.less"
+                    ]
+                }
+            }
         },
         replace: {
             example: {
                 src: ['css/index.less'],             // source files array (supports minimatch)
-                dest: 'css/index_replace.less',             // destination directory or file
+                dest: 'css/index_my.less',             // destination directory or file
                 replacements: [{
                     from: '/img/logo.png',                   // string replacement
-                    to: '/img/logo.png'
+                    to: '/img/logo_my.jpg'
                 }]
             }
         },
@@ -132,37 +130,21 @@ module.exports = function (grunt) {
                 tasks: ['less:indexCss'],
                 options: {nospawn: true}
             },
+            indexCssMy:{
+                files: ['css/index.less'],
+                tasks: [
+                    'replace',
+                    'less:indexCssMy'
+                ],
+                options: {nospawn: true}
+            },
             indexJs :{
                 files: ['js/index.js']  ,
                 tasks: ['uglify'],
                 options: {nospawn: true}
             }
         }
-       /* _watch: {
-            styles: {
-                // Which files to watch (all .less files recursively in the less directory)
-                files: [
-                    'js/dateTime.js',
-                    'css/leaflet.less',
-                    'module/dtp/dtp.less',
-                    'lib/jquery/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css'
 
-                ],
-                tasks: ['concat', 'uglify', 'less'],
-                options: {
-                    nospawn: true
-                }
-            },
-            stylesInstruction: {
-                files: [
-                    "css/instruction.less"
-                ],
-                tasks: ['less:instruction'],
-                options: {
-                    nospawn: true
-                }
-            }
-        }*/
     });
 
     // Загрузка плагинов, установленных с помощью npm install
@@ -176,6 +158,6 @@ module.exports = function (grunt) {
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
-    grunt.registerTask('default', ['uglify:md5', 'uglify:indexUg' ,'less:login', 'watch']);
-    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'watch']);
+    grunt.registerTask('default', ['uglify:md5', 'uglify:indexUg' ,'less:login',"less:indexCss", 'watch:indexCss']);
+    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
 };
