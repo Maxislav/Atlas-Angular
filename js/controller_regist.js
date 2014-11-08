@@ -24,6 +24,11 @@ app.controller('events', function($scope, $http){
         $scope.helpin = null
     }
 
+
+    $scope.validLogin = function(){
+        var re = /[^0-9]/g;
+
+    }
     $scope.change = function(val, type){
         $scope.typehelp = type
         $scope.helpin = val
@@ -42,22 +47,22 @@ app.controller('events', function($scope, $http){
         if(!login || login.length<4){
             $scope.alertClass = 'show'
            $scope.alertMess = 'Имя пользователя должно содержать минимум 4 символа'
-            return
+           // return
         }else if (!pass || pass.length<4){
             $scope.alertClass = 'show'
             $scope.alertMess = 'Поле пароля должно содержать минимум 4 символа'
-            return
+           // return
         }else if(pass!=confirm){
             $scope.alertClass = 'show'
             $scope.alertMess = 'Подтверждение пароля не совпадает '
-            return
+          //  return
         }
 
         var data = {
             login: $scope.loginin,
             pass: $scope.passin ?md5($scope.passin): ''
         }
-        $http.post('php/test.php', data)
+        $http.post('php/regist.php', data)
             .success(function(data, status, headers, config){
                 alert(data)
             })

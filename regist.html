@@ -67,7 +67,7 @@
                     {{pass}}
                 </div>
                 <div class="box-input">
-                    <input type="password" ng-model="passin" ng-change="change(passin, 'password')"
+                    <input type="password" ng-model="passin" ng-change="change(passin, 'password'); validLogin()"
                            ng-focus="show(passin, 'password')" ng-blur="hide()">
                 </div>
 
