@@ -57,7 +57,7 @@
                     {{login}}
                 </div>
                 <div class="box-input">
-                    <input type="text" ng-model="loginin" ng-change="change(loginin, 'text')"
+                    <input type="text" ng-model="loginin" ng-change="change(loginin, 'text');validLogin()"
                            ng-focus="show(loginin, 'text')"
                            ng-blur="hide()">
 
@@ -67,7 +67,7 @@
                     {{pass}}
                 </div>
                 <div class="box-input">
-                    <input type="password" ng-model="passin" ng-change="change(passin, 'password'); validLogin()"
+                    <input type="password" ng-model="passin" ng-change="change(passin, 'password');validPass()"
                            ng-focus="show(passin, 'password')" ng-blur="hide()">
                 </div>
 
@@ -75,7 +75,7 @@
                     {{confirm}}
                 </div>
                 <div class="box-input">
-                    <input type="password" ng-model="confirmin" ng-change="change(confirmin, 'password')"
+                    <input type="password" ng-model="confirmin" ng-change="change(confirmin, 'password');validConfirm()"
                            ng-focus="show(confirmin, 'password')" ng-blur="hide()">
                 </div>
 
@@ -92,7 +92,7 @@
 
                 <div class="reg">
                     <ul>
-                        <li><a href="#home">Регистрация</a></li>
+                        <li><a href=".">На главную</a></li>
                         <li><a href="#news">Форум</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>

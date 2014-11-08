@@ -26,9 +26,24 @@ app.controller('events', function($scope, $http){
 
 
     $scope.validLogin = function(){
-        var re = /[^0-9]/g;
-
+        valid('loginin');
     }
+    $scope.validPass = function(){
+        valid('passin');
+    }
+    $scope.validConfirm = function(){
+        valid('confirmin');
+    }
+
+    function valid(val){
+       // var val = $scope[val];
+        var re = /[^(0-9)\w_]/g;
+        $scope[val] = $scope[val].replace(re, '');
+        if(20<val.length){
+            $scope[val] =  $scope[val].slice(0, 20)
+        }
+    }
+
     $scope.change = function(val, type){
         $scope.typehelp = type
         $scope.helpin = val
