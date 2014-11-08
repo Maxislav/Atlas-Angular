@@ -18,7 +18,7 @@
     <script src="build/regist.min.js"></script>
 
 </head>
-<body ng-controller="events">
+<body ng-controller="events" ng-keypress="($event.which === 13)?post():0">
 <div class="helpdiv" ng-class="classVhide">
     <input type="{{typehelp}}" ng-model="helpin" readonly>
 </div>

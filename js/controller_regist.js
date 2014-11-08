@@ -62,30 +62,54 @@ app.controller('events', function($scope, $http){
         if(!login || login.length<4){
             $scope.alertClass = 'show'
            $scope.alertMess = 'Имя пользователя должно содержать минимум 4 символа'
-           // return
+            return
         }else if (!pass || pass.length<4){
             $scope.alertClass = 'show'
             $scope.alertMess = 'Поле пароля должно содержать минимум 4 символа'
-           // return
+            return
         }else if(pass!=confirm){
             $scope.alertClass = 'show'
             $scope.alertMess = 'Подтверждение пароля не совпадает '
-          //  return
+            return
         }
 
         var data = {
-            login: $scope.loginin,
+            login: $scope.loginin ? $scope.loginin: '',
             pass: $scope.passin ?md5($scope.passin): ''
         }
         $http.post('php/regist.php', data)
             .success(function(data, status, headers, config){
-                alert(data)
+                callback(data)
             })
             . error(function(data, status, headers, config) {
-                alert('err')
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
+                $scope.alertClass = 'show';
+                $scope.alertMess = 'Ошибка';
             });
+
+        function callback(d){
+            switch (d){
+                case 'OK':
+                    $scope.alertMess = 'Новый пользователь создан'
+                    $scope.alertClass = 'show green';
+                    break
+                case 'EMPTY_VAL':
+                    $scope.alertClass = 'show';
+                    $scope.alertMess = 'Поле не может быть пустым';
+                    break
+                case 'SHORT_VAL':
+                    $scope.alertClass = 'show';
+                    $scope.alertMess = 'Поле не может быть меньше 4 симфолов';
+                    break;
+                case 'USER_EXIST':
+                    $scope.alertClass = 'show';
+                    $scope.alertMess = 'Пользователь с таки именем уже существует';
+                    break;
+                default :
+                    $scope.alertClass = 'show';
+                    $scope.alertMess = 'Ошибка';
+
+            }
+        }
     }
 })
 
