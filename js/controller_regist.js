@@ -81,7 +81,7 @@ app.controller('events', function($scope, $http){
             .success(function(data, status, headers, config){
                 callback(data)
             })
-            . error(function(data, status, headers, config) {
+            .error(function(data, status, headers, config) {
                 $scope.alertClass = 'show';
                 $scope.alertMess = 'Ошибка';
             });
