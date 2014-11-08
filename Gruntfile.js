@@ -35,9 +35,20 @@ module.exports = function (grunt) {
                             'js/controllers_index.js'
                         ]
                 }
-
+            },
+            registUg: {
+                options: {
+                    sourceMap: true,
+                    mangle: false
+                },
+                files: {
+                    'build/regist.min.js':
+                        [
+                            'build/md5.min.js',
+                            'js/controller_regist.js'
+                        ]
+                }
             }
-
         },
         less: {
             development: {
@@ -130,19 +141,26 @@ module.exports = function (grunt) {
                 tasks: ['less:indexCss'],
                 options: {nospawn: true}
             },
-            indexCssMy:{
+           /* indexCssMy:{
                 files: ['css/index.less'],
                 tasks: [
                     'replace',
                     'less:indexCssMy'
                 ],
                 options: {nospawn: true}
+            },*/
+            registJs:{
+                files: 'js/controller_regist.js',
+                tasks: ['uglify:registUg'],
+                options: {nospawn: true}
             },
-            indexJs :{
-                files: ['js/index.js']  ,
-                tasks: ['uglify'],
+            indexJs:{
+                files: 'js/controllers_index.js',
+                tasks: ['uglify:indexUg'],
                 options: {nospawn: true}
             }
+
+
         }
 
     });
@@ -158,6 +176,19 @@ module.exports = function (grunt) {
     // Задача по умолчанию
    // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
 
-    grunt.registerTask('default', ['uglify:md5', 'uglify:indexUg' ,'less:login',"less:indexCss", 'watch:indexCss']);
+    grunt.registerTask('default',
+        [
+            'uglify:md5',
+            'uglify:indexUg' ,
+            'uglify:registUg',
+            'less:login',
+
+            'less:indexCss',
+            'watch'
+
+
+        ]
+    );
+
     grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
 };

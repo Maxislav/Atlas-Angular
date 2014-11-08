@@ -15,7 +15,7 @@
 
     <!--<script type="text/javascript" src="build/index.min.js"></script>-->
     <script src="lib/angular/angular.min.js"></script>
-    <script src="build/index.min.js"></script>
+    <script src="build/regist.min.js"></script>
 
 </head>
 <body ng-controller="events">
@@ -30,6 +30,13 @@
 
 
             <div id="form" class="form-login">
+                <div class="text-center main-tag">
+                    Регистрация
+                </div>
+                <div class="clear">
+
+                </div>
+
                 <div class="logo">
                     <div class="img">
 
@@ -64,6 +71,18 @@
                            ng-focus="show(passin, 'password')" ng-blur="hide()">
                 </div>
 
+                <div class="tag2">
+                    {{confirm}}
+                </div>
+                <div class="box-input">
+                    <input type="password" ng-model="confirmin" ng-change="change(confirmin, 'password')"
+                           ng-focus="show(confirmin, 'password')" ng-blur="hide()">
+                </div>
+
+                <div class="alert-mess" ng-class="alertClass">
+                    {{alertMess}}
+                </div>
+
                 <div class="reg box-button">
                     <div class="button" ng-click="post()">
                         Enter
@@ -73,7 +92,7 @@
 
                 <div class="reg">
                     <ul>
-                        <li><a href="regist.html">Регистрация</a></li>
+                        <li><a href="#home">Регистрация</a></li>
                         <li><a href="#news">Форум</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
