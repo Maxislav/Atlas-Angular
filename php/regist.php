@@ -1,6 +1,6 @@
 <?php
 $login = $_POST['login'];
-
+$pass = $_POST['pass'];
 function valid($str){
     $pattern = '/[^(0-9)\w_]/i';
     $replace ="";
@@ -24,7 +24,17 @@ if(!$login || empty($login)){
     echo 'USER_EXIST';
 }else{
 
+    $sql = mysql_query("INSERT INTO `user` (id,name,pass) VALUES (NULL,'$login','$pass')");
+
+    if($sql)
+    {
+        echo 'OK';
+    }
+    else
+    {
+        echo 'failure' .mysql_error();
+    }
 
 
-    echo 'OK';
+    mysql_close();
 }

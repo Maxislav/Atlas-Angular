@@ -84,6 +84,7 @@ app.controller('events', function($scope, $http){
             .error(function(data, status, headers, config) {
                 $scope.alertClass = 'show';
                 $scope.alertMess = 'Ошибка';
+                console.log(data)
             });
 
         function callback(d){
@@ -91,6 +92,11 @@ app.controller('events', function($scope, $http){
                 case 'OK':
                     $scope.alertMess = 'Новый пользователь создан'
                     $scope.alertClass = 'show green';
+                    $scope.loginin = '';
+                    $scope.passin = '';
+                    $scope.helpin='';
+                    $scope.confirmin='';
+                    $scope.hide();
                     break
                 case 'EMPTY_VAL':
                     $scope.alertClass = 'show';
