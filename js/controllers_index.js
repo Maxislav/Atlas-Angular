@@ -76,9 +76,11 @@ app.controller('events', function ($scope, $http) {
                 case 'WRONG_PASS':
                     $scope.alertClass = 'show'
                     $scope.alertMess = 'Пароль не верный';
+                    break;
                 default :
                     $scope.alertClass = 'show';
                     $scope.alertMess = 'Ошибка';
+                    console.log(d)
 
             }
         }
