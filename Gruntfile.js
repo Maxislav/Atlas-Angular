@@ -109,6 +109,19 @@ module.exports = function (grunt) {
                         "css/index_my.less"
                     ]
                 }
+            },
+            forum: {
+                options: {
+                    compress: true,
+                    yuicompress: true,
+                    optimization: 2
+
+                },
+                files: {
+                    "forum/build/forum.css": [
+                        "forum/css/forum.less"
+                    ]
+                }
             }
         },
         replace: {
@@ -158,11 +171,13 @@ module.exports = function (grunt) {
                 files: 'js/controllers_index.js',
                 tasks: ['uglify:indexUg'],
                 options: {nospawn: true}
+            },
+            forum:{
+                files: 'forum/css/forum.less',
+                tasks: ['less:forum'],
+                options: {nospawn: true}
             }
-
-
         }
-
     });
 
     // Загрузка плагинов, установленных с помощью npm install
@@ -189,6 +204,14 @@ module.exports = function (grunt) {
 
         ]
     );
+    grunt.registerTask('forum',
+        [
+            'less:forum',
+            'watch'
+        ]
+    );
 
     grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
+
+
 };
