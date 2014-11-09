@@ -18,7 +18,7 @@
     <script src="build/index.min.js"></script>
 
 </head>
-<body ng-controller="events">
+<body ng-controller="events" ng-keypress="($event.which === 13)?post():0">
 <div class="helpdiv" ng-class="classVhide">
     <input type="{{typehelp}}" ng-model="helpin" readonly>
 </div>
@@ -30,6 +30,7 @@
 
 
             <div id="form" class="form-login">
+
                 <div class="logo">
                     <div class="img">
 
@@ -62,6 +63,9 @@
                 <div class="box-input">
                     <input type="password" ng-model="passin" ng-change="change(passin, 'password')"
                            ng-focus="show(passin, 'password')" ng-blur="hide()">
+                </div>
+                <div class="alert-mess" ng-class="alertClass">
+                    {{alertMess}}
                 </div>
 
                 <div class="reg box-button">

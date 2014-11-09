@@ -1,6 +1,7 @@
 <?php
 $login = $_POST['login'];
 $pass = $_POST['pass'];
+
 function valid($str){
     $pattern = '/[^(0-9)\w_]/i';
     $replace ="";
@@ -9,7 +10,7 @@ function valid($str){
 }
 
 $login = valid($login);
-
+$pass = valid($pass);
 include_once 'connect.php';
 $res = mysql_query("SELECT * FROM user WHERE name='$login' ORDER BY id");
 
