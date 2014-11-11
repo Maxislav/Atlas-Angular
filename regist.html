@@ -53,30 +53,35 @@
                 <div class="clear">
 
                 </div>
-                <div class="tag1">
-                    {{login}}
-                </div>
-                <div class="box-input">
-                    <input type="text" ng-model="loginin" ng-change="change(loginin, 'text');validLogin()"
-                           ng-focus="show(loginin, 'text')"
-                           ng-blur="hide()">
+                <div ng-class="fields">
 
-                </div>
+                    <div class="tag1">
+                        {{login}}
+                    </div>
+                    <div class="box-input">
+                        <input type="text" ng-model="loginin" ng-change="change(loginin, 'text');validLogin()"
+                               ng-focus="show(loginin, 'text')"
+                               ng-blur="hide()">
 
-                <div class="tag2">
-                    {{pass}}
-                </div>
-                <div class="box-input">
-                    <input type="password" ng-model="passin" ng-change="change(passin, 'password');validPass()"
-                           ng-focus="show(passin, 'password')" ng-blur="hide()">
-                </div>
+                    </div>
 
-                <div class="tag2">
-                    {{confirm}}
-                </div>
-                <div class="box-input">
-                    <input type="password" ng-model="confirmin" ng-change="change(confirmin, 'password');validConfirm()"
-                           ng-focus="show(confirmin, 'password')" ng-blur="hide()">
+                    <div class="tag2">
+                        {{pass}}
+                    </div>
+                    <div class="box-input">
+                        <input type="password" ng-model="passin" ng-change="change(passin, 'password');validPass()"
+                               ng-focus="show(passin, 'password')" ng-blur="hide()">
+                    </div>
+
+                    <div class="tag2">
+                        {{confirm}}
+                    </div>
+                    <div class="box-input">
+                        <input type="password" ng-model="confirmin"
+                               ng-change="change(confirmin, 'password');validConfirm()"
+                               ng-focus="show(confirmin, 'password')" ng-blur="hide()">
+                    </div>
+
                 </div>
 
                 <div class="alert-mess" ng-class="alertClass">

@@ -1,5 +1,5 @@
 <?php
-
+echo 'dsdsdcsd';
 $file_handle = fopen("../config.txt", "r");
 while (!feof($file_handle)) {
     $line =$line.fgets($file_handle);

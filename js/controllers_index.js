@@ -67,7 +67,7 @@ app.controller('events', function ($scope, $http) {
                 case 'OK':
                     $scope.alertClass = 'show green'
                     $scope.alertMess = 'Успешный вход';
-
+                  //  window.location.href = 'login.html';
                     break;
                 case 'NOT_EXIST':
                     $scope.alertClass = 'show'

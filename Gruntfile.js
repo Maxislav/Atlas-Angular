@@ -19,7 +19,8 @@ module.exports = function (grunt) {
                 files: {
                     'build/md5.min.js':
                         [
-                            'js/md5.js'
+                            'js/md5.js',
+                            'js/extendHttp.js'
                         ]
                 }
             },
@@ -46,6 +47,19 @@ module.exports = function (grunt) {
                         [
                             'build/md5.min.js',
                             'js/controller_regist.js'
+                        ]
+                }
+            },
+            forum: {
+                options: {
+                    sourceMap: true,
+                    mangle: false
+                },
+                files: {
+                    'forum/build/forum.min.js':
+                        [
+                            'build/md5.min.js',
+                            'forum/js/app.js'
                         ]
                 }
             }
@@ -176,7 +190,14 @@ module.exports = function (grunt) {
                 files: 'forum/css/forum.less',
                 tasks: ['less:forum'],
                 options: {nospawn: true}
+            },
+            forumJs: {
+                files : 'forum/js/app.js',
+                tasks: ['uglify:forum'],
+                options: {nospawn: true}
             }
+
+
         }
     });
 
@@ -197,6 +218,7 @@ module.exports = function (grunt) {
             'uglify:indexUg' ,
             'uglify:registUg',
             'less:login',
+            'uglify:forum',
 
             'less:indexCss',
             'watch'

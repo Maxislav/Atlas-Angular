@@ -9,7 +9,8 @@ app.controller('events', function($scope, $http){
     $scope.classVhide = 'hide'
     $scope.confirm = 'Confirm'
     $scope.loginin = $scope.helpin;
-    $scope.alertClass = 'hide'
+    $scope.alertClass = 'hide';
+    $scope.fields;
 
     $scope.alertMess = 'Err '
 
@@ -36,7 +37,6 @@ app.controller('events', function($scope, $http){
     }
 
     function valid(val){
-       // var val = $scope[val];
         var re = /[^(0-9)\w_]/g;
         $scope[val] = $scope[val].replace(re, '');
         if(20<val.length){
@@ -97,6 +97,9 @@ app.controller('events', function($scope, $http){
                     $scope.helpin='';
                     $scope.confirmin='';
                     $scope.hide();
+                    $scope.fields = 'hidden'
+
+
                     break
                 case 'EMPTY_VAL':
                     $scope.alertClass = 'show';

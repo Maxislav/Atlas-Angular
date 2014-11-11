@@ -1,7 +1,7 @@
 <div class="block-auth">
     <form>
-        <input type="text" placeholder="login" ng-model="loginin" ng-change="yy()">
-        <input type="password" placeholder="pass" ng-model="passin">
+        <input type="text" placeholder="login" ng-model="row.loginin"  ng-change = "row.entity('loginin')" >
+        <input type="password" placeholder="pass" ng-model="row.passin"  ng-change = "row.entity('passin')">
 
         <div class="button" ng-click="post()">
             Войти
