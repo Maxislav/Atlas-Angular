@@ -50,7 +50,7 @@ forum.controller('v', function ($scope, $http) {
     $scope.yy = function () {
         console.log('d')
     }
-    $scope.url = 'forum/html/noAuth.html';
+    $scope.url = '';
     $scope.row = {
         entity: valid,
         val: ''
@@ -63,7 +63,6 @@ forum.controller('v', function ($scope, $http) {
         }
     }
     $scope.post = function () {
-
         var data = {
             login: $scope.row.loginin ? $scope.row.loginin :'',
             pass: $scope.row.passin ? md5($scope.row.passin) :''
@@ -72,13 +71,10 @@ forum.controller('v', function ($scope, $http) {
             .success(function (data, status, headers, config) {
                console.log(data)
                 callback(data)
-               // alert(data)
             })
             .error(function (data, status, headers, config) {
                 console.log(data)
-
             });
-
     }
     function callback(d) {
         switch (d) {
@@ -89,14 +85,36 @@ forum.controller('v', function ($scope, $http) {
         }
     }
 
+    $scope.exit = function(){
+        $scope.alertEl.html('ddd')
+        $http.post('forum/php/exit.php', null)
+            .success(function (data, status, headers, config) {
+                console.log(data)
+                callbackExit(data);
+            })
+            .error(function (data, status, headers, config) {
+                console.log(data)
+            });
+    }
+
+    function callbackExit(d){
+        switch (d){
+            case 'OK':
+                $scope.url = 'forum/html/noAuth.html'
+                break;
+            default :
+        }
+    }
+
+
     function isAuth(){
         $http.post('forum/php/isAuth.php', null)
             .success(function (data, status, headers, config) {
-              //  console.log(data)
+                console.log(data.status)
                 callbackIsAuth(data)
             })
             .error(function (data, status, headers, config) {
-                //console.log(data)
+                console.log(data)
             });
     }
     isAuth();
@@ -113,10 +131,15 @@ forum.controller('v', function ($scope, $http) {
                 break;
             default :
                 $scope.url = 'forum/html/noAuth.html'
-
         }
     }
 })
+forum.directive('myAalertьess', function(){
+    return function($scope, element, attrs){
+        $scope.alertEl = element;
+    }
+})
+
 
 forum.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
     $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';

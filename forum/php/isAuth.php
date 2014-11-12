@@ -2,7 +2,17 @@
 
 
 $key = $_COOKIE['key'];
-//$key = '816da73c8c71403fe5a47a9e6a0d1fbc';
+if(empty($key)){
+    $obj = array(
+        'name'=>null,
+        'status' => 'NO'
+    );
+    echo json_encode($obj);
+  //  die json_encode($obj);
+    return;
+}
+
+
 include_once 'connect.php';
 $res = mysql_query("SELECT * FROM  `session` WHERE  `key` =  '$key'");
 
