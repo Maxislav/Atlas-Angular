@@ -47,7 +47,6 @@ forum.controller('isAuth', function ($scope) {
 
 forum.controller('v', function ($scope, $http) {
     $scope.tmpl = 'name'
-
     $scope.yy = function () {
         console.log('d')
     }
@@ -63,30 +62,54 @@ forum.controller('v', function ($scope, $http) {
             $scope.row[val] = $scope.row[val].slice(0, 20)
         }
     }
-
-
-
     $scope.post = function () {
         var data = {
             login: $scope.row.loginin ? $scope.row.loginin :'',
             pass: $scope.row.passin ? md5($scope.row.passin) :''
         }
-
         $http.post('forum/php/tryEnter.php', data)
             .success(function (data, status, headers, config) {
                console.log(data)
+                callback(data)
             })
             .error(function (data, status, headers, config) {
                 console.log(data)
-                /* $scope.alertClass = 'show';
-                 $scope.alertMess = 'Ошибка';
-                 console.log(data)*/
-                //$scope.url = 'forum/html/isAuth.html'
             });
 
     }
     function callback(d) {
         switch (d) {
+            case 'OK':
+                $scope.url = 'forum/html/isAuth.html';
+                break;
+            default :
+        }
+    }
+
+    function isAuth(){
+        $http.post('forum/php/isAuth.php', null)
+            .success(function (data, status, headers, config) {
+              //  console.log(data)
+                callbackIsAuth(data)
+            })
+            .error(function (data, status, headers, config) {
+                //console.log(data)
+            });
+    }
+    isAuth();
+    function callbackIsAuth(d){
+        if (!d || !d.status){
+
+            console.log(d)
+            return
+        }
+        switch (d.status){
+            case 'OK':
+                $scope.row.loginin = d.name;
+                $scope.url = 'forum/html/isAuth.html';
+                break;
+            default :
+                $scope.url = 'forum/html/noAuth.html'
 
         }
     }

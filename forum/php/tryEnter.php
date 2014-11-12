@@ -11,7 +11,7 @@ function valid($str){
 
 $login = valid($login);
 $pass = valid($pass);
-include_once '../../php/connect.php';
+include_once 'connect.php';
 $res = mysql_query("SELECT * FROM user WHERE name='$login' ORDER BY id");
 
 
@@ -19,18 +19,26 @@ if (mysql_num_rows($res) > 0) {
     while ($row = mysql_fetch_array($res)) {
         $pass_bd = $row['pass'];
         $login_bd = $row['name'];
+        $id_user = $row['id'];
     }
     if($login_bd!= $login){
         echo 'NOT_EXIST';
     }else if($pass_bd == $pass ){
 
-        $random = md5(rand(100, 10000)."".rand(0, 20));
-        //SetCookie("key", $random, time()+3600*24);
+        $key = md5(rand(100, 10000)."".rand(0, 20));
+        $dat=date('Y-m-d H:i:s') ;
+        $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
 
-        echo $_COOKIE['key'];
+        SetCookie("key", $key, time()+3600*24);
+        //$_COOKIE['key'];
+        if($sql){
+            echo 'OK';
+        }else{
+            echo $dat.'err';
+        }
     }else{
         echo 'WRONG_PASS';
     }
 }else{
-    echo 'NOT_EXIST_01';
+    echo 'NOT_EXIST_01'.$login;
 }
