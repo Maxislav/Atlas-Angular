@@ -26,7 +26,7 @@ if (mysql_num_rows($res) > 0) {
     }else if($pass_bd == $pass ){
 
         $key = md5(rand(100, 10000)."".rand(0, 20));
-        $dat=date('Y-m-d H:i:s') ;
+        $dat=gmdate('Y-m-d H:i:s') ;
         $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
 
         SetCookie("key", $key, time()+3600*24);

@@ -63,6 +63,7 @@ forum.controller('v', function ($scope, $http) {
         }
     }
     $scope.post = function () {
+
         var data = {
             login: $scope.row.loginin ? $scope.row.loginin :'',
             pass: $scope.row.passin ? md5($scope.row.passin) :''
@@ -71,9 +72,11 @@ forum.controller('v', function ($scope, $http) {
             .success(function (data, status, headers, config) {
                console.log(data)
                 callback(data)
+               // alert(data)
             })
             .error(function (data, status, headers, config) {
                 console.log(data)
+
             });
 
     }

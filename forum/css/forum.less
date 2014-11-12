@@ -53,6 +53,13 @@ html {
   padding: 10px;
   text-align: right;
   color: #666;
+  .button {
+    display: inline-block;
+  }
+  h2{
+    display: inline-block;
+  }
+
 }
 .button {
   margin: 10px 0;
@@ -104,5 +111,17 @@ input {
 @media screen and (max-width: 1000px) {
   .head-block {
     width: 100%;
+  }
+}
+@media screen and (max-width: 420px){
+  .block-auth{
+    input{
+      display: block;
+     float: right;
+    }
+    .button{
+      display: block;
+      clear: both;
+    }
   }
 }
