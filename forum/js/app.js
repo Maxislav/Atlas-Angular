@@ -54,6 +54,7 @@ forum.controller('v', function ($scope, $http) {
         entity: valid,
         val: ''
     };
+    $scope.dialog = ''
     function valid(val) {
         var re = /[^(0-9)\w_]/g;
         $scope.row[val] = $scope.row[val].replace(re, '');
@@ -95,15 +96,17 @@ forum.controller('v', function ($scope, $http) {
         }
     }
     $scope.exit = function(){
-        $scope.alertEl.html('ddd')
-        $http.post('forum/php/exit.php', null)
+       // $scope.alertEl.html('ddd')
+        //alert('d')
+        $scope.dialog = '<div ng-click="exit"></div>'
+        /*$http.post('forum/php/exit.php', null)
             .success(function (data, status, headers, config) {
                 console.log(data)
                 callbackExit(data);
             })
             .error(function (data, status, headers, config) {
                 console.log(data)
-            });
+            });*/
     }
 
     function callbackExit(d){
@@ -142,10 +145,15 @@ forum.controller('v', function ($scope, $http) {
         }
     }
 })
-forum.directive('myAalertьess', function(){
-    return function($scope, element, attrs){
+forum.directive('myAlertmess', function(){
+   /* return function($scope, element, attrs){
         $scope.alertEl = element;
+    }*/
+    return {
+        controller: 'v',
+        template: '{{dialog}}'
     }
+
 })
 
 
