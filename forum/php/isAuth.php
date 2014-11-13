@@ -32,6 +32,9 @@ if (mysql_num_rows($res) > 0) {
     );
     echo json_encode($obj);
 }else{
-    echo 'err'.'<br>';
-    echo $key;
+    $obj = array(
+        'name'=>null,
+        'status' => 'NO'
+    );
+    echo json_encode($obj);
 }
