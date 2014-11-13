@@ -44,7 +44,6 @@ forum.controller('isAuth', function ($scope) {
     $scope.message = 'This is Show orders screen';
 });
 
-
 forum.controller('v', function ($scope, $http) {
     $scope.tmpl = 'name'
     $scope.yy = function () {
@@ -61,6 +60,7 @@ forum.controller('v', function ($scope, $http) {
         if (20 < val.length) {
             $scope.row[val] = $scope.row[val].slice(0, 20)
         }
+        $scope.alertMess = '';
     }
     $scope.post = function () {
         var data = {
@@ -81,10 +81,19 @@ forum.controller('v', function ($scope, $http) {
             case 'OK':
                 $scope.url = 'forum/html/isAuth.html';
                 break;
+            case  'NOT_EXIST':
+                $scope.alertMess = 'Пользователь с таким именем не существует';
+                break;
+            case  'WRONG_PASS':
+                $scope.alertMess = 'Пароль не верный';
+               break;
+            case  'ERR_INSERT_SQL':
+                $scope.alertMess = 'Ошибка сервера';
+                break;
             default :
+                $scope.alertMess = 'Ukown error';
         }
     }
-
     $scope.exit = function(){
         $scope.alertEl.html('ddd')
         $http.post('forum/php/exit.php', null)
@@ -105,7 +114,6 @@ forum.controller('v', function ($scope, $http) {
             default :
         }
     }
-
 
     function isAuth(){
         $http.post('forum/php/isAuth.php', null)

@@ -40,5 +40,5 @@ if (mysql_num_rows($res) > 0) {
         echo 'WRONG_PASS';
     }
 }else{
-    echo 'NOT_EXIST_01'.$login;
+    echo 'NOT_EXIST';
 }
