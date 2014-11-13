@@ -30,11 +30,11 @@ if (mysql_num_rows($res) > 0) {
         $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
 
         SetCookie("key", $key, time()+3600*24);
-        //$_COOKIE['key'];
+
         if($sql){
             echo 'OK';
         }else{
-            echo $dat.'err';
+            echo 'ERR_INSERT_SQL';
         }
     }else{
         echo 'WRONG_PASS';
