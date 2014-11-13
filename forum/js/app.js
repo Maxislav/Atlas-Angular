@@ -44,7 +44,15 @@ forum.controller('isAuth', function ($scope) {
     $scope.message = 'This is Show orders screen';
 });
 
-forum.controller('v', ['$scope','$http',function ($scope, $http) {
+forum.factory('productService', function(){
+    return  {
+        mess: function(){
+            alert('s')
+        }
+    }
+})
+
+forum.controller('v', function ($scope, $http, productService) {
     $scope.tmpl = 'name'
     $scope.yy = function () {
         console.log('d')
@@ -54,6 +62,7 @@ forum.controller('v', ['$scope','$http',function ($scope, $http) {
         entity: valid,
         val: ''
     };
+    productService
 
     $scope.dialog = ''
     function valid(val) {
@@ -150,14 +159,15 @@ forum.controller('v', ['$scope','$http',function ($scope, $http) {
                 $scope.url = 'forum/html/noAuth.html'
         }
     }
-}])
-forum.controller('global', ['$scope', '$http',function ($scope, $http) {
+})
+forum.controller('global', function ($scope, $http, productService) {
     $scope.tryExit = function () {
         $scope.confirmExit = 'forum/html/confirmExit.html'
+
     }
    // $scope.url = '';
    //
-}])
+})
 forum.directive('myAlertmess', function () {
     /* return function($scope, element, attrs){
      $scope.alertEl = element;
@@ -168,6 +178,8 @@ forum.directive('myAlertmess', function () {
     }
 
 })
+
+
 
 
 forum.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
