@@ -52,7 +52,7 @@ module.exports = function (grunt) {
             },
             forum: {
                 options: {
-                    sourceMap: true,
+                   // sourceMap: true,
                     mangle: false
                 },
                 files: {
