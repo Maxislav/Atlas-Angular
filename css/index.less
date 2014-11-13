@@ -130,7 +130,7 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-  border: 2px solid #ff1829;
+  border: 2px solid #5aacff;
 }
 
 .logo {
@@ -142,14 +142,16 @@ a:hover, a:active {
 
   color: #ffffff;
   .img {
-    background: url("../img/logo.png") no-repeat center;
+    background: url("../img/logo_big.png") no-repeat center;
     height: 120px;
     width: 120px;
-    background-size: 100% 100%;
+    background-size: 90% auto;
+    //border: 2px solid #0165C2;
   }
   .data {
+    display: none;
     padding-bottom: 5px;
-    background-color: #ff1829;
+    background-color: #0165C2;
     .title {
       font-size: 11px;
       text-align: center;
@@ -165,11 +167,11 @@ a:hover, a:active {
 
 .button {
   margin: 10px 0;
-  background: red;
-  border-top: 1px solid #ec8464;
-  border-left: 1px solid #ed7143;
-  box-shadow: 0px 1px 2px #959595;
-  text-shadow: -1px 1px 2px #a2242f;
+  background: #4868ff;
+  border-top: 1px solid #a4d7ec;
+  border-left: 1px solid #87afed;
+  box-shadow: 0px 1px 2px #fafafa;
+  text-shadow: -1px 1px 2px #4539a2;
   text-align: center;
   cursor: pointer;
   color: #ffffff;
@@ -182,7 +184,7 @@ a:hover, a:active {
   -webkit-user-select: none;
   user-select: none;
   &:active {
-    background: #ff1829;
+    background: #9fd1ff;
 
     text-shadow: 0 0 2px white, 0 0 10px white, 0 0 10px white;
   }
