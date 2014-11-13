@@ -44,16 +44,17 @@ forum.controller('isAuth', function ($scope) {
     $scope.message = 'This is Show orders screen';
 });
 
-forum.controller('v', function ($scope, $http) {
+forum.controller('v', ['$scope','$http',function ($scope, $http) {
     $scope.tmpl = 'name'
     $scope.yy = function () {
         console.log('d')
     }
-    $scope.url = '';
+
     $scope.row = {
         entity: valid,
         val: ''
     };
+
     $scope.dialog = ''
     function valid(val) {
         var re = /[^(0-9)\w_]/g;
@@ -63,14 +64,15 @@ forum.controller('v', function ($scope, $http) {
         }
         $scope.alertMess = '';
     }
+
     $scope.post = function () {
         var data = {
-            login: $scope.row.loginin ? $scope.row.loginin :'',
-            pass: $scope.row.passin ? md5($scope.row.passin) :''
+            login: $scope.row.loginin ? $scope.row.loginin : '',
+            pass: $scope.row.passin ? md5($scope.row.passin) : ''
         }
         $http.post('forum/php/tryEnter.php', data)
             .success(function (data, status, headers, config) {
-               console.log(data)
+                console.log(data)
                 callback(data)
             })
             .error(function (data, status, headers, config) {
@@ -87,7 +89,7 @@ forum.controller('v', function ($scope, $http) {
                 break;
             case  'WRONG_PASS':
                 $scope.alertMess = 'Пароль не верный';
-               break;
+                break;
             case  'ERR_INSERT_SQL':
                 $scope.alertMess = 'Ошибка сервера';
                 break;
@@ -95,30 +97,33 @@ forum.controller('v', function ($scope, $http) {
                 $scope.alertMess = 'Ukown error';
         }
     }
-    $scope.exit = function(){
-       // $scope.alertEl.html('ddd')
-        //alert('d')
-        $scope.dialog = '<div ng-click="exit"></div>'
-        /*$http.post('forum/php/exit.php', null)
-            .success(function (data, status, headers, config) {
-                console.log(data)
-                callbackExit(data);
-            })
-            .error(function (data, status, headers, config) {
-                console.log(data)
-            });*/
-    }
-
-    function callbackExit(d){
-        switch (d){
-            case 'OK':
-                $scope.url = 'forum/html/noAuth.html'
-                break;
-            default :
+    $scope.exit = function () {
+        // $scope.alertEl.html('ddd')
+        alert('d')
+        //$scope.url = 'forum/html/noAuth.html'
+        //  $scope.dialog = '<div ng-click="exit"></div>'
+        /* $http.post('forum/php/exit.php', null)
+         .success(function (data, status, headers, config) {
+         console.log(data)
+         callbackExit(data);
+         })
+         .error(function (data, status, headers, config) {
+         console.log(data)
+         });*/
+        //  }
+        callbackExit('OK')
+        function callbackExit(d) {
+            switch (d) {
+                case 'OK':
+                    $scope.url = 'forum/html/noAuth.html'
+                    break;
+                default :
+            }
         }
     }
 
-    function isAuth(){
+
+    function isAuth() {
         $http.post('forum/php/isAuth.php', null)
             .success(function (data, status, headers, config) {
                 console.log(data.status)
@@ -128,14 +133,15 @@ forum.controller('v', function ($scope, $http) {
                 console.log(data)
             });
     }
+
     isAuth();
-    function callbackIsAuth(d){
-        if (!d || !d.status){
+    function callbackIsAuth(d) {
+        if (!d || !d.status) {
 
             console.log(d)
             return
         }
-        switch (d.status){
+        switch (d.status) {
             case 'OK':
                 $scope.row.loginin = d.name;
                 $scope.url = 'forum/html/isAuth.html';
@@ -144,14 +150,21 @@ forum.controller('v', function ($scope, $http) {
                 $scope.url = 'forum/html/noAuth.html'
         }
     }
-})
-forum.directive('myAlertmess', function(){
-   /* return function($scope, element, attrs){
-        $scope.alertEl = element;
-    }*/
+}])
+forum.controller('global', ['$scope', '$http',function ($scope, $http) {
+    $scope.tryExit = function () {
+        $scope.confirmExit = 'forum/html/confirmExit.html'
+    }
+   // $scope.url = '';
+   //
+}])
+forum.directive('myAlertmess', function () {
+    /* return function($scope, element, attrs){
+     $scope.alertEl = element;
+     }*/
     return {
-        controller: 'v',
-        template: '{{dialog}}'
+        // controller: 'global',
+        template: 'dd'
     }
 
 })
