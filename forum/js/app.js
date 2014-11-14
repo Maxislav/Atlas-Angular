@@ -8,9 +8,9 @@ forum.config(['$routeProvider',
                 templateUrl: 'html/main.html',
                 controller: 'main'
             }).
-            when('/noAuth', {
-                templateUrl: 'html/noAuth.html',
-                controller: 'noAuth'
+            when('/list', {
+                templateUrl: 'html/list.html',
+                controller: 'list'
             }).
             otherwise({
                 redirectTo: '/main'
@@ -22,7 +22,6 @@ forum.controller('main', function ($scope, $http) {
 
 });
 
-
 forum.controller('isAuth', function ($scope) {
     $scope.message = 'This is Show orders screen';
 });
@@ -32,18 +31,10 @@ forum.service('dialog', function () {
 })
 
 forum.controller('v', function ($scope, $http, dialog) {
-    $scope.tmpl = 'name'
-    $scope.yy = function () {
-        console.log('d')
-    }
-
     $scope.row = {
         entity: valid,
         val: ''
     };
-
-
-    $scope.dialog = ''
     function valid(val) {
         var re = /[^(0-9)\w_]/g;
         $scope.row[val] = $scope.row[val].replace(re, '');
@@ -87,7 +78,7 @@ forum.controller('v', function ($scope, $http, dialog) {
     }
 
     $scope.tryExit = function () {
-        dialog.confirmExit($scope.exit)
+        dialog.action($scope.exit)
     }
 
     $scope.exit = function () {
@@ -141,17 +132,20 @@ forum.controller('v', function ($scope, $http, dialog) {
 })
 forum.controller('global', function ($scope, $http, dialog) {
     $scope.tryExit = function (success) {
-        $scope.confirmExit = 'html/confirmExit.html'
-        $scope.action = function(){
-            success()
-            $scope.confirmExit = ''
+        $scope.pattern = 'html/confirmExit.html'
+        $scope.action = function (val) {
+            switch (val) {
+                case 'OK':
+                    success();
+                    $scope.pattern = '';
+                    break;
+                default :
+                    $scope.pattern = '';
+            }
         }
-
     }
-    dialog.confirmExit = $scope.tryExit;
-
+    dialog.action = $scope.tryExit;
 })
-
 
 
 forum.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
