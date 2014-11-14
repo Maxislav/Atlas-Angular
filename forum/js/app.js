@@ -5,11 +5,11 @@ forum.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/main', {
-                templateUrl: 'forum/html/main.html',
+                templateUrl: 'html/main.html',
                 controller: 'main'
             }).
             when('/noAuth', {
-                templateUrl: 'forum/html/noAuth.html',
+                templateUrl: 'html/noAuth.html',
                 controller: 'noAuth'
             }).
             otherwise({
@@ -19,24 +19,7 @@ forum.config(['$routeProvider',
 
 
 forum.controller('main', function ($scope, $http) {
-    $scope.message = 'This is Add new order screen';
-    $scope.z = '';
-    $scope.post = function () {
-        $http.post('forum/php/isAuth', {mess: 'l'})
-            .success(function (data, status, headers, config) {
-                //callback(data)
-            })
-            .error(function (data, status, headers, config) {
-                /* $scope.alertClass = 'show';
-                 $scope.alertMess = 'Ошибка';
-                 console.log(data)*/
-                $scope.z = '5454'
-            });
-    }
 
-    $scope.yy = function () {
-        console.log('d')
-    }
 });
 
 
@@ -44,15 +27,11 @@ forum.controller('isAuth', function ($scope) {
     $scope.message = 'This is Show orders screen';
 });
 
-forum.factory('productService', function(){
-    return  {
-        mess: function(){
-            alert('s')
-        }
-    }
+forum.service('dialog', function () {
+    this.mess = "This is public";
 })
 
-forum.controller('v', function ($scope, $http, productService) {
+forum.controller('v', function ($scope, $http, dialog) {
     $scope.tmpl = 'name'
     $scope.yy = function () {
         console.log('d')
@@ -62,7 +41,7 @@ forum.controller('v', function ($scope, $http, productService) {
         entity: valid,
         val: ''
     };
-    productService
+
 
     $scope.dialog = ''
     function valid(val) {
@@ -79,7 +58,7 @@ forum.controller('v', function ($scope, $http, productService) {
             login: $scope.row.loginin ? $scope.row.loginin : '',
             pass: $scope.row.passin ? md5($scope.row.passin) : ''
         }
-        $http.post('forum/php/tryEnter.php', data)
+        $http.post('php/tryEnter.php', data)
             .success(function (data, status, headers, config) {
                 console.log(data)
                 callback(data)
@@ -91,7 +70,7 @@ forum.controller('v', function ($scope, $http, productService) {
     function callback(d) {
         switch (d) {
             case 'OK':
-                $scope.url = 'forum/html/isAuth.html';
+                $scope.url = 'html/isAuth.html';
                 break;
             case  'NOT_EXIST':
                 $scope.alertMess = 'Пользователь с таким именем не существует';
@@ -106,25 +85,25 @@ forum.controller('v', function ($scope, $http, productService) {
                 $scope.alertMess = 'Ukown error';
         }
     }
+
+    $scope.tryExit = function () {
+        dialog.confirmExit($scope.exit)
+    }
+
     $scope.exit = function () {
-        // $scope.alertEl.html('ddd')
-        alert('d')
-        //$scope.url = 'forum/html/noAuth.html'
-        //  $scope.dialog = '<div ng-click="exit"></div>'
-        /* $http.post('forum/php/exit.php', null)
-         .success(function (data, status, headers, config) {
-         console.log(data)
-         callbackExit(data);
-         })
-         .error(function (data, status, headers, config) {
-         console.log(data)
-         });*/
-        //  }
-        callbackExit('OK')
+
+        $http.post('php/exit.php', null)
+            .success(function (data, status, headers, config) {
+                console.log(data)
+                callbackExit(data);
+            })
+            .error(function (data, status, headers, config) {
+                console.log(data)
+            });
         function callbackExit(d) {
             switch (d) {
                 case 'OK':
-                    $scope.url = 'forum/html/noAuth.html'
+                    $scope.url = 'html/noAuth.html'
                     break;
                 default :
             }
@@ -133,7 +112,7 @@ forum.controller('v', function ($scope, $http, productService) {
 
 
     function isAuth() {
-        $http.post('forum/php/isAuth.php', null)
+        $http.post('php/isAuth.php', null)
             .success(function (data, status, headers, config) {
                 console.log(data.status)
                 callbackIsAuth(data)
@@ -153,32 +132,25 @@ forum.controller('v', function ($scope, $http, productService) {
         switch (d.status) {
             case 'OK':
                 $scope.row.loginin = d.name;
-                $scope.url = 'forum/html/isAuth.html';
+                $scope.url = 'html/isAuth.html';
                 break;
             default :
-                $scope.url = 'forum/html/noAuth.html'
+                $scope.url = 'html/noAuth.html'
         }
     }
 })
-forum.controller('global', function ($scope, $http, productService) {
-    $scope.tryExit = function () {
-        $scope.confirmExit = 'forum/html/confirmExit.html'
+forum.controller('global', function ($scope, $http, dialog) {
+    $scope.tryExit = function (success) {
+        $scope.confirmExit = 'html/confirmExit.html'
+        $scope.action = function(){
+            success()
+            $scope.confirmExit = ''
+        }
 
     }
-   // $scope.url = '';
-   //
-})
-forum.directive('myAlertmess', function () {
-    /* return function($scope, element, attrs){
-     $scope.alertEl = element;
-     }*/
-    return {
-        // controller: 'global',
-        template: 'dd'
-    }
+    dialog.confirmExit = $scope.tryExit;
 
 })
-
 
 
 
