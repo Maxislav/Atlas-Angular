@@ -13,21 +13,27 @@ $login = valid($login);
 $pass = valid($pass);
 include_once 'connect.php';
 $res = mysql_query("SELECT * FROM user WHERE name='$login' ORDER BY id");
-
-
 if (mysql_num_rows($res) > 0) {
     while ($row = mysql_fetch_array($res)) {
         $pass_bd = $row['pass'];
         $login_bd = $row['name'];
+        $id_user = $row['id'];
     }
     if($login_bd!= $login){
         echo 'NOT_EXIST';
     }else if($pass_bd == $pass ){
 
-     $random = md5 (rand(100, 10000)."".rand(0, 20));
-     //SetCookie("key", $random, time()+3600*24);
+        $key = md5(rand(100, 10000)."".rand(0, 20));
+        $dat=gmdate('Y-m-d H:i:s') ;
+        $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
 
-        echo $_COOKIE['key'];
+        SetCookie("key", $key, time()+3600*24);
+
+        if($sql){
+            echo 'OK';
+        }else{
+            echo 'ERR_INSERT_SQL';
+        }
     }else{
         echo 'WRONG_PASS';
     }

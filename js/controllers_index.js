@@ -6,7 +6,7 @@ app.controller('events', function ($scope, $http) {
     $scope.pass = "Pass"
     $scope.classVhide = 'hide'
     $scope.loginin = $scope.helpin
-
+   // $scope.loginin = 'ds'
     var timeout;
 
     $scope.show = function (val, type) {
