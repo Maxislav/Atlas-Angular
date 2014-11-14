@@ -27,7 +27,7 @@ if (mysql_num_rows($res) > 0) {
         $dat=gmdate('Y-m-d H:i:s') ;
         $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
 
-        SetCookie("key", $key, time()+3600*24);
+        SetCookie("key", $key, time()+3600*24, "/");
 
         if($sql){
             echo 'OK';

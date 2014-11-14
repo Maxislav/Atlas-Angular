@@ -3,32 +3,31 @@ var forum = angular.module('forum', ['ngRoute']);
 
 forum.config(['$routeProvider',
     function ($routeProvider) {
-        $routeProvider.
-            when('/main', {
+        $routeProvider
+            .when('/main', {
                 templateUrl: 'html/main.html',
                 controller: 'main'
-            }).
-            when('/list', {
-                templateUrl: 'html/list.html',
-                controller: 'list'
-            }).
-            otherwise({
+            })
+            .when('/general', {
+                templateUrl: 'subjects/general/general.html',
+                controller: 'general'
+            })
+            .otherwise({
                 redirectTo: '/main'
             });
     }]);
+
+forum.service('dialog', function () {
+    this.mess = "This is public";
+})
 
 
 forum.controller('main', function ($scope, $http) {
 
 });
 
-forum.controller('isAuth', function ($scope) {
-    $scope.message = 'This is Show orders screen';
-});
 
-forum.service('dialog', function () {
-    this.mess = "This is public";
-})
+
 
 forum.controller('v', function ($scope, $http, dialog) {
     $scope.row = {

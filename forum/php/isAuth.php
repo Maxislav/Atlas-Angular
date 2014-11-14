@@ -5,7 +5,7 @@ $key = $_COOKIE['key'];
 if(empty($key)){
     $obj = array(
         'name'=>null,
-        'status' => 'NO'
+        'status' => 'EMPTY_COOKIE'
     );
     echo json_encode($obj);
   //  die json_encode($obj);
@@ -34,7 +34,7 @@ if (mysql_num_rows($res) > 0) {
 }else{
     $obj = array(
         'name'=>null,
-        'status' => 'NO'
+        'status' => 'NOj'
     );
     echo json_encode($obj);
 }

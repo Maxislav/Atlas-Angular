@@ -59,7 +59,8 @@ module.exports = function (grunt) {
                     'forum/build/forum.min.js':
                         [
                             'build/md5.min.js',
-                            'forum/js/app.js'
+                            'forum/js/app.js',
+                            'forum/subjects/general/general.js'
                         ]
                 }
             }
@@ -69,7 +70,10 @@ module.exports = function (grunt) {
                 options: {
                     compress: true,
                     yuicompress: true,
-                    optimization: 2
+                    optimization: 2,
+                    sourceMap: true,
+                    sourceMapFilename: "assets/style/bootstrap.css.map",
+                    sourceMapBasepath: "assets/style/"
 
                 },
                 files: {
@@ -128,7 +132,11 @@ module.exports = function (grunt) {
                 options: {
                     compress: true,
                     yuicompress: true,
-                    optimization: 2
+                    optimization: 2,
+                    sourceMap: true,
+                    sourceMapFilename: "forum/build/forum.css.map",
+                    sourceMapBasepath: "../forum"
+
 
                 },
                 files: {
@@ -140,11 +148,11 @@ module.exports = function (grunt) {
         },
         replace: {
             example: {
-                src: ['css/index.less'],             // source files array (supports minimatch)
-                dest: 'css/index_my.less',             // destination directory or file
+                src: ['forum/build/forum.css'],             // source files array (supports minimatch)
+                dest: 'forum/build/forum.css',             // destination directory or file
                 replacements: [{
-                    from: '/img/logo.png',                   // string replacement
-                    to: '/img/logo_my.jpg'
+                    from: 'forum/build/',                   // string replacement
+                    to: ''
                 }]
             }
         },
@@ -188,11 +196,14 @@ module.exports = function (grunt) {
             },
             forum:{
                 files: 'forum/css/forum.less',
-                tasks: ['less:forum'],
+                tasks: ['less:forum','replace'],
                 options: {nospawn: true}
             },
             forumJs: {
-                files : 'forum/js/app.js',
+                files : [
+                    'forum/js/app.js',
+                    'forum/subjects/general/general.js'
+                ],
                 tasks: ['uglify:forum'],
                 options: {nospawn: true}
             }
@@ -218,6 +229,8 @@ module.exports = function (grunt) {
             'uglify:indexUg' ,
             'uglify:registUg',
             'less:login',
+            'less:forum',
+            'replace',
             'uglify:forum',
 
             'less:indexCss',
