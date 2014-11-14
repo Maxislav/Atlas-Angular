@@ -131,8 +131,9 @@ forum.controller('v', function ($scope, $http, dialog) {
     }
 })
 forum.controller('global', function ($scope, $http, dialog) {
-    $scope.tryExit = function (success) {
+    $scope.tryAction = function (success) {
         $scope.pattern = 'html/confirmExit.html'
+        $scope.dialogClass = 'show'
         $scope.action = function (val) {
             switch (val) {
                 case 'OK':
@@ -142,9 +143,10 @@ forum.controller('global', function ($scope, $http, dialog) {
                 default :
                     $scope.pattern = '';
             }
+            $scope.dialogClass = ''
         }
     }
-    dialog.action = $scope.tryExit;
+    dialog.action = $scope.tryAction;
 })
 
 
