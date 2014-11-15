@@ -130,7 +130,8 @@ forum.controller('v', function ($scope, $http, dialog) {
     }
 })
 forum.controller('global', function ($scope, $http, dialog) {
-    $scope.tryAction = function (success) {
+
+    dialog.action = function (success) {
         $scope.pattern = 'html/confirmExit.html'
         $scope.dialogClass = 'show'
         $scope.action = function (val) {
@@ -144,8 +145,18 @@ forum.controller('global', function ($scope, $http, dialog) {
             }
             $scope.dialogClass = ''
         }
+    };
+
+    dialog.show = function(obj){
+        $scope.pattern = obj.html
+        $scope['done'] = function(){
+            obj.buttons[0].action()
+            $scope.dialogClass = ''
+        }
+        $scope.dialogClass = 'show'
     }
-    dialog.action = $scope.tryAction;
+
+
 })
 
 

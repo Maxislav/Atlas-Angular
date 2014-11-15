@@ -162,6 +162,28 @@ input {
   }
 
 }
+
+.main-page{
+  .row{
+    min-height: 30px;
+  }
+  a{
+    text-decoration: none;
+    color: rgba(15, 22, 24, 0.71);
+  }
+}
+.button.create{
+  display: inline-block;
+}
+
+h2.tag {
+  margin: 10px 0;
+}
+.row h3::before{
+  content: "*";
+  color: gray;
+}
+
 @media screen and (max-width: 1000px) {
   .head-block {
     width: 100%;
