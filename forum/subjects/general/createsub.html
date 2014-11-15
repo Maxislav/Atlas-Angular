@@ -1,13 +1,27 @@
 <div class="content-dialog">
+
+
     <div>
+        <div class="title">
+            Новая тема
+        </div>
 
+        <div class="container-area-mess">
+            <input ng-model="message">
 
-    <input>
-    <textarea>
+            <div style="padding-right: 25px">
+                <textarea>
+                </textarea>
+            </div>
+        </div>
+        <div class="container-button">
+            <div class="button" ng-click="done()">
+                Создать
+            </div>
+            <div class="button" ng-click="cancel()">
+                Отмена
+            </div>
+        </div>
 
-    </textarea>
-    <div class="button" ng-click="done()">
-        Создать
-    </div>
     </div>
 </div>

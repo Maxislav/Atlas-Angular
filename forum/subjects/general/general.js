@@ -9,7 +9,10 @@ forum.controller('general', function ($scope, dialog) {
                      text: 'OK',
                      action: $scope.create
                  }
-             ]
+             ],
+             params:{
+                 message : 'темааа'
+             }
          })
       }
 
@@ -20,4 +23,5 @@ forum.controller('general', function ($scope, dialog) {
         $scope.message = 'This is Show orders screen';
         dialog.dialogClass =''
     }
+
 });

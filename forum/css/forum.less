@@ -86,28 +86,21 @@ h2{
   border-radius: 3px;
   &:active {
     background: #9fd1ff;
-
+    border: 1px solid #ffffff;
     text-shadow: 0 0 2px white, 0 0 10px white, 0 0 10px white;
   }
 }
 
-input {
+input, textarea{
   padding: 3px 5px;
   border-radius: 3px;
   border: 1px solid gray;
   outline: none;
   margin: 5px;
 
-  background: rgb(211, 211, 211); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(211, 211, 211, 1)), color-stop(20%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d3d3d3', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
 
-  width: 160px;
+
+ // width: 160px;
   &:focus {
     box-shadow: 0 0 10px white;
   }
@@ -182,6 +175,26 @@ h2.tag {
 .row h3::before{
   content: "*";
   color: gray;
+}
+.container-button{
+  text-align: center;
+  padding: 5px;
+  .button{
+    margin: 0 10px;
+  }
+}
+
+.container-area-mess{
+  text-align: left;
+  width: 300px;
+  input{
+    width: 80%;
+  }
+  textarea{
+    width: 100%;
+    min-height: 100px;
+    resize: none;
+  }
 }
 
 @media screen and (max-width: 1000px) {

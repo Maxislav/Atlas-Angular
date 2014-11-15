@@ -154,6 +154,10 @@ forum.controller('global', function ($scope, $http, dialog) {
             $scope.dialogClass = ''
         }
         $scope.dialogClass = 'show'
+
+        for(var opt in obj.params){
+            $scope[opt] = obj.params['opt']
+        }
     }
 
 
