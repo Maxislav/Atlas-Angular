@@ -22,9 +22,34 @@ forum.service('dialog', function () {
 })
 
 
+forum.factory('Data', function(){
+    return{
+        message: 'message from factory'
+    }
+})
+
+
 forum.controller('main', function ($scope, $http) {
 
 });
+forum.directive('modal', function(){
+    //this.showModal = false
+    return{
+        template: 'dds',
+        restrict: 'E',
+        transclude: true,
+        //replace:true,
+        scope:true,
+        link: function postLink(scope, element, attrs) {
+            scope.$watch(attrs.visible, function(value){
+                if(value == true)
+                    element[0].style.display = 'block'
+                else
+                    element[0].style.display = 'none'
+            });
+        }
+    }
+})
 
 
 
@@ -129,7 +154,7 @@ forum.controller('v', function ($scope, $http, dialog) {
         }
     }
 })
-forum.controller('global', function ($scope, $http, dialog) {
+forum.controller('global', function ($scope, $http, dialog, Data) {
 
     dialog.action = function (success) {
         $scope.pattern = 'html/confirmExit.html'
@@ -155,9 +180,7 @@ forum.controller('global', function ($scope, $http, dialog) {
         }
         $scope.dialogClass = 'show'
 
-        for(var opt in obj.params){
-            $scope[opt] = obj.params['opt']
-        }
+       $scope.data = Data
     }
 
 
