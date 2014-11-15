@@ -7,18 +7,18 @@
         </div>
 
         <div class="container-area-mess">
-            <input ng-model="data.message">
+            <input ng-model="data.subj">
 
             <div style="padding-right: 25px">
-                <textarea>
+                <textarea ng-model="data.text">
                 </textarea>
             </div>
         </div>
         <div class="container-button">
-            <div class="button" ng-click="done()">
+            <div class="button" ng-click="data.done()">
                 Создать
             </div>
-            <div class="button" ng-click="cancel()">
+            <div class="button" ng-click="data.cancel()">
                 Отмена
             </div>
         </div>

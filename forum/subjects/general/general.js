@@ -1,24 +1,21 @@
 forum.controller('general', function ($scope, dialog, Data) {
-
+    $scope.data = Data;
     $scope.message = 'dd'
       $scope.createSubject = function(){
          dialog.show({
-             html: 'subjects/general/createsub.html',
-             buttons: [
-                 {
-                     text: 'OK',
-                     action: $scope.create
-                 }
-             ],
-             params:{
-                 message : $scope.message
-             },
-             scope: $scope
-
+             html: 'subjects/general/createsub.html'
          })
       }
 
-    $scope.data = Data;
+    $scope.data.done = function(){
+       //alert($scope.data.subj )
+        dialog.hide()
+    }
+    $scope.data.cancel = function(){
+        dialog.hide()
+        $scope.data.subj = null
+    }
+
     $scope.showModal = true
     $scope.toggleModal = function(){
         $scope.showModal =true

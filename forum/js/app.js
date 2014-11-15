@@ -174,16 +174,12 @@ forum.controller('global', function ($scope, $http, dialog, Data) {
 
     dialog.show = function(obj){
         $scope.pattern = obj.html
-        $scope['done'] = function(){
-            obj.buttons[0].action()
-            $scope.dialogClass = ''
-        }
         $scope.dialogClass = 'show'
-
-       $scope.data = Data
+        $scope.data = Data
     }
-
-
+    dialog.hide = function(){
+        $scope.dialogClass = ''
+    }
 })
 
 
