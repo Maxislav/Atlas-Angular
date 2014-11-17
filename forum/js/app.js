@@ -24,7 +24,7 @@ forum.service('dialog', function () {
 
 forum.factory('Data', function(){
     return{
-        message: 'message from factory'
+        message: null
     }
 })
 
