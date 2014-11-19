@@ -17,12 +17,16 @@ if(!$name || empty($name)){
 
 
 
+if($name){
+    $obj = array(
+        'status'=>'OK',
+        'name'=> $name
+    );
 
 
-$obj = array(
-    'status'=>'OK',
-    'name'=> $name
-);
+}
+
+
 
 
 
