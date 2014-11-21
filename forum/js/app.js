@@ -24,7 +24,12 @@ forum.service('dialog', function () {
 
 forum.factory('Data', function(){
     return{
-        message: null
+        message: null,
+        isAuth: function(success){
+            console.log(this.is)
+            success && success()
+        },
+        is: null
     }
 })
 
@@ -149,10 +154,12 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
             case 'OK':
                 $scope.row.loginin = d.name;
                 $scope.url = 'html/isAuth.html';
-                $scope.data.isAuth = 'OK';
+                $scope.data.is = 'OK'
+                $scope.data.url = 'subjects/general/buttoncreate.html'
                 break;
             default :
-                $scope.data.isAuth = 'NO';
+                $scope.data.isAuth();
+                $scope.data.is = 'NO'
                 $scope.url = 'html/noAuth.html';
         }
     }

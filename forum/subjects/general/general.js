@@ -6,11 +6,13 @@ forum.controller('general', function ($scope, dialog, Data, $http) {
             html: 'subjects/general/createsub.html'
         })
     };
-    console.log( $scope.data.isAuth)
+    $scope.data.isAuth(function(d){
+        console.log(d)
+    })
 
-    if($scope.data.isAuth =='OK'){
+   /* if($scope.data.isAuth =='OK'){
         $scope.url = 'subjects/general/buttoncreate.html'
-    }
+    }*/
 
     $scope.data.done = function () {
         //alert($scope.data.subj )
