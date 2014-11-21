@@ -54,11 +54,12 @@ forum.directive('modal', function(){
 
 
 
-forum.controller('v', function ($scope, $http, dialog) {
+forum.controller('v', function ($scope, $http, dialog, Data) {
     $scope.row = {
         entity: valid,
         val: ''
     };
+    $scope.data = Data;
     function valid(val) {
         var re = /[^(0-9)\w_]/g;
         $scope.row[val] = $scope.row[val].replace(re, '');
@@ -148,9 +149,11 @@ forum.controller('v', function ($scope, $http, dialog) {
             case 'OK':
                 $scope.row.loginin = d.name;
                 $scope.url = 'html/isAuth.html';
+                $scope.data.isAuth = 'OK';
                 break;
             default :
-                $scope.url = 'html/noAuth.html'
+                $scope.data.isAuth = 'NO';
+                $scope.url = 'html/noAuth.html';
         }
     }
 })
