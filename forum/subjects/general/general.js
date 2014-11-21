@@ -21,8 +21,8 @@ forum.controller('general', function ($scope, dialog, Data, $http) {
     };
 
     $scope.data.cancel = function () {
-        dialog.hide()
-        $scope.data.subj = null
+        dialog.hide();
+        $scope.data.subj = null;
     };
 
     $scope.showModal = true
