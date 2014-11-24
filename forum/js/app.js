@@ -154,13 +154,12 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
             case 'OK':
                 $scope.row.loginin = d.name;
                 $scope.url = 'html/isAuth.html';
-                $scope.data.is = 'OK'
-                $scope.data.url = 'subjects/general/buttoncreate.html'
+
                 break;
             default :
                 $scope.data.isAuth();
                 $scope.data.is = 'NO'
-                $scope.url = 'html/noAuth.html';
+
         }
     }
 })

@@ -1,18 +1,24 @@
-forum.controller('general', function ($scope, dialog, Data, $http) {
+forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
     $scope.data = Data;
     $scope.message = 'dd';
+    $scope.m = {
+        message: ''
+    }
+
     $scope.createSubject = function () {
-        dialog.show({
-            html: 'subjects/general/createsub.html'
-        })
+        var template = angular.element('<div  class="dialog show"><div class="mask" ng-include="creatSubUrl"></div></div>');
+        var linkFn = $compile(template);
+        var element = linkFn($scope);
+        document.body.appendChild(element[0])
     };
-    $scope.data.isAuth(function(d){
+    $scope.data.isAuth(function (d) {
         console.log(d)
     })
 
-   /* if($scope.data.isAuth =='OK'){
-        $scope.url = 'subjects/general/buttoncreate.html'
-    }*/
+    $scope.creatSubUrl = 'subjects/general/createsub.html'
+
+    $scope.url = 'subjects/general/buttoncreate.html'
+
 
     $scope.data.done = function () {
         //alert($scope.data.subj )
