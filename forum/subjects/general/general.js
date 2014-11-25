@@ -5,11 +5,12 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         message: ''
     }
 
+    $scope.el
     $scope.createSubject = function () {
         var template = angular.element('<div  class="dialog show"><div class="mask" ng-include="creatSubUrl"></div></div>');
         var linkFn = $compile(template);
-        var element = linkFn($scope);
-        document.body.appendChild(element[0])
+        $scope.el = linkFn($scope);
+        document.body.appendChild( $scope.el[0])
     };
 
 
@@ -48,11 +49,7 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         }else{
             $scope.url = null
         }
-
     }
-
-
-
 
     $scope.data.done = function () {
         //alert($scope.data.subj )
@@ -60,9 +57,8 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         dialog.hide()
     };
 
-    $scope.data.cancel = function () {
-        dialog.hide();
-        $scope.data.subj = null;
+    $scope.cancel = function () {
+        document.body.removeChild($scope.el[0]) ;
     };
 
     $scope.showModal = true
