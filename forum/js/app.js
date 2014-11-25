@@ -25,8 +25,8 @@ forum.service('dialog', function () {
 forum.factory('Data', function(){
     return{
         message: null,
-        isAuth: function(success){
-            console.log(this.is)
+        action: function(success){
+            //console.log(this.is)
             success && success()
         },
         is: null
@@ -65,6 +65,7 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
         val: ''
     };
     $scope.data = Data;
+    $scope.data.auth = false;
     function valid(val) {
         var re = /[^(0-9)\w_]/g;
         $scope.row[val] = $scope.row[val].replace(re, '');
@@ -92,6 +93,8 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
         switch (d) {
             case 'OK':
                 $scope.url = 'html/isAuth.html';
+                $scope.data.auth = true;
+
                 break;
             case  'NOT_EXIST':
                 $scope.alertMess = 'Пользователь с таким именем не существует';
@@ -105,6 +108,7 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
             default :
                 $scope.alertMess = 'Ukown error';
         }
+        $scope.data.action();
     }
 
     $scope.tryExit = function () {
@@ -125,9 +129,12 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
             switch (d) {
                 case 'OK':
                     $scope.url = 'html/noAuth.html'
+                    $scope.data.auth = false
                     break;
                 default :
+
             }
+            $scope.data.action();
         }
     }
 
@@ -154,11 +161,13 @@ forum.controller('v', function ($scope, $http, dialog, Data) {
             case 'OK':
                 $scope.row.loginin = d.name;
                 $scope.url = 'html/isAuth.html';
-
+                $scope.data.auth = true;
                 break;
             default :
-                $scope.data.isAuth();
-                $scope.data.is = 'NO'
+                //$scope.data.isAuth();
+                //$scope.data.is = 'NO';
+                $scope.url = 'html/noAuth.html';
+                $scope.data.auth = false;
 
         }
     }

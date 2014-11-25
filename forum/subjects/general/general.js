@@ -11,13 +11,47 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         var element = linkFn($scope);
         document.body.appendChild(element[0])
     };
-    $scope.data.isAuth(function (d) {
-        console.log(d)
-    })
+
 
     $scope.creatSubUrl = 'subjects/general/createsub.html'
 
-    $scope.url = 'subjects/general/buttoncreate.html'
+    if($scope.data.auth){
+        $scope.url = 'subjects/general/buttoncreate.html'
+    }else{
+        $http.post('php/isAuth.php', null)
+            .success(function (data, status, headers, config) {
+                console.log(data.status)
+                callbackIsAuth(data)
+            })
+            .error(function (data, status, headers, config) {
+                console.log(data)
+            });
+        function callbackIsAuth(d) {
+            if (!d || !d.status) {
+
+                console.log(d)
+                return
+            }
+            switch (d.status) {
+                case 'OK':
+                    $scope.data.auth = true;
+                    break;
+                default :
+                    $scope.data.auth = false;
+            }
+            $scope.data.action()
+        }
+    }
+    $scope.data.action = function(){
+        if( $scope.data.auth){
+            $scope.url = 'subjects/general/buttoncreate.html'
+        }else{
+            $scope.url = null
+        }
+
+    }
+
+
 
 
     $scope.data.done = function () {
