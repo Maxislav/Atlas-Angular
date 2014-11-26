@@ -1,8 +1,10 @@
-forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
+forum.controller('general',['$scope', 'dialog', 'Data', '$http', '$compile', '$routeParams', function ($scope, dialog, Data, $http, $compile, $routeParams) {
     $scope.data = Data;
     $scope.message = 'dd';
     $scope.m = {
-        message: ''
+        message: '',
+        subject: ''
+
     }
 
     $scope.el
@@ -12,10 +14,7 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         $scope.el = linkFn($scope);
         document.body.appendChild( $scope.el[0])
     };
-
-
     $scope.creatSubUrl = 'subjects/general/createsub.html'
-
     if($scope.data.auth){
         $scope.url = 'subjects/general/buttoncreate.html'
     }else{
@@ -51,11 +50,13 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         }
     }
 
-    $scope.data.done = function () {
-        //alert($scope.data.subj )
-        req()
+    $scope.done = function () {
+        reqCreateSub()
         dialog.hide()
     };
+
+
+
 
     $scope.cancel = function () {
         document.body.removeChild($scope.el[0]) ;
@@ -72,21 +73,37 @@ forum.controller('general', function ($scope, dialog, Data, $http, $compile) {
         dialog.dialogClass = ''
     };
 
-    function req() {
+    function reqCreateSub() {
         var data = {
             section: 'general',
-            subject: $scope.data.subject ? $scope.data.subject : '',
-            message: $scope.data.message ? $scope.data.message : ''
+            subject: $scope.m.subject ? $scope.m.subject : '',
+            message: $scope.m.message ? $scope.m.message : ''
         };
 
         $http.post('php/createSubj.php', data)
             .success(function (data, status, headers, config) {
-                console.log(data)
+                console.log(data);
+                document.body.removeChild($scope.el[0]) ;
                 // callbackIsAuth(data)
             })
             .error(function (data, status, headers, config) {
-                console.log(data)
+                document.body.removeChild($scope.el[0]) ;
             });
     };
 
-});
+    var getSubData = {
+        section: 'general'
+    }
+    $http.post('php/getSubj.php', getSubData)
+        .success(function(data, status, headers, config) {
+            console.log(data)
+                $scope.items = data
+        })
+        .error(function (data, status, headers, config) {
+            console.log(data)
+        })
+
+   // $scope.phoneId = $routeParams.phoneId;
+    alert($routeParams.phoneId);
+
+}]);

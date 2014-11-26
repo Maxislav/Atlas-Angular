@@ -8,12 +8,17 @@ forum.config(['$routeProvider',
                 templateUrl: 'html/main.html',
                 controller: 'main'
             })
+            .when('/general/:phoneId', {
+                templateUrl: 'subjects/general/general.html',
+                controller: 'general'
+            })
+
             .when('/general', {
                 templateUrl: 'subjects/general/general.html',
                 controller: 'general'
             })
             .otherwise({
-                redirectTo: '/main'
+                //redirectTo: '/main'
             });
     }]);
 

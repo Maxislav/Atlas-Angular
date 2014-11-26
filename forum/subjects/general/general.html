@@ -14,5 +14,13 @@
             <!--{{data.subj}}-->
             {{m.message}}
         </div>
+        <ul>
+            <li ng-repeat="opt in items">
+                <a href="#/general/{{items[$index]}}">{{items[$index]}}</a>
+            </li>
+        </ul>
+
+
+
     </div>
 </div>

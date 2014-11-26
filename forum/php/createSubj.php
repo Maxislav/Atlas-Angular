@@ -17,18 +17,13 @@ if(!$name || empty($name)){
    return;
 }
 
-
-
 if($name){
     $obj = array(
         'status'=>'OK',
         'name'=> $name
     );
     $dat=gmdate('Y-m-d H:i:s') ;
-
-
     $sql = mysql_query("INSERT INTO  `monitoring`.`forum` (`id` ,`name`  ,`section` , `subject`, `message`, `date`)VALUES (NULL ,  '$name',  '$section', '$subject', '$message', '$dat')");
-
     if($sql){
         echo json_encode($obj);
     }else{
