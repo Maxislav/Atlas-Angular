@@ -11,7 +11,7 @@ $name = $obj['name'];
 
 if(!$name || empty($name)){
   $obj = array(
-    'status'=>'NOt_AUTH'
+    'status'=>'NOT_AUTH'
   );
    echo json_encode($obj);
    return;

@@ -6,7 +6,10 @@ app.controller('events', function ($scope, $http) {
     $scope.pass = "Pass"
     $scope.classVhide = 'hide'
     $scope.loginin = $scope.helpin
-   // $scope.loginin = 'ds'
+    $scope.lock = 'lock'
+
+    $scope.loginin = ''
+    $scope.passin = ''
     var timeout;
 
     $scope.show = function (val, type) {
@@ -20,10 +23,14 @@ app.controller('events', function ($scope, $http) {
     }
 
     $scope.change = function (val, type) {
-
         $scope.typehelp = type;
         $scope.helpin = val;
         $scope.alertClass = 'hide'
+        if($scope.loginin.length<4 || $scope.passin.length<4){
+            $scope.lock = 'lock'
+        }else{
+            $scope.lock = ''
+        }
         timeout = setTimeout(clear, 500)
     }
     function clear() {
@@ -44,8 +51,6 @@ app.controller('events', function ($scope, $http) {
             $scope.alertMess = 'Поле пароля должно содержать минимум 4 символа'
             return
         }
-
-
         var data = {
             login: login,
             pass: pass ? md5(pass) : ''
@@ -57,17 +62,14 @@ app.controller('events', function ($scope, $http) {
             .error(function (data, status, headers, config) {
                 $scope.alertClass = 'show';
                 $scope.alertMess = 'Ошибка';
-
                 console.log(data)
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
             });
         function callback(d){
             switch (d){
                 case 'OK':
                     $scope.alertClass = 'show green'
                     $scope.alertMess = 'Успешный вход';
-                  //  window.location.href = 'login.html';
+                   window.location.href = 'map.html';
                     break;
                 case 'NOT_EXIST':
                     $scope.alertClass = 'show'

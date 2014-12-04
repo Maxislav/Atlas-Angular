@@ -44,6 +44,7 @@ forum.controller('main', function ($scope, $http) {
 });
 forum.directive('modal', function(){
     //this.showModal = false
+   // console.log(el)
     return{
         template: 'dds',
         restrict: 'E',
