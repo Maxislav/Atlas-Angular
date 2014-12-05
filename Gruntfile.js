@@ -1,7 +1,13 @@
 module.exports = function (grunt) {
+
+
+
+
     // Задачи
     grunt.initConfig({
         // Склеиваем
+
+
         concat: {
             main: {
                 src: [
@@ -209,8 +215,28 @@ module.exports = function (grunt) {
             }
 
 
+        },
+        protractor: {
+            protractor: {
+                options: {
+                    configFile: "test/conf.js", // Default config file
+                    keepAlive: true, // If false, the grunt process stops when the test fails.
+                    noColor: false, // If true, protractor will not use colors in its output.
+                    args: {
+                    }
+                },
+                your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+
+                   /* options: {
+                        configFile: "e2e.conf.js", // Target-specific config file
+                        args: {} // Target-specific arguments
+                    }*/
+                }
+            }
         }
     });
+
+    //grunt.initConfig.protractor = require( '/home/mars/www/AtlasRevolution/test/conf.js' ) ;
 
     // Загрузка плагинов, установленных с помощью npm install
    // grunt.loadNpmTasks('grunt-contrib-concat');//
@@ -218,10 +244,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
     grunt.loadNpmTasks('grunt-text-replace');
-    //grunt.loadNpmTasks('grunt-yui-compressor');
 
-    // Задача по умолчанию
-   // grunt.registerTask('default', ['concat', 'uglify', 'less', 'less:instruction', 'watch']);
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.registerTask('default',
         [
@@ -248,5 +272,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
 
+    grunt.registerTask('pro', ['protractor']);
 
 };

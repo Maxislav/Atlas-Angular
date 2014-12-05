@@ -1,6 +1,4 @@
 var app = angular.module('app', []);
-
-
 app.controller('events', function ($scope, $http) {
     $scope.login = "Login"
     $scope.pass = "Pass"
@@ -25,13 +23,15 @@ app.controller('events', function ($scope, $http) {
     $scope.change = function (val, type) {
         $scope.typehelp = type;
         $scope.helpin = val;
-        $scope.alertClass = 'hide'
-        if($scope.loginin.length<4 || $scope.passin.length<4){
-            $scope.lock = 'lock'
+        $scope.alertClass = 'hide';
+
+        //if($scope.loginin)
+        /*if($scope.loginin.length<4 || $scope.passin.length<4){
+            $scope.lock = 'lock';
         }else{
             $scope.lock = ''
-        }
-        timeout = setTimeout(clear, 500)
+        }*/
+        timeout = setTimeout(clear, 500);
     }
     function clear() {
         $scope.alertMess = ''
@@ -83,14 +83,23 @@ app.controller('events', function ($scope, $http) {
                     $scope.alertClass = 'show';
                     $scope.alertMess = 'Ошибка';
                     console.log(d)
-
             }
         }
-
     }
+});
 
-
+app.directive('valid', function(){
+    return{
+        restrict: 'A',
+        link: function(scope, el, attr){
+            scope.$watch(function() {
+                console.log(scope.loginin)
+            });
+        }
+    }
 })
+
+
 
 app.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
     $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';

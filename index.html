@@ -45,7 +45,9 @@
                 <div class="box-input">
                     <input type="text" ng-model="loginin" ng-change="change(loginin, 'text')"
                            ng-focus="show(loginin, 'text')"
-                           ng-blur="hide()">
+                           ng-blur="hide()"
+                           ng-pattern = "/[^\d]/"
+                           valid >
 
                 </div>
 
