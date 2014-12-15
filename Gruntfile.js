@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
 
-
+    var sassMapFiles = [
+        'css/map.scss'
+    ]
 
 
     // Задачи
@@ -68,6 +70,25 @@ module.exports = function (grunt) {
                             'forum/js/app.js',
                             'forum/subjects/general/general.js'
                         ]
+                }
+            }
+        },
+        sass: {
+            dev: {
+                options: {
+                    sourcemap: 'auto'
+                },
+                files: {
+                    'build/default.css': sassFiles
+                }
+            },
+            prod: {
+                options: {
+                    sourcemap: 'none',
+                    style: 'compressed'
+                },
+                files: {
+                    'build/default.css': sassFiles
                 }
             }
         },
@@ -199,20 +220,20 @@ module.exports = function (grunt) {
                 files: 'js/controllers_index.js',
                 tasks: ['uglify:indexUg'],
                 options: {nospawn: true}
-            },
-            forum:{
+            }
+           /* forum:{
                 files: 'forum/css/forum.less',
                 tasks: ['less:forum','replace'],
                 options: {nospawn: true}
-            },
-            forumJs: {
+            },*/
+            /*forumJs: {
                 files : [
                     'forum/js/app.js',
                     'forum/subjects/general/general.js'
                 ],
                 tasks: ['uglify:forum'],
                 options: {nospawn: true}
-            }
+            }*/
 
 
         },
@@ -253,9 +274,9 @@ module.exports = function (grunt) {
             'uglify:indexUg' ,
             'uglify:registUg',
             'less:login',
-            'less:forum',
-            'replace',
-            'uglify:forum',
+           // 'less:forum',
+           // 'replace',
+            //'uglify:forum',
 
             'less:indexCss',
             'watch'

@@ -5,11 +5,9 @@ app.controller('events', function ($scope, $http) {
     $scope.classVhide = 'hide'
     $scope.loginin = $scope.helpin
     $scope.lock = 'lock'
-
     $scope.loginin = ''
     $scope.passin = ''
     var timeout;
-
     $scope.show = function (val, type) {
         $scope.classVhide = 'show'
         $scope.helpin = val
@@ -24,13 +22,6 @@ app.controller('events', function ($scope, $http) {
         $scope.typehelp = type;
         $scope.helpin = val;
         $scope.alertClass = 'hide';
-
-        //if($scope.loginin)
-        /*if($scope.loginin.length<4 || $scope.passin.length<4){
-            $scope.lock = 'lock';
-        }else{
-            $scope.lock = ''
-        }*/
         timeout = setTimeout(clear, 500);
     }
     function clear() {
@@ -69,7 +60,7 @@ app.controller('events', function ($scope, $http) {
                 case 'OK':
                     $scope.alertClass = 'show green'
                     $scope.alertMess = 'Успешный вход';
-                   window.location.href = 'map.html';
+                    window.location.href = 'map.html';
                     break;
                 case 'NOT_EXIST':
                     $scope.alertClass = 'show'
@@ -93,7 +84,11 @@ app.directive('valid', function(){
         restrict: 'A',
         link: function(scope, el, attr){
             scope.$watch(function() {
-                console.log(scope.loginin)
+                if(scope.loginin && 4<=scope.loginin.length && scope.passin && 4<=scope.passin.length){
+                  scope.lock = ''
+                }else{
+                    scope.lock = 'lock'
+                }
             });
         }
     }
