@@ -4,6 +4,10 @@ module.exports = function (grunt) {
         'css/map.scss'
     ]
 
+    var sassIndexFiles = [
+        'css/index.scss'
+    ]
+
 
     // Задачи
     grunt.initConfig({
@@ -79,7 +83,8 @@ module.exports = function (grunt) {
                     sourcemap: 'auto'
                 },
                 files: {
-                    'build/default.css': sassFiles
+                    'build/index.css': sassIndexFiles,
+                    'build/map.css': sassMapFiles
                 }
             },
             prod: {
@@ -88,7 +93,8 @@ module.exports = function (grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'build/default.css': sassFiles
+                    'build/index.css': sassIndexFiles,
+                    'build/map.css': sassMapFiles
                 }
             }
         },
@@ -199,18 +205,15 @@ module.exports = function (grunt) {
                 }
             },
             indexCss:{
-                files: ['css/index.less'],
-                tasks: ['less:indexCss'],
+                files:sassIndexFiles,
+                tasks: ['sass:dev'],
                 options: {nospawn: true}
             },
-           /* indexCssMy:{
-                files: ['css/index.less'],
-                tasks: [
-                    'replace',
-                    'less:indexCssMy'
-                ],
+            sassFiles: {
+                files:sassMapFiles,
+                tasks: ['sass:dev'],
                 options: {nospawn: true}
-            },*/
+            },
             registJs:{
                 files: 'js/controller_regist.js',
                 tasks: ['uglify:registUg'],
@@ -265,6 +268,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
     grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.loadNpmTasks('grunt-protractor-runner');
 
@@ -273,12 +277,9 @@ module.exports = function (grunt) {
             'uglify:md5',
             'uglify:indexUg' ,
             'uglify:registUg',
-            'less:login',
-           // 'less:forum',
-           // 'replace',
-            //'uglify:forum',
-
-            'less:indexCss',
+           // 'less:login',
+            'sass:dev',
+           // 'less:indexCss',
             'watch'
 
 
@@ -293,6 +294,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
 
-    grunt.registerTask('pro', ['protractor']);
+    //grunt.registerTask('pro', ['protractor']);
+    grunt.registerTask('ss', ['sass:dev']);
 
 };
