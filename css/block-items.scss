@@ -1,16 +1,37 @@
 .container-blocks{
   position: absolute;
-  top: 30px;
+  top: 28px;
   .block-item{
    position: relative;
     float: left;
-
+    background: rgba(0,0,0,0.2);
     z-index: 2;
     width: 0;
-    transition:  0.5s;
+    transition:  0.2s;
     overflow: hidden;
+    margin-left: 2px;
     &.show{
-      width: 100px;
+      width: 180px;
+    }
+    &>div{
+      height: 100%;
+      position: relative;
+      border: 1px solid black;
+    }
+    .title{
+      background: #ffffff;
+      padding: 2px;
+      font-size: 12px;
+      .button{
+        padding: 2px 4px;
+        color: black;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &:hover{}
+        background: transparent;
+      }
     }
   }
 }

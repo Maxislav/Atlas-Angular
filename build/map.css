@@ -55,6 +55,9 @@ body {
       float: left;
       padding: 0 5px; }
 
+.float-right {
+  float: right; }
+
 .leaflet-top.leaflet-left {
   right: 0;
   float: right; }
@@ -87,15 +90,32 @@ body {
 
 .container-blocks {
   position: absolute;
-  top: 30px; }
+  top: 28px; }
   .container-blocks .block-item {
     position: relative;
     float: left;
+    background: rgba(0, 0, 0, 0.2);
     z-index: 2;
     width: 0;
-    transition: 0.5s;
-    overflow: hidden; }
+    transition: 0.2s;
+    overflow: hidden;
+    margin-left: 2px; }
     .container-blocks .block-item.show {
-      width: 100px; }
+      width: 180px; }
+    .container-blocks .block-item > div {
+      height: 100%;
+      position: relative;
+      border: 1px solid black; }
+    .container-blocks .block-item .title {
+      background: #ffffff;
+      padding: 2px;
+      font-size: 12px; }
+      .container-blocks .block-item .title .button {
+        padding: 2px 4px;
+        color: black;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: transparent; }
 
 /*# sourceMappingURL=map.css.map */
