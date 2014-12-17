@@ -32,6 +32,26 @@ body {
   background: linear-gradient(to bottom, #e0eff9 0%, #f2f6f8 100%);
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0eff9', endColorstr='#f2f6f8',GradientType=0 );
-  /* IE6-9 */ }
+  /* IE6-9 */
+  z-index: 0; }
+
+.header {
+  position: absolute;
+  height: 30px;
+  background: black;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 2px 5px black;
+  border-bottom: 1px solid gray; }
+
+.leaflet-top.leaflet-left {
+  right: 0;
+  float: right; }
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+  right: 0;
+  float: right;
+  margin-right: 10px;
+  margin-top: 40px; }
 
 /*# sourceMappingURL=map.css.map */

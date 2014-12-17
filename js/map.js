@@ -9,37 +9,33 @@ app.constant('tileLayers',{
     osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 })
 
-app.service('map', function(tileLayers, $location, $rootScope){
-    var s = this
-    var map =  L.map('mapMap');
+app.service('map', function(tileLayers){
+    var map =  L.map('mapMap', {dragging:false});
     this.map = map;
+})
 
-
-
-
-    function getLatLng(e){
-       // $location.search('lat');
-        //$location.replace();
-        window.location.hash = '/param?lat='+map.getCenter().lat+'&lng='+map.getCenter().lng
-
+app.factory('hashLocation', function(map){
+    var lat,lng;
+    function latlng(){
+        lat = map.map.getCenter().lat.toFixed(6),
+        lng = map.map.getCenter().lng.toFixed(6);
     }
-    function move(){
-        map.addEventListener('move',getLatLng)
-        $rootScope.$on('$locationChangeSuccess', function(){
-            // console.log($location.search('lat'))
-            s.latlng = [
-                map.getCenter().lat,
-                map.getCenter().lng
-            ]
-        })
+    function setHash(){
+        latlng();
+        window.location.hash = '/param?lat='+lat+'&lng='+lng
     }
-
-    this.move = move
-
+    function event (){
+       map.map.on('dragend',setHash)
+    }
+    return {
+        event:event
+    }
 })
 
 
-app.factory('setMap', function($http, $timeout, map, tileLayers){
+
+
+app.factory('setMap', function($http, $timeout, map, tileLayers, hashLocation){
     var params = {
         lat: 50.442,
         lng :30.558,
@@ -51,20 +47,13 @@ app.factory('setMap', function($http, $timeout, map, tileLayers){
         $timeout(function(){
             tileLayers[params.map].addTo(m);
             m.setView([params.lat, params.lng], params.zoom);
-            map.move()
+            m.dragging.enable();
+           hashLocation.event()
         },1000)
     }
     return getParam
 })
 
-app.factory('eventMove', function(map){
-    var map = map.map
-    function a(){
-        console.log('sds')
-    }
-
-    return null
-})
 
 app.directive('mainMap', function(windowSize, setMap,map){
     return{
@@ -72,7 +61,6 @@ app.directive('mainMap', function(windowSize, setMap,map){
         link: function(scope, el, attr){
             el.css('height',windowSize.height +'px');
             setMap();
-
         }
     }
 })
