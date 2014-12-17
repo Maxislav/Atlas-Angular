@@ -44,6 +44,20 @@ body {
   box-shadow: 0 2px 5px black;
   border-bottom: 1px solid gray; }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 5px;
+  min-width: 100px; }
+  .footer .content {
+    font-size: 12px;
+    color: #ffffff; }
+    .footer .content > div {
+      float: left;
+      padding: 0 5px; }
+
 .leaflet-top.leaflet-left {
   right: 0;
   float: right; }

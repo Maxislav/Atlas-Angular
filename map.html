@@ -8,9 +8,12 @@
 
     <script src="lib/leaflet/leaflet.js"></script>
     <script src="lib/angular/angular.min.js"></script>
+
     <script src="js/map.js"></script>
+    <script src="controller/map.js"></script>
+    <script src="directive/footer.js"></script>
 </head>
-<body>
+<body ng-controller="map-cntrl">
     <modal>
 
     </modal>
@@ -18,6 +21,10 @@
 
     </div>
     <div id="mapMap" class="main-map">
+
+    </div>
+
+    <div class="footer" ng-include="'item/footer.html'">
 
     </div>
 </body>

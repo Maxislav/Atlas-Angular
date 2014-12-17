@@ -32,9 +32,6 @@ app.factory('hashLocation', function(map){
     }
 })
 
-
-
-
 app.factory('setMap', function($http, $timeout, map, tileLayers, hashLocation){
     var params = {
         lat: 50.442,
