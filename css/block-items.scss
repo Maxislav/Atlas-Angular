@@ -1,0 +1,16 @@
+.container-blocks{
+  position: absolute;
+  top: 30px;
+  .block-item{
+   position: relative;
+    float: left;
+
+    z-index: 2;
+    width: 0;
+    transition:  0.5s;
+    overflow: hidden;
+    &.show{
+      width: 100px;
+    }
+  }
+}

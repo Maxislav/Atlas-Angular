@@ -1,9 +1,27 @@
-<div class="button" >
+<div class="button" ng-click="show('target')">
     Цель
 </div>
-<div class="button">
+<div class="button"  ng-click="show('rout')">
     Маршрут
 </div>
-<div class="button">
+<div class="button"  ng-click="show('zone')">
     Зоны
 </div>
+<div style="float: right">
+    <div class="button">
+        Выход
+    </div>
+</div>
+        <div class="container-blocks">
+            <div class="block-item target" ng-class="item.target">
+                объект
+            </div>
+            <div class="block-item rout" ng-class="item.rout">
+                маршрут
+            </div>
+            <div class="block-item zone" ng-class="item.zone">
+                зона
+            </div>
+
+        </div>
+
