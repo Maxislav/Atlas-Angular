@@ -1,0 +1,17 @@
+.header{
+  position: absolute;
+  //height: 30px;
+  background: black;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 2px 5px black;
+  border-bottom: 1px solid gray;
+  padding: 1px;
+  .button{
+    border-radius: 3px;
+   // border: 1px solid #ffffff;
+   padding: 4px 8px;
+   // min-width: 85px;
+    position: relative;
+  }
+}

@@ -2,7 +2,8 @@ module.exports = function (grunt) {
 
     var sassMapFiles = [
         'css/map.scss',
-        'css/leaflet.scss'
+        'css/leaflet.scss',
+        'css/header.scss'
     ]
 
     var sassIndexFiles = [
