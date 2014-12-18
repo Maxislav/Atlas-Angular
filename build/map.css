@@ -92,7 +92,8 @@ body {
 .container-blocks {
   position: absolute;
   top: 28px;
-  white-space: nowrap; }
+  white-space: nowrap;
+  width: 0; }
   .container-blocks .block-item {
     position: relative;
     display: inline-block;
