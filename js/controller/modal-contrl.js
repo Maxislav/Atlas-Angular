@@ -1,3 +1,4 @@
-app.controller('modalCntrl', function($scope){
-    $scope.show = true;
+app.controller('modalCntrl', function($scope, srvModal){
+  //  $scope.show = srvModal
+
 })
