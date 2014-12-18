@@ -3,4 +3,8 @@ app.controller('headCntrl', function($scope){
     $scope.show = function(name){
         $scope.item[name] = ($scope.item[name] == 'show') ? '': 'show'
     }
+
+    $scope.exit = function(){
+        console.log('dsd')
+    }
 })

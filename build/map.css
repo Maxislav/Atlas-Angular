@@ -42,6 +42,16 @@ body {
   background: lightslategrey;
   cursor: pointer; }
 
+modal {
+  position: absolute;
+  z-index: 3;
+  width: 260px;
+  left: 50%;
+  margin-left: -130px; }
+  modal > div {
+    background: greenyellow;
+    padding: 10px; }
+
 .footer {
   position: absolute;
   bottom: 0;
