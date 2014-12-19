@@ -33,7 +33,7 @@ body {
   /* IE10+ */
   background: linear-gradient(to bottom, #e0eff9 0%, #f2f6f8 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0eff9', endColorstr='#f2f6f8',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0eff9', endColorstr='#f2f6f8', GradientType=0);
   /* IE6-9 */
   z-index: 0; }
 
@@ -42,56 +42,15 @@ body {
   background: lightslategrey;
   cursor: pointer; }
 
-modal {
-  position: absolute;
-  z-index: 3;
-  width: 260px;
-  margin-top: 20px;
-  left: 50%;
-  margin-left: -130px; }
-  modal > div {
-    box-shadow: 0 2px 10px black;
-    margin-top: 5px;
-    background: black;
-    overflow: hidden;
-    border: 1px solid gray;
-    background: #f5f6f6;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f6f6), color-stop(21%, #dbdce2), color-stop(49%, #b8bac6), color-stop(80%, #dddfe3), color-stop(100%, #f5f6f6));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 );
-    /* IE6-9 */ }
-    modal > div .content-modal {
-      text-align: center;
-      padding: 10px;
-      color: black; }
-    modal > div .container-buttons-modal {
-      text-align: center;
-      padding: 5px; }
-      modal > div .container-buttons-modal .button {
-        background: #323232;
-        border-radius: 2px;
-        color: #ffffff;
-        margin: 5px;
-        padding: 4px 10px;
-        box-shadow: 0 2px 5px black; }
-        modal > div .container-buttons-modal .button:hover {
-          background: red;
-          text-shadow: 0 0 2px black; }
-        modal > div .container-buttons-modal .button:active {
-          background: #c6c6c6;
-          box-shadow: inset 0 0 10px gray;
-          box-shadow: 0 0 1px gray; }
+.button-close {
+  background: url("../img/close.png") no-repeat center;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-size: 100%;
+  cursor: pointer; }
+  .button-close:active {
+    background-size: 90%; }
 
 .footer {
   position: absolute;
@@ -115,6 +74,14 @@ modal {
   list-style: none;
   margin: 0;
   padding: 0 10px; }
+
+mask {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100px;
+  background: black;
+  opacity: 0.4; }
 
 .leaflet-top.leaflet-left {
   right: 0;
@@ -179,6 +146,63 @@ modal {
         top: 0;
         background: transparent; }
 
+modal {
+  position: absolute;
+  z-index: 3;
+  width: 260px;
+  margin-top: 20px;
+  left: 50%;
+  margin-left: -130px; }
+  modal > div {
+    box-shadow: 0 2px 10px black;
+    margin-top: 5px;
+    background: black;
+    overflow: hidden;
+    border: 1px solid gray;
+    position: relative;
+    background: #f5f6f6;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f6f6), color-stop(21%, #dbdce2), color-stop(49%, #b8bac6), color-stop(80%, #dddfe3), color-stop(100%, #f5f6f6));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0);
+    /* IE6-9 */ }
+    modal > div .content-modal {
+      text-align: center;
+      padding: 10px;
+      color: black; }
+    modal > div .button-close {
+      position: absolute;
+      right: 2px;
+      top: 2px; }
+    modal > div .container-buttons-modal {
+      text-align: center;
+      padding: 5px; }
+      modal > div .container-buttons-modal .button {
+        background: #323232;
+        border-radius: 2px;
+        color: #ffffff;
+        margin: 5px;
+        padding: 4px 10px;
+        box-shadow: 0 2px 5px black;
+        font-size: 12px; }
+        modal > div .container-buttons-modal .button:hover {
+          background: red;
+          text-shadow: 0 0 2px black; }
+        modal > div .container-buttons-modal .button:active {
+          background: #c6c6c6;
+          box-shadow: inset 0 0 10px gray;
+          box-shadow: 0 0 1px gray; }
+
 .animate-repeat {
   list-style: none;
   /*box-sizing:border-box;*/
@@ -200,11 +224,13 @@ modal {
       transform: rotateX(90deg); }
   .animate-repeat.ng-leave {
     opacity: 1;
-    max-height: 200px; }
+    max-height: 200px;
+    transform-origin: right top; }
     .animate-repeat.ng-leave.ng-leave-active {
       opacity: 0;
       max-height: 0;
-      transition: 0.2s; }
+      transition: 0.2s;
+      transform: scale(0.5, 0.5); }
 
 /*
 
@@ -274,5 +300,20 @@ modal {
   -webkit-transition-duration: 0s;
   transition-duration: 0s;
 }*/
+.animate-mask {
+  transition: 0.2s; }
+  .animate-mask.ng-hide-remove {
+    opacity: 0;
+    max-height: 0;
+    transition: 0.01s; }
+    .animate-mask.ng-hide-remove.ng-hide-remove-active {
+      opacity: 0.4;
+      transition: 0.2s; }
+  .animate-mask.ng-hide-add {
+    opacity: 0.4;
+    transform-origin: right top; }
+    .animate-mask.ng-hide-add.ng-hide-add-active {
+      opacity: 0;
+      transition: 0.2s; }
 
 /*# sourceMappingURL=map.css.map */

@@ -1,5 +1,4 @@
 $transition: 0.2s;
-
 .animate-repeat {
   list-style: none;
   /*box-sizing:border-box;*/
@@ -10,10 +9,8 @@ $transition: 0.2s;
     white-space: nowrap;
     display: inline-block;
   }
-
   transition: $transition;
   &.ng-enter, &.ng-leave {
-
   }
   &.ng-enter {
     opacity: 0;
@@ -30,10 +27,13 @@ $transition: 0.2s;
   &.ng-leave {
     opacity: 1;
     max-height: 200px;
+    transform-origin: right top;
     &.ng-leave-active {
       opacity: 0;
       max-height: 0;
       transition: $transition;
+      transform: scale(0.5, 0.5);
+
     }
   }
 
