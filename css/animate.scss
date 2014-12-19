@@ -1,9 +1,9 @@
 $transition: 0.2s;
 
 .animate-repeat {
-  list-style:none;
+  list-style: none;
   /*box-sizing:border-box;*/
-//  min-height: 25px;
+  //  min-height: 25px;
   li {
     position: relative;
     overflow: hidden;
@@ -11,33 +11,34 @@ $transition: 0.2s;
     display: inline-block;
   }
 
-    transition: $transition;
-    &.ng-enter, &.ng-leave {
+  transition: $transition;
+  &.ng-enter, &.ng-leave {
 
+  }
+  &.ng-enter {
+    opacity: 0;
+    max-height: 0;
+    transition: 0.01s;
+    transform: rotateX(90deg);
+    &.ng-enter-active {
+      opacity: 1;
+      transition: $transition;
+      max-height: 400px;
+      transform: rotateX(90deg);
     }
-    &.ng-enter {
+  }
+  &.ng-leave {
+    opacity: 1;
+    max-height: 200px;
+    &.ng-leave-active {
       opacity: 0;
       max-height: 0;
-      transition: 0.01s;
-      transform:rotateX(90deg);
-      &.ng-enter-active {
-        opacity: 1;
-        transition: $transition;
-        max-height: 400px;
-        transform:rotateX(90deg);
-      }
+      transition: $transition;
     }
-    &.ng-leave {
-      opacity: 1;
-      max-height: 200px;
-      &.ng-leave-active {
-        opacity: 0;
-        max-height: 0;
-        transition: $transition;
-      }
-    }
+  }
 
 }
+
 /*
 
 .animate-repeat.ng-move,
