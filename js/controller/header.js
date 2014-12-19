@@ -4,7 +4,7 @@ app.controller('headCntrl', function($scope, srvModal){
         $scope.item[name] = ($scope.item[name] == 'show') ? '': 'show'
     }
     $scope.exitHttp = function(){
-        alert('From header cntrl')
+       // alert('From header cntrl')
     }
 
     $scope.exit = function(){

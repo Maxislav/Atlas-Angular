@@ -4,31 +4,32 @@ app.service('srvModal', function () {
     var s = this;
     this.url = 'item/modal-exit.html';
     function cikl(obj, n) {
-        var a = [];
+        var arr = [];
         var _arr = obj.buttons
         for (var i = 0; i < _arr.length; i++) {
             add(i)
         }
         function add(_i) {
             var i = _i
-            a[i] = {
+            arr[i] = {
                 text: _arr[i].text,
                 action: function () {
-                    //
                     delModal(n)
                     _arr[i].action()
                 }
             }
         }
-
-        return a
+        return arr
     }
 
     function delModal(n) {
         for (var i = 0; i < arr.length; i++) {
             if (n == arr[i].$N) {
                 arr.splice(i, 1)
-
+                if(arr.length==0){
+                    //s.scope.show = false;
+                }
+                break
             }
         }
     }

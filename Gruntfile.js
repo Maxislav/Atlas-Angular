@@ -4,7 +4,8 @@ module.exports = function (grunt) {
         'css/map.scss',
         'css/leaflet.scss',
         'css/header.scss',
-        'css/block-items.scss'
+        'css/block-items.scss',
+        'css/animate.scss'
     ]
 
     var sassIndexFiles = [

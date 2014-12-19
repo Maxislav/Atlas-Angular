@@ -1,6 +1,11 @@
-<div ng-repeat="modal in modals">
-     {{modal.text}}
-     <div ng-repeat="button in modal.buttons" ng-click="button.action()">
-         {{button.text}}
-     </div>
+<div ng-repeat="modal in modals"  class="animate-repeat">
+    <div class="content-modal">
+        {{modal.text}}
+    </div>
+    <div class="container-buttons-modal">
+        <div class="button" ng-repeat="button in modal.buttons" ng-click="button.action()">
+            {{button.text}}
+        </div>
+    </div>
+
 </div>

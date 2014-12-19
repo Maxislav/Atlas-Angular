@@ -1,4 +1,4 @@
-var app = angular.module('app', [])
+var app = angular.module('app', ['ngAnimate'])
 
 app.config( function( $httpProvider ) {    // [url]http://habrahabr.ru/post/181009/[/url]
     $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';
