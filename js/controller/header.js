@@ -9,7 +9,7 @@ app.controller('headCntrl', function($scope, srvModal){
 
     $scope.exit = function(){
         srvModal.addModal({
-            text: 'Выйти?',
+            text: 'Выйти из системы?',
             buttons: [
                 {
                     text: 'Ok',
