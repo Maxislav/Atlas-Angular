@@ -1,0 +1,19 @@
+.animate-mask {
+  transition: 0.2s;
+  &.ng-hide-remove {
+    opacity: 0;
+    max-height: 0;
+    transition: 0.01s;
+    &.ng-hide-remove-active {
+      opacity: 0.4;
+      transition: 0.2s;
+    }
+  }
+  &.ng-hide-add {
+    opacity: 0.4;
+    transform-origin: right top;
+    &.ng-hide-add-active {
+      opacity: 0;
+      transition: 0.2s; }
+  }
+}

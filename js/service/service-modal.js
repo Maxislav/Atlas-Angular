@@ -3,8 +3,7 @@ app.service('srvModal', function () {
     var N = 0;
     var s = this;
     this.url = 'item/modal-exit.html';
-    s.maskShow  = false
-    function cikl(obj, n) {
+    function setArray(obj, n) {
         var arr = [];
         var _arr = obj.buttons
         for (var i = 0; i < _arr.length; i++) {
@@ -22,13 +21,11 @@ app.service('srvModal', function () {
         }
         return arr
     }
-
     function delModal(n) {
         for (var i = 0; i < arr.length; i++) {
             if (n == arr[i].$N) {
                 arr.splice(i, 1)
                 if(arr.length==0){
-                    //s.scope.show = false;
                     s.maskScope.show= false
                 }
                 break
@@ -46,12 +43,12 @@ app.service('srvModal', function () {
            }
         })();
         obj.text = _obj.text
-        obj.buttons = cikl(_obj, N);
+        obj.buttons = setArray(_obj, N);
         obj.$N = N;
-        N++;
         arr.unshift(obj)
         s.scope.show = true
         s.scope.modals = arr;
+        N++;
     }
 })
 
