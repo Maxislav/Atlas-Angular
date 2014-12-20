@@ -319,8 +319,10 @@ modal {
     .setting-options > div .title {
       text-align: center;
       font-weight: bold; }
-    .setting-options > div .device-row input {
-      width: 32%;
+    .setting-options > div .device-row input.checkbox {
+      width: 20px; }
+    .setting-options > div .device-row input.text {
+      width: 30%;
       overflow: hidden;
       text-overflow: ellipsis;
       margin: 0 -2px; }

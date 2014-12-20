@@ -10,6 +10,23 @@ app.controller('settingOptionsContr', function (timeZone, $timeout, map, $scope,
     $scope.timeZones = timeZone;
     $scope.arrMapType = [];
     $scope.map = map.map;
+    var selectDevice;
+
+    $scope.checkbox = [];
+    $scope.checkboxChange = function(N, _id){
+        for(var i= 0; i<$scope.checkbox.length; i++){
+            if(i!=N){
+                $scope.checkbox[i] = false
+            }
+        }
+        if($scope.checkbox[N]){
+            selectDevice = _id
+        }else{
+            selectDevice = null
+        }
+        console.log(selectDevice)
+    }
+
     $scope.settingsShow = function () {
         $scope.factorySettingOptions.show = !$scope.factorySettingOptions.show;
     }
@@ -50,5 +67,9 @@ app.controller('settingOptionsContr', function (timeZone, $timeout, map, $scope,
                 $scope.map.removeLayer(tileLayers[opt])
             }
         }
+    }
+
+    $scope.settingsDone = function(){
+        console.log($scope.checkbox)
     }
 })
