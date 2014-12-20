@@ -9,6 +9,7 @@ $transition: 0.3s;
   }
   transition: $transition;
   transform: rotate(0deg);
+  transform-origin: right top;
   &.ng-enter, &.ng-leave {
   }
   &.ng-enter {
@@ -16,8 +17,10 @@ $transition: 0.3s;
     max-height: 0;
     transition: 0.01s;
     transform: rotateX(90deg);
+    transform: scale(0.5, 0.5);
     &.ng-enter-active {
       opacity: 1;
+      transform: scale(1, 1);
       transition: $transition;
       max-height: 400px;
       transform: rotateX(90deg);
@@ -26,8 +29,8 @@ $transition: 0.3s;
   &.ng-leave {
     opacity: 1;
     max-height: 200px;
-    transform-origin: right top;
 
+    transform: scale(1, 1);
     .button-close{
       -moz-animation: rotate 0.5s infinite linear;
       -webkit-animation: rotate 0.5s infinite linear;

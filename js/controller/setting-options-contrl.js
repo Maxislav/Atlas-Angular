@@ -1,4 +1,4 @@
-app.controller('settingOptionsContr', function (timeZone, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
+app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
 
 
     $scope.factorySettingOptions = factorySettingOptions;
@@ -68,6 +68,37 @@ app.controller('settingOptionsContr', function (timeZone, $timeout, map, $scope,
             }
         }
     }
+    $scope.delHttp = function(){
+       $timeout(function(){
+           for (var i =0; i< $scope.factoryGetDevices.length; i++){
+               if($scope.factoryGetDevices[i]._id==selectDevice){
+                   $scope.factoryGetDevices.splice(i,1);
+                   selectDevice = null;
+                   for(var i= 0; i<$scope.checkbox.length; i++){
+                           $scope.checkbox[i] = false
+                   }
+               }
+           }
+       },2000)
+    }
+
+   $scope.delDevice = function(){
+       if(!selectDevice) return;
+       srvModal.addModal({
+           text: 'Удалить устройство ' +selectDevice + '?' ,
+           buttons: [
+               {
+                   text: 'Ok',
+                   action: $scope.delHttp
+               },
+               {
+                   text: 'No',
+                   action: function(){}
+               }
+
+           ]
+       })
+   }
 
     $scope.settingsDone = function(){
         console.log($scope.checkbox)

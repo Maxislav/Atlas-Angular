@@ -37,16 +37,22 @@
     </div>
     <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row">
         <input type="checkbox" class="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device._id)">
-        <input ng-model="device.text" type="text" class="text">
-        <input ng-model="device._id" valid="int"  type="text"   class="text">
         <input ng-model="device.phone"  type="text" class="text">
+        <input ng-model="device._id" valid="int"  type="text"   class="text">
+        <input ng-model="device.text" type="text" class="text">
+
+    </div>
+    <div class="row device-row">
+        <input type="text" class="text">
+        <input class="text">
+        <input class="text">
     </div>
 
     <div class="container-buttons-modal">
         <div class="button" ng-click="settingsDone()">
             Добавить
         </div>
-        <div class="button">
+        <div class="button" ng-click="delDevice()">
             Удалить
         </div>
     </div>

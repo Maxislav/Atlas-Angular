@@ -163,7 +163,8 @@ mask {
 .animate-repeat {
   list-style: none;
   transition: 0.3s;
-  transform: rotate(0deg); }
+  transform: rotate(0deg);
+  transform-origin: right top; }
   .animate-repeat li {
     position: relative;
     overflow: hidden;
@@ -173,16 +174,18 @@ mask {
     opacity: 0;
     max-height: 0;
     transition: 0.01s;
-    transform: rotateX(90deg); }
+    transform: rotateX(90deg);
+    transform: scale(0.5, 0.5); }
     .animate-repeat.ng-enter.ng-enter-active {
       opacity: 1;
+      transform: scale(1, 1);
       transition: 0.3s;
       max-height: 400px;
       transform: rotateX(90deg); }
   .animate-repeat.ng-leave {
     opacity: 1;
     max-height: 200px;
-    transform-origin: right top; }
+    transform: scale(1, 1); }
     .animate-repeat.ng-leave .button-close {
       -moz-animation: rotate 0.5s infinite linear;
       -webkit-animation: rotate 0.5s infinite linear;
@@ -237,21 +240,21 @@ modal {
     overflow: hidden;
     border: 1px solid gray;
     position: relative;
-    background: #f5f6f6;
+    background: #b8bac6;
     /* Old browsers */
-    background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    background: -moz-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f6f6), color-stop(21%, #dbdce2), color-stop(49%, #b8bac6), color-stop(80%, #dddfe3), color-stop(100%, #f5f6f6));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #b8bac6), color-stop(76%, #dddfe3), color-stop(100%, #f5f6f6));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    background: -webkit-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    background: -o-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
     /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    background: -ms-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
     /* IE10+ */
-    background: linear-gradient(to bottom, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+    background: linear-gradient(to bottom, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
     /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8bac6', endColorstr='#f5f6f6',GradientType=0 );
     /* IE6-9 */ }
     modal > div .content-modal {
       text-align: center;
@@ -289,21 +292,22 @@ modal {
   min-height: 100px;
   margin-left: -230px;
   display: none;
-  background: #f5f6f6;
+  font-size: 13px;
+  background: #b8bac6;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: -moz-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f6f6), color-stop(21%, #dbdce2), color-stop(49%, #b8bac6), color-stop(80%, #dddfe3), color-stop(100%, #f5f6f6));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #b8bac6), color-stop(76%, #dddfe3), color-stop(100%, #f5f6f6));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: -webkit-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: -o-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: -ms-linear-gradient(top, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
   /* IE10+ */
-  background: linear-gradient(to bottom, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: linear-gradient(to bottom, #b8bac6 1%, #dddfe3 76%, #f5f6f6 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8bac6', endColorstr='#f5f6f6',GradientType=0 );
   /* IE6-9 */
   box-shadow: 0 2px 10px black;
   border-radius: 3px; }
@@ -325,10 +329,11 @@ modal {
       width: 30%;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin: 0 -2px; }
+      margin: 0;
+      float: right; }
   .setting-options .container-buttons-modal {
-    text-align: center;
-    padding: 5px; }
+    clear: both;
+    text-align: center; }
     .setting-options .container-buttons-modal .button {
       background: #323232;
       border-radius: 2px;
@@ -349,35 +354,42 @@ modal {
   .setting-options {
     width: 100%;
     left: 0;
-    margin-left: 0; } }
+    margin-left: 0; }
+    .setting-options > div .device-row input.text {
+      width: 28%; } }
 .setting-options {
   transition: 0.2s;
   transform-origin: right top; }
   .setting-options.ng-hide-remove {
     opacity: 0;
+    top: 0;
     transform: scaleY(0.1); }
     .setting-options.ng-hide-remove.ng-hide-remove-active {
       transform: scaleY(1);
       opacity: 1;
+      top: 30px;
       transition: 0.2s; }
   .setting-options.ng-hide-add {
     opacity: 1;
+    top: 30px;
     transform: scaleY(1); }
     .setting-options.ng-hide-add.ng-hide-add-active {
+      top: 0;
       transform: scaleY(0.1);
       opacity: 0;
       transition: 0.2s; }
 
 .device-row {
-  transition: 1s;
-  transform: rotate(0deg); }
+  transition: 0.2s;
+  transform: rotate(0deg);
+  overflow: hidden; }
   .device-row.ng-enter {
     opacity: 0;
     max-height: 0;
     transform: rotateX(90deg); }
     .device-row.ng-enter.ng-enter-active {
       opacity: 1;
-      transition: 1s;
+      transition: 0.2s;
       max-height: 22px;
       transform: rotateX(0deg); }
   .device-row.ng-leave {
@@ -387,7 +399,7 @@ modal {
     .device-row.ng-leave.ng-leave-active {
       opacity: 0;
       max-height: 0;
-      transition: 1s;
+      transition: 0.2s;
       transform: scale(0.5, 0.5); }
 
 /*# sourceMappingURL=map.css.map */

@@ -10,20 +10,20 @@ app.controller('headCntrl', function($scope, srvModal, factorySettingOptions){
     }
 
     $scope.exit = function(){
-        srvModal.addModal({
-            text: 'Выйти из системы?',
-            buttons: [
-                {
-                    text: 'Ok',
-                    action: $scope.exitHttp
-                },
-                {
-                    text: 'No',
-                    action: $scope.exitHttp
-                }
+            srvModal.addModal({
+                text: 'Выйти из системы?',
+                buttons: [
+                    {
+                        text: 'Ok',
+                        action: $scope.exitHttp
+                    },
+                    {
+                        text: 'No',
+                        action: $scope.exitHttp
+                    }
 
-            ]
-       })
+                ]
+           })
     }
 
     $scope.settingsShow = function(){
