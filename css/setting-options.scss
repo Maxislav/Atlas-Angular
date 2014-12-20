@@ -6,5 +6,30 @@
   width: 200px;
   height: 100px;
   margin-left: -50px;
+  display: none;
   @include background-modals();
+}
+$transition: 0.2s;
+.setting-options {
+  transition: $transition;
+  transform-origin: right top;
+  //none-add
+  &.ng-hide-remove {
+    opacity: 0;
+    transform:scaleY(0.1);
+    &.ng-hide-remove-active {
+      transform:scaleY(1);
+      opacity: 1;
+      transition: $transition;
+    }
+  }
+  &.ng-hide-add {
+    opacity: 1;
+    transform:scaleY(1);
+    &.ng-hide-add-active {
+      transform:scaleY(0.1);
+      opacity: 0;
+      transition:$transition;
+    }
+  }
 }

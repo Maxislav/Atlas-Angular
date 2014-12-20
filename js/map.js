@@ -1,9 +1,9 @@
 var app = angular.module('app', ['ngAnimate'])
 
-app.config( function( $httpProvider ) {    // [url]http://habrahabr.ru/post/181009/[/url]
+app.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
     $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.transformRequest = function( data ) {
-        return angular.isObject( data ) && String( data ) !== '[object File]' ? angular.toParam( data ) : data;
+    $httpProvider.defaults.transformRequest = function (data) {
+        return angular.isObject(data) && String(data) !== '[object File]' ? angular.toParam(data) : data;
     };
 });
 
@@ -27,7 +27,7 @@ app.factory('hashLocation', function (map) {
 
     function latlng() {
         lat = map.map.getCenter().lat.toFixed(6),
-            lng = map.map.getCenter().lng.toFixed(6);
+        lng = map.map.getCenter().lng.toFixed(6);
     }
 
     function setHash() {
@@ -47,22 +47,26 @@ app.factory('hashLocation', function (map) {
 app.service('mapLocation', function (map) {
     this.latlng = {lat: 'ds'}
     var s;
+
     function location() {
         s.latlng.lat = map.map.getCenter().lat.toFixed(6)
         s.latlng.lng = map.map.getCenter().lng.toFixed(6)
         s.$apply()
     }
-    function mouseLocation (e){
+
+    function mouseLocation(e) {
         s.mouselatlng.lat = e.latlng.lat.toFixed(6)
         s.mouselatlng.lng = e.latlng.lng.toFixed(6)
         s.$apply()
     }
+
     function event(scope) {
         s = scope
         map.map.on('move', location)
 
-        map.map.on('mousemove', mouseLocation )
+        map.map.on('mousemove', mouseLocation)
     }
+
     this.location = event
 })
 
@@ -74,6 +78,7 @@ app.factory('setMap', function ($http, $timeout, map, tileLayers, hashLocation, 
         map: 'ggl'
     }
     var m = map.map;
+
     function setMap(scope) {
         $timeout(function () {
             tileLayers[params.map].addTo(m);
@@ -81,7 +86,6 @@ app.factory('setMap', function ($http, $timeout, map, tileLayers, hashLocation, 
             m.dragging.enable();
             hashLocation.event();
             mapLocation.location(scope)
-
         }, 1000)
     }
 

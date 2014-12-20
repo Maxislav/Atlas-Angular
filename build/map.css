@@ -274,6 +274,7 @@ mask {
   width: 200px;
   height: 100px;
   margin-left: -50px;
+  display: none;
   background: #f5f6f6;
   /* Old browsers */
   background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
@@ -290,5 +291,23 @@ mask {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0);
   /* IE6-9 */ }
+
+.setting-options {
+  transition: 0.2s;
+  transform-origin: right top; }
+  .setting-options.ng-hide-remove {
+    opacity: 0;
+    transform: scaleY(0.1); }
+    .setting-options.ng-hide-remove.ng-hide-remove-active {
+      transform: scaleY(1);
+      opacity: 1;
+      transition: 0.2s; }
+  .setting-options.ng-hide-add {
+    opacity: 1;
+    transform: scaleY(1); }
+    .setting-options.ng-hide-add.ng-hide-add-active {
+      transform: scaleY(0.1);
+      opacity: 0;
+      transition: 0.2s; }
 
 /*# sourceMappingURL=map.css.map */
