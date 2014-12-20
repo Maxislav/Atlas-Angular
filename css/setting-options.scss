@@ -1,0 +1,10 @@
+.setting-options{
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 40px;
+  width: 200px;
+  height: 100px;
+  margin-left: -50px;
+  @include background-modals();
+}

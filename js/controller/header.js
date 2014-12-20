@@ -1,4 +1,4 @@
-app.controller('headCntrl', function($scope, srvModal){
+app.controller('headCntrl', function($scope, srvModal, factorySettingOptions){
     $scope.item = {};
     $scope.show = function(name){
         $scope.item[name] = ($scope.item[name] == 'show') ? '': 'show'
@@ -22,5 +22,10 @@ app.controller('headCntrl', function($scope, srvModal){
 
             ]
        })
+    }
+
+    $scope.settingsShow = function(){
+        factorySettingOptions.show = true;
+        console.log('show settings')
     }
 })

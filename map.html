@@ -14,6 +14,7 @@
     <script src="js/map.js"></script>
     <script src="js/controller/modal-contrl.js"></script>
     <script src="js/controller/mask-contrl.js"></script>
+    <script src="js/controller/setting-options-contrl.js"></script>
 
     <script src="js/service/service-modal.js"></script>
     <script src="js/controller/map.js"></script>
@@ -22,16 +23,19 @@
     <script src="js/directive/block-items.js"></script>
     <script src="js/directive/directive-modal.js"></script>
     <script src="js/directive/directive-mask.js"></script>
-    <!--///home/maxim/www/AtlasRevolution/js/directive/directive-mask.js-->
+    <script src="js/directive/directive-setting-options.js"></script>
+    <script src="js/factory/factory-setting-options.js"></script>
 
 </head>
 <body ng-controller="mapCntrl">
     <mask ng-controller="maskContrl" ng-show="show" class="animate-mask">
-ololoo
     </mask>
     <modal ng-controller="modalCntrl" ng-show="show">
-
     </modal>
+
+    <div class="setting-options" ng-controller="settingOptionsContr" class="setting-options" ng-show="show">
+
+    </div>
     <div class="header" ng-include="'item/header.html'" ng-controller="headCntrl">
 
     </div>

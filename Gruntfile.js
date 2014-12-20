@@ -7,7 +7,8 @@ module.exports = function (grunt) {
         'css/block-items.scss',
         'css/animate.scss',
         'css/modal.scss',
-        'css/animate-mask.scss'
+        'css/animate-mask.scss',
+        'css/setting-options.scss'
     ]
 
     var sassIndexFiles = [
