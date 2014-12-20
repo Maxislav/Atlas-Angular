@@ -22,7 +22,7 @@
             Часовой пояс
         </div>
         <div class="col6 x">
-            <select  ng-model="data.timeZone" ng-options="time.text as time.text for time in timeZones">
+            <select ng-model="data.timeZone" ng-options="time.text as time.text for time in timeZones">
 
             </select>
         </div>
@@ -32,18 +32,21 @@
     <div class="title">
         Устройства
     </div>
-        <div>
-
-        </div>
-
-        <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row" >
-            <input value="{{device.text}}">
-            <input  valid="int"  ng-model="device._id">
-            <input value="{{device.phone}}">
-        </div>
-
     <div>
+
     </div>
-    <div>
+    <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row">
+        <input ng-model="device.text">
+        <input ng-model="device._id" valid="int">
+        <input ng-model="device.phone">
+    </div>
+
+    <div class="container-buttons-modal">
+        <div class="button">
+            Добавить
+        </div>
+        <div class="button">
+            Удалить
+        </div>
     </div>
 </div>

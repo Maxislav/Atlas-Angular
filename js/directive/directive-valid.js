@@ -1,11 +1,13 @@
-app.directive('valid', function(){
+app.directive('valid', function(factoryValid){
+    var valid = factoryValid
+
     return {
         restrict: 'A',
         require: 'ngModel',
         link: function (scope, element, attr, ngModelCtrl) {
+            var name = attr.valid;
             function fromUser(text) {
-                var transformedInput = text.replace(/[^0-9]/g, '');
-               // console.log(transformedInput);
+                var transformedInput = valid[name](text)
                 if(transformedInput !== text) {
                     ngModelCtrl.$setViewValue(transformedInput);
                     ngModelCtrl.$render();
