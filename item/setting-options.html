@@ -1,3 +1,16 @@
+<div class="button-close" ng-click="settingsShow()">
+
+</div>
 <div>
+
     Опции тут
+    <div>
+        {{data.map}}
+    </div>
+    <div>
+        <select ng-model="data.map" ng-options="map.map as map.text for map in arrMapType">
+
+        </select>
+
+    </div>
 </div>

@@ -16,6 +16,7 @@ app.constant('tileLayers', {
     osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 })
 
+
 app.service('map', function (tileLayers) {
     var map = L.map('mapMap', {dragging: false});
     this.map = map;
@@ -91,5 +92,6 @@ app.factory('setMap', function ($http, $timeout, map, tileLayers, hashLocation, 
 
     return setMap
 })
+
 
 

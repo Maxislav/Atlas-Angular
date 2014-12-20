@@ -44,6 +44,10 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0); /* IE6-9 */
 }
 
+@mixin box-shadow-modal(){
+  box-shadow: 0 2px 10px black;
+}
+
 .button {
   display: inline-block;
   background: lightslategrey;
@@ -61,69 +65,6 @@ body {
   }
   cursor: pointer;
 }
-
-
-
-
-modal {
-  position: absolute;
-  z-index: 3;
-  width: 260px;
-  margin-top: 20px;
-  left: 50%;
-  margin-left: -130px;
-  & > div {
-    box-shadow: 0 2px 10px black;
-    margin-top: 5px;
-    position: relative;
-    background: black;
-    overflow: hidden;
-    border: 1px solid gray;
-/////////////////////////////////////
-   @include background-modals();
-
-
-    .button-close {
-      position: absolute;
-      right: 2px;
-      top: 2px;
-    }
-
-
-
-
-    .content-modal {
-      text-align: center;
-      padding: 10px;
-      color: black;
-    }
-    .container-buttons-modal {
-      text-align: center;
-      padding: 5px;
-      .button {
-        font-size: 12px;
-        background: #323232;
-        border-radius: 2px;
-        color: #ffffff;
-        margin: 5px;
-        padding: 4px 10px;
-        box-shadow: 0 2px 5px black;
-        &:hover {
-          background: red;
-          text-shadow: 0 0 2px black;
-
-        }
-        &:active {
-          background: #c6c6c6;
-          box-shadow: inset 0 0 10px gray;
-          box-shadow: 0 0 1px gray;
-        }
-
-      }
-    }
-  }
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -165,4 +106,5 @@ mask {
 @import "block-items";
 @import "animate";
 @import "animate-mask";
+@import "modal";
 @import "setting-options";

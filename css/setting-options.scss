@@ -3,12 +3,26 @@
   z-index: 3;
   left: 50%;
   top: 40px;
-  width: 200px;
+  width: 260px;
   height: 100px;
-  margin-left: -50px;
+  margin-left: -130px;
   display: none;
   @include background-modals();
+  @include box-shadow-modal();
+  border-radius: 3px;
+  .button-close{
+    position: absolute;
+    right: 0;
+    padding: 0;
+  }
+  &>div{
+    padding: 10px;
+  }
 }
+
+
+
+//*animation
 $transition: 0.2s;
 .setting-options {
   transition: $transition;
