@@ -36,20 +36,19 @@
 
     </div>
     <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row">
-        <input type="checkbox" class="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device._id)">
+        <input type="checkbox" class="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device.imei)">
         <input ng-model="device.phone"  type="text" class="text">
-        <input ng-model="device._id" valid="int"  type="text"   class="text">
+        <input ng-model="device.imei" valid="int"  type="text"   class="text">
         <input ng-model="device.text" type="text" class="text">
-
     </div>
     <div class="row device-row">
-        <input type="text" class="text">
-        <input class="text">
-        <input class="text">
+        <input ng-model="newDevice.phone" class="text">
+        <input ng-model="newDevice.imei" class="text">
+        <input ng-model="newDevice.text" class="text">
     </div>
 
     <div class="container-buttons-modal">
-        <div class="button" ng-click="settingsDone()">
+        <div class="button" ng-click="addDevise()">
             Добавить
         </div>
         <div class="button" ng-click="delDevice()">

@@ -3,12 +3,12 @@ app.factory('factoryGetDevices', function($timeout){
 
     var tempValue = [
         {
-           '_id':'1111',
+           'imei':'1111',
             text: 'Бервое устройство',
             phone: '439-32032'
         },
         {
-            '_id':'2222',
+            'imei':'2222',
             text: 'Аторое устройство',
             phone: '439-32032'
         }

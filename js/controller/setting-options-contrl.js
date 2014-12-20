@@ -10,9 +10,13 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
     $scope.timeZones = timeZone;
     $scope.arrMapType = [];
     $scope.map = map.map;
-    var selectDevice;
-
     $scope.checkbox = [];
+    $scope.newDevice = {};
+    var selectDevice;
+    $scope.settingsShow = function () {
+        $scope.factorySettingOptions.show = !$scope.factorySettingOptions.show;
+    }
+
     $scope.checkboxChange = function(N, _id){
         for(var i= 0; i<$scope.checkbox.length; i++){
             if(i!=N){
@@ -24,12 +28,9 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
         }else{
             selectDevice = null
         }
-        console.log(selectDevice)
     }
 
-    $scope.settingsShow = function () {
-        $scope.factorySettingOptions.show = !$scope.factorySettingOptions.show;
-    }
+
     function textMapDecode(map) {
         switch (map) {
             case 'ggl':
@@ -71,7 +72,7 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
     $scope.delHttp = function(){
        $timeout(function(){
            for (var i =0; i< $scope.factoryGetDevices.length; i++){
-               if($scope.factoryGetDevices[i]._id==selectDevice){
+               if($scope.factoryGetDevices[i].imei==selectDevice){
                    $scope.factoryGetDevices.splice(i,1);
                    selectDevice = null;
                    for(var i= 0; i<$scope.checkbox.length; i++){
@@ -99,6 +100,20 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
            ]
        })
    }
+    $scope.httpAddDevise = function(){
+
+    }
+
+    $scope.addDevise = function(){
+        $scope.factoryGetDevices.push({
+            text: $scope.newDevice.text,
+            imei: $scope.newDevice.imei,
+            phone: $scope.newDevice.phone
+        })
+       for (var opt in $scope.newDevice){
+           $scope.newDevice[opt] = null
+       }
+    }
 
     $scope.settingsDone = function(){
         console.log($scope.checkbox)
