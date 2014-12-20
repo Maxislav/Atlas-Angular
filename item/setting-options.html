@@ -35,11 +35,13 @@
         <div>
 
         </div>
+
         <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row" >
             <input value="{{device.text}}">
-            <input value="{{device._id}}">
+            <input  valid="int"  ng-model="device._id">
             <input value="{{device.phone}}">
         </div>
+
     <div>
     </div>
     <div>
