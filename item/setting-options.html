@@ -10,7 +10,7 @@
         <div class="col6">
             Тип карты
         </div>
-        <div class="col6">
+        <div class="col6 x">
             <select ng-model="data.map" ng-options="map.map as map.text for map in arrMapType">
 
             </select>
@@ -21,18 +21,27 @@
         <div class="col6">
             Часовой пояс
         </div>
-        <div class="col6">
+        <div class="col6 x">
             <select  ng-model="data.timeZone" ng-options="time.text as time.text for time in timeZones">
 
             </select>
         </div>
 
     </div>
+
+    <div class="title">
+        Устройства
+    </div>
+        <div>
+
+        </div>
+        <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row" >
+            <input value="{{device.text}}">
+            <input value="{{device._id}}">
+            <input value="{{device.phone}}">
+        </div>
     <div>
-        {{data.map}}
     </div>
     <div>
-
-
     </div>
 </div>
