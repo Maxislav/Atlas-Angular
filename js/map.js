@@ -15,6 +15,16 @@ app.constant('tileLayers', {
     ggl: new L.TileLayer('http://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile', {maxZoom: 18, minZoom: 3}),
     osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 })
+app.constant('timeZone',(function(){
+    var a = [];
+    for (var i = -23; i<24; i++){
+        a.push({
+            text: (i<0) ? ''+i : '+'+i,
+            value: i
+        })
+    }
+    return a
+})());
 
 
 app.service('map', function (tileLayers) {
@@ -84,6 +94,7 @@ app.factory('setMap', function ($http, $timeout, map, tileLayers, hashLocation, 
         $timeout(function () {
             tileLayers[params.map].addTo(m);
             m.setView([params.lat, params.lng], params.zoom);
+           // L.control.layers(tileLayers, {autoZIndex: false}).addTo(m)
             m.dragging.enable();
             hashLocation.event();
             mapLocation.location(scope)

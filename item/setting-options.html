@@ -17,6 +17,17 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="col6">
+            Часовой пояс
+        </div>
+        <div class="col6">
+            <select  ng-model="data.timeZone" ng-options="time.text as time.text for time in timeZones">
+
+            </select>
+        </div>
+
+    </div>
     <div>
         {{data.map}}
     </div>
