@@ -2,15 +2,26 @@
 
 </div>
 <div>
+    <div class="title">
+        Настройки
+    </div>
 
-    Опции тут
+    <div class="row">
+        <div class="col6">
+            Тип карты
+        </div>
+        <div class="col6">
+            <select ng-model="data.map" ng-options="map.map as map.text for map in arrMapType">
+
+            </select>
+        </div>
+
+    </div>
     <div>
         {{data.map}}
     </div>
     <div>
-        <select ng-model="data.map" ng-options="map.map as map.text for map in arrMapType">
 
-        </select>
 
     </div>
 </div>

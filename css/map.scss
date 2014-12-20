@@ -44,6 +44,8 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f6f6', endColorstr='#f5f6f6', GradientType=0); /* IE6-9 */
 }
 
+
+
 @mixin box-shadow-modal(){
   box-shadow: 0 2px 10px black;
 }
@@ -80,6 +82,17 @@ body {
       padding: 0 5px;
     }
   }
+}
+.col6{
+  width: 50%;
+  float: left;
+}
+.row{
+  margin-top: 5px;
+}
+select{
+  border-radius: 3px;
+  background: #ffffff;
 }
 
 .float-right {

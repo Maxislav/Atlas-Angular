@@ -66,6 +66,17 @@ body {
       float: left;
       padding: 0 5px; }
 
+.col6 {
+  width: 50%;
+  float: left; }
+
+.row {
+  margin-top: 5px; }
+
+select {
+  border-radius: 3px;
+  background: #ffffff; }
+
 .float-right {
   float: right; }
 
@@ -270,7 +281,7 @@ modal {
   position: absolute;
   z-index: 3;
   left: 50%;
-  top: 40px;
+  top: 30px;
   width: 260px;
   height: 100px;
   margin-left: -130px;
@@ -293,12 +304,17 @@ modal {
   /* IE6-9 */
   box-shadow: 0 2px 10px black;
   border-radius: 3px; }
+  .setting-options select {
+    width: 100%; }
   .setting-options .button-close {
     position: absolute;
     right: 0;
     padding: 0; }
   .setting-options > div {
     padding: 10px; }
+    .setting-options > div .title {
+      text-align: center;
+      font-weight: bold; }
 
 .setting-options {
   transition: 0.2s;

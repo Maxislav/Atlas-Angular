@@ -1,6 +1,5 @@
 app.factory('factoryGetOptions', function($timeout){
-    var params = {}
-
+    var params = {};
     $timeout(function(){
         params.map = 'ggl'
         console.log('mess from factory ggl')
