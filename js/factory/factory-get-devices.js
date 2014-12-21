@@ -30,7 +30,7 @@ app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
 
         }
         //rfacto();
-    }, 5000);
+    }, 3000);
     return devices
 
 })

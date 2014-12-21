@@ -9,7 +9,7 @@ app.factory('factoryGetOptions', function($timeout){
         params.mouselat = null;
         params. mouselng = null
         console.log('mess from factory ggl')
-    },1000);
+    },2000);
 
     return params
 
