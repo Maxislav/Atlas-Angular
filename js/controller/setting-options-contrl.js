@@ -51,24 +51,11 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
         })
     }
 
-    $scope.$watch('data.map', function () {
-        if ($scope.data && $scope.data.map) {
-            $scope.setBaseLayer($scope.data.map)
-        }
-        console.log($scope.data && $scope.data.map)
-    })
     $scope.$watch('data.timeZone', function () {
         console.log($scope.data.timeZone)
     })
 
-    $scope.setBaseLayer = function (type) {
-        tileLayers[type].addTo($scope.map)
-        for (var opt in tileLayers) {
-            if (opt != type) {
-                $scope.map.removeLayer(tileLayers[opt])
-            }
-        }
-    }
+
     $scope.delHttp = function(){
        $timeout(function(){
            for (var i =0; i< $scope.factoryGetDevices.length; i++){

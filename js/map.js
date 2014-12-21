@@ -55,54 +55,7 @@ app.factory('hashLocation', function (map) {
     }
 })
 
-app.service('mapLocation', function (map) {
-    this.latlng = {lat: 'ds'}
-    var s;
 
-    function location() {
-        s.latlng.lat = map.map.getCenter().lat.toFixed(6)
-        s.latlng.lng = map.map.getCenter().lng.toFixed(6)
-        s.$apply()
-    }
-
-    function mouseLocation(e) {
-        s.mouselatlng.lat = e.latlng.lat.toFixed(6)
-        s.mouselatlng.lng = e.latlng.lng.toFixed(6)
-        s.$apply()
-    }
-
-    function event(scope) {
-        s = scope
-        map.map.on('move', location)
-
-        map.map.on('mousemove', mouseLocation)
-    }
-
-    this.location = event
-})
-
-app.factory('setMap', function ($http, $timeout, map, tileLayers, hashLocation, mapLocation) {
-    var params = {
-        lat: 50.442,
-        lng: 30.558,
-        zoom: 13,
-        map: 'ggl'
-    }
-    var m = map.map;
-
-    function setMap(scope) {
-        $timeout(function () {
-            tileLayers[params.map].addTo(m);
-            m.setView([params.lat, params.lng], params.zoom);
-           // L.control.layers(tileLayers, {autoZIndex: false}).addTo(m)
-            m.dragging.enable();
-            hashLocation.event();
-            mapLocation.location(scope)
-        }, 1000)
-    }
-
-    return setMap
-})
 
 
 

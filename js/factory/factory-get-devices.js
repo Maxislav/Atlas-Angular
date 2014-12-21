@@ -5,12 +5,16 @@ app.factory('factoryGetDevices', function($timeout){
         {
            'imei':'1111',
             text: 'Бервое устройство',
-            phone: '439-32032'
+            phone: '439-32032',
+            lat: 50.3,
+            lng: 31.2
         },
         {
             'imei':'2222',
             text: 'Аторое устройство',
-            phone: '439-32032'
+            phone: '439-32032',
+            lat: 50.3,
+            lng: 31.0
         }
     ]
 

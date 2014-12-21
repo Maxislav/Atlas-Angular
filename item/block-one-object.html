@@ -1,4 +1,4 @@
-<div ng-repeat="obj in factoryGetDevices" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
+<div ng-repeat="obj in factoryGetDevices | orderBy:'text'" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
     <div class="row-head">
         <div >
             {{obj.text}}
@@ -7,7 +7,6 @@
 
         </div>
     </div>
-
 </div>
 <div class="info-object">
     <div class="row">
