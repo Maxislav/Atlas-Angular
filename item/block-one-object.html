@@ -1,29 +1,13 @@
 <div ng-repeat="obj in factoryGetDevices | orderBy:'text'" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
     <div class="row-head">
         <div >
+            {{obj._dateTime | date:'yyyy/MM/dd'}}
+        </div>
+        <div class="line">
             {{obj.text}}
         </div>
         <div class="row-footer-obj">
 
         </div>
     </div>
-</div>
-<div class="info-object">
-    <div class="row">
-        <div class="col-5">
-            Имеи:
-        </div>
-        <div class="col-7">
-            {{current.imei}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
-            Имя:
-        </div>
-        <div class="col-7">
-            {{current.text}}
-        </div>
-    </div>
-
 </div>

@@ -72,9 +72,6 @@ body {
 .col-2 {
   width: 16%; }
 
-.col-10 {
-  width: 82%; }
-
 .col-3 {
   width: 24%; }
 
@@ -90,24 +87,19 @@ body {
 .col-7 {
   width: 58%; }
 
-.col-10, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7 {
+.col-10 {
+  width: 82%; }
+
+.col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-10 {
   float: left;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
-  .col-10:last-child, .col-2:last-child, .col-3:last-child, .col-4:last-child, .col-5:last-child, .col-6:last-child, .col-7:last-child {
+  .col-2:last-child, .col-3:last-child, .col-4:last-child, .col-5:last-child, .col-6:last-child, .col-7:last-child, .col-10:last-child {
     float: none;
     display: inline-block; }
 
-.col6 {
-  width: 50%;
-  float: left; }
-  .col6.x {
-    float: inherit;
-    display: inline-block; }
-
 .row {
-  margin-top: 5px;
   display: block; }
 
 select {
@@ -230,6 +222,8 @@ mask {
     box-shadow: 0 2px 3px black;
     border: 1px solid whitesmoke;
     font-size: 11px; }
+    .block-one-object > div .line {
+      border-bottom: 1px solid gray; }
     .block-one-object > div:hover {
       background: #ffffff; }
 

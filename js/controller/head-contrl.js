@@ -1,4 +1,4 @@
-app.controller('headCntrl', function($scope, srvModal, factorySettingOptions){
+app.controller('headContrl', function($scope, srvModal, factorySettingOptions){
     $scope.item = {};
     $scope.factorySettingOptions = factorySettingOptions
 

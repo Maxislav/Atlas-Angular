@@ -52,7 +52,7 @@ app.controller('settingOptionsContr', function (timeZone, srvModal,$timeout, map
     }
 
     $scope.$watch('data.timeZone', function () {
-        console.log($scope.data.timeZone)
+        //console.log($scope.data.timeZone)
     })
 
 
