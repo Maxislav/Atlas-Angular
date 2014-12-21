@@ -160,6 +160,57 @@ mask {
         top: 0;
         background: transparent; }
 
+.block-one-object {
+  width: 100%;
+  height: 70px; }
+  .block-one-object > div {
+    height: 100%;
+    margin: 3px 2px;
+    border-radius: 3px;
+    background: #e2e2e2;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #e2e2e2 0%, #f7f7f7 14%, #f4f4f4 86%, white 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e2e2e2), color-stop(14%, #f7f7f7), color-stop(86%, #f4f4f4), color-stop(100%, white));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #e2e2e2 0%, #f7f7f7 14%, #f4f4f4 86%, white 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #e2e2e2 0%, #f7f7f7 14%, #f4f4f4 86%, white 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #e2e2e2 0%, #f7f7f7 14%, #f4f4f4 86%, white 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #e2e2e2 0%, #f7f7f7 14%, #f4f4f4 86%, white 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#ffffff',GradientType=0 );
+    /* IE6-9 */
+    box-shadow: 0 2px 3px black;
+    border: 1px solid whitesmoke;
+    font-size: 11px; }
+    .block-one-object > div:hover {
+      background: #ffffff; }
+
+.block-one-object.ng-enter {
+  opacity: 0;
+  max-height: 0;
+  transition: 0.2s;
+  transform: rotateX(90deg);
+  transform: scale(1, 0.5); }
+  .block-one-object.ng-enter.ng-enter-active {
+    opacity: 1;
+    transform: scale(1, 1);
+    transition: 0.2s;
+    max-height: 70px;
+    transform: rotateX(0deg); }
+.block-one-object.ng-leave {
+  opacity: 1;
+  height: 70px;
+  transform: scale(1, 1); }
+  .block-one-object.ng-leave.ng-leave-active {
+    opacity: 0;
+    max-height: 0;
+    transition: 0.2s;
+    transform: scale(0.5, 0.5); }
+
 .animate-repeat {
   list-style: none;
   transition: 0.3s;

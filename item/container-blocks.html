@@ -1,7 +1,10 @@
 <div class="block-item target" ng-class="item.target">
-    <div >
+    <div ng-controller="objectsContrl">
         <div class="title">
             Объекты <div class="button float-right" ng-click="show('target')">x</div>
+        </div>
+        <div ng-include="'item/block-one-object.html'" class="list-objects">
+
         </div>
     </div>
 </div>
