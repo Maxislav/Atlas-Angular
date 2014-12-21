@@ -1,8 +1,30 @@
-<div ng-repeat="obj in factoryGetDevices" class="block-one-object">
+<div ng-repeat="obj in factoryGetDevices" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
     <div class="row-head">
-        {{obj.text}}
-    </div>
-    <div class="row-footer">
+        <div >
+            {{obj.text}}
+        </div>
+        <div class="row-footer-obj">
 
+        </div>
     </div>
+
+</div>
+<div class="info-object">
+    <div class="row">
+        <div class="col-5">
+            Имеи:
+        </div>
+        <div class="col-7">
+            {{current.imei}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Имя:
+        </div>
+        <div class="col-7">
+            {{current.text}}
+        </div>
+    </div>
+
 </div>

@@ -38,5 +38,17 @@
       }
     }
   }
+  .info-object{
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    height: 200px;
+    border-top: 1px solid #000000;
+    font-size: 13px;
+    @include box-shadow-list();
+   // @include background-modals();
+  }
 }
 @import "block-one-object";
