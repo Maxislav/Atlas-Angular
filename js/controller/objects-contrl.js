@@ -10,7 +10,9 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
         for(var i=0; i<  $scope.factoryGetDevices.length; i++){
             if($scope.factoryGetDevices[i].imei == imei){
                 $scope.current = $scope.factoryGetDevices[i];
-                $scope.map.setView([F($scope.current.lat), F($scope.current.lng)])
+                if($scope.current.lat && $scope.current.lng){
+                    $scope.map.setView([F($scope.current.lat), F($scope.current.lng)])
+                }
                 break;
             }
         }
