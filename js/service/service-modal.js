@@ -15,7 +15,7 @@ app.service('srvModal', function () {
                 text: _arr[i].text,
                 action: function () {
                     delModal(n)
-                    _arr[i].action()
+                    _arr[i].action && _arr[i].action()
                 }
             }
         }

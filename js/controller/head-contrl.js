@@ -1,32 +1,36 @@
-app.controller('headContrl', function($scope, srvModal, factorySettingOptions){
+app.controller('headContrl', function ($scope, srvModal, factorySettingOptions, $http) {
     $scope.item = {};
     $scope.factorySettingOptions = factorySettingOptions
 
-    $scope.show = function(name){
-        $scope.item[name] = ($scope.item[name] == 'show') ? '': 'show'
+    $scope.show = function (name) {
+        $scope.item[name] = ($scope.item[name] == 'show') ? '' : 'show'
     }
-    $scope.exitHttp = function(){
-       // alert('From header cntrl')
-    }
-
-    $scope.exit = function(){
-            srvModal.addModal({
-                text: 'Выйти из системы?',
-                buttons: [
-                    {
-                        text: 'Ok',
-                        action: $scope.exitHttp
-                    },
-                    {
-                        text: 'No',
-                        action: $scope.exitHttp
-                    }
-
-                ]
-           })
+    $scope.exitHttp = function () {
+        $http.post('php/exit.php')
+            .success(function (d) {
+                window.location = d.path
+            })
+            .error(function (d) {
+                console.log(d);
+            })
     }
 
-    $scope.settingsShow = function(){
+    $scope.exit = function () {
+        srvModal.addModal({
+            text: 'Выйти из системы?',
+            buttons: [
+                {
+                    text: 'Ok',
+                    action: $scope.exitHttp
+                },
+                {
+                    text: 'No'
+                }
+            ]
+        })
+    }
+
+    $scope.settingsShow = function () {
         $scope.factorySettingOptions.show = !$scope.factorySettingOptions.show;
     }
 })
