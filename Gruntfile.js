@@ -17,34 +17,34 @@ module.exports = function (grunt) {
     ]
 
     var jsMapFiles = [
-       "lib/leaflet/leaflet.js",
-           "lib/angular/angular.min.js",
-           "js/extendHttp.js",
-           "lib/angular/angular-animate.js",
+        "lib/leaflet/leaflet.js",
+        "lib/angular/angular.min.js",
+        "js/extendHttp.js",
+        "lib/angular/angular-animate.js",
 
+        "js/map.js",
+        "item/template.js",
+        "js/controller/modal-contrl.js",
+        "js/controller/mask-contrl.js",
+        "js/controller/setting-options-contrl.js",
+        "js/controller/objects-contrl.js",
+        "js/controller/footer-contrl.js",
+        "js/controller/map-contrl.js",
+        "js/controller/head-contrl.js",
 
-           "js/map.js",
-           "js/controller/modal-contrl.js",
-           "js/controller/mask-contrl.js",
-           "js/controller/setting-options-contrl.js",
-           "js/controller/objects-contrl.js",
-           "js/controller/footer-contrl.js",
-           "js/controller/map-contrl.js",
-           "js/controller/head-contrl.js",
+        "js/service/service-modal.js",
+        "js/directive/main-map.js",
+        "js/directive/block-items.js",
+        "js/directive/directive-modal.js",
+        "js/directive/directive-mask.js",
+        "js/directive/directive-setting-options.js",
+        "js/directive/directive-valid.js",
 
-           "js/service/service-modal.js",
-           "js/directive/main-map.js",
-           "js/directive/block-items.js",
-           "js/directive/directive-modal.js",
-           "js/directive/directive-mask.js",
-           "js/directive/directive-setting-options.js",
-           "js/directive/directive-valid.js",
-
-           "js/factory/factory-setting-options.js",
-           "js/factory/factory-get-options.js",
-           "js/factory/factory-get-devices.js",
-           "js/factory/factory-valid.js",
-           "js/factory/factory-format-date.js"
+        "js/factory/factory-setting-options.js",
+        "js/factory/factory-get-options.js",
+        "js/factory/factory-get-devices.js",
+        "js/factory/factory-valid.js",
+        "js/factory/factory-format-date.js"
     ]
 
 
@@ -68,11 +68,10 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'build/md5.min.js':
-                        [
-                            'js/md5.js',
-                            'js/extendHttp.js'
-                        ]
+                    'build/md5.min.js': [
+                        'js/md5.js',
+                        'js/extendHttp.js'
+                    ]
                 }
             },
             indexUg: {
@@ -81,11 +80,10 @@ module.exports = function (grunt) {
                     mangle: false
                 },
                 files: {
-                    'build/index.min.js':
-                        [
-                             'build/md5.min.js',
-                            'js/controllers_index.js'
-                        ]
+                    'build/index.min.js': [
+                        'build/md5.min.js',
+                        'js/controllers_index.js'
+                    ]
                 }
             },
             registUg: {
@@ -94,11 +92,10 @@ module.exports = function (grunt) {
                     mangle: false
                 },
                 files: {
-                    'build/regist.min.js':
-                        [
-                            'build/md5.min.js',
-                            'js/controller_regist.js'
-                        ]
+                    'build/regist.min.js': [
+                        'build/md5.min.js',
+                        'js/controller_regist.js'
+                    ]
                 }
             },
             map: {
@@ -165,7 +162,7 @@ module.exports = function (grunt) {
                         "css/login.less",
                         'item/header.less',
                         'item/footer.less',
-						'module/listobjects/listobjects.less'
+                        'module/listobjects/listobjects.less'
                     ]
                 }
             },
@@ -213,14 +210,26 @@ module.exports = function (grunt) {
                 }
             }
         },
+        ngtemplates: {
+            app: {
+                options: {
+                    htmlmin: { collapseWhitespace: true, collapseBooleanAttributes: true }
+                },
+                src: 'item/**.html',
+                dest: 'item/template.js'
+
+            }
+        },
         replace: {
             example: {
                 src: ['forum/build/forum.css'],             // source files array (supports minimatch)
                 dest: 'forum/build/forum.css',             // destination directory or file
-                replacements: [{
-                    from: 'forum/build/',                   // string replacement
-                    to: ''
-                }]
+                replacements: [
+                    {
+                        from: 'forum/build/',                   // string replacement
+                        to: ''
+                    }
+                ]
             }
         },
 
@@ -231,46 +240,46 @@ module.exports = function (grunt) {
                     'css/login.less',
                     'item/header.less',
                     'item/footer.less',
-					'module/listobjects/listobjects.less'
+                    'module/listobjects/listobjects.less'
                 ],
                 tasks: ['less:login'],
                 options: {
                     nospawn: true
                 }
             },
-            indexCss:{
-                files:sassIndexFiles,
+            indexCss: {
+                files: sassIndexFiles,
                 tasks: ['sass:dev'],
                 options: {nospawn: true}
             },
             sassFiles: {
-                files:sassMapFiles,
+                files: sassMapFiles,
                 tasks: ['sass:dev'],
                 options: {nospawn: true}
             },
-            registJs:{
+            registJs: {
                 files: 'js/controller_regist.js',
                 tasks: ['uglify:registUg'],
                 options: {nospawn: true}
             },
-            indexJs:{
+            indexJs: {
                 files: 'js/controllers_index.js',
                 tasks: ['uglify:indexUg'],
                 options: {nospawn: true}
             }
-           /* forum:{
-                files: 'forum/css/forum.less',
-                tasks: ['less:forum','replace'],
-                options: {nospawn: true}
-            },*/
+            /* forum:{
+             files: 'forum/css/forum.less',
+             tasks: ['less:forum','replace'],
+             options: {nospawn: true}
+             },*/
             /*forumJs: {
-                files : [
-                    'forum/js/app.js',
-                    'forum/subjects/general/general.js'
-                ],
-                tasks: ['uglify:forum'],
-                options: {nospawn: true}
-            }*/
+             files : [
+             'forum/js/app.js',
+             'forum/subjects/general/general.js'
+             ],
+             tasks: ['uglify:forum'],
+             options: {nospawn: true}
+             }*/
 
 
         },
@@ -285,10 +294,10 @@ module.exports = function (grunt) {
                 },
                 your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
 
-                   /* options: {
-                        configFile: "e2e.conf.js", // Target-specific config file
-                        args: {} // Target-specific arguments
-                    }*/
+                    /* options: {
+                     configFile: "e2e.conf.js", // Target-specific config file
+                     args: {} // Target-specific arguments
+                     }*/
                 }
             }
         }
@@ -297,7 +306,7 @@ module.exports = function (grunt) {
     //grunt.initConfig.protractor = require( '/home/mars/www/AtlasRevolution/test/conf.js' ) ;
 
     // Загрузка плагинов, установленных с помощью npm install
-   // grunt.loadNpmTasks('grunt-contrib-concat');//
+    // grunt.loadNpmTasks('grunt-contrib-concat');//
     grunt.loadNpmTasks('grunt-contrib-uglify');//
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
@@ -305,6 +314,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-angular-templates');
 
     grunt.registerTask('default',
         [
@@ -322,16 +332,16 @@ module.exports = function (grunt) {
         ]
     );
 
-    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
+    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' , 'less:login', 'less:indexCssMy', 'watch']);
 
     //grunt.registerTask('pro', ['protractor']);
     grunt.registerTask('prod', [
         'uglify:md5',
         'uglify:indexUg' ,
         'uglify:registUg',
+        'ngtemplates',
         'uglify:map',
         'sass:prod'
-
     ]);
 
 };
