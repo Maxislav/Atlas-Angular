@@ -1,7 +1,7 @@
 <div ng-repeat="obj in factoryGetDevices | orderBy:'text'" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
     <div class="row-head">
         <div >
-            {{ (obj._dateTime || null ) | date:'yyyy/MM/dd'}}
+            {{ (obj._dateTime || null ) | date:'yyyy.MM.dd'}}
         </div>
         <div class="line">
             {{obj.text}}

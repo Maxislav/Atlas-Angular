@@ -1,10 +1,11 @@
-app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factoryGetOptions){
+app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
     $scope.factoryGetDevices = factoryGetDevices;
     $scope.factoryGetOptions =factoryGetOptions;
     $scope.current = {};
     $scope.map = map.map;
     var getParms = 0;
     var F = parseFloat;
+    var setDate = factoryFormatDate.stringToGetTime;
 
     $scope.setCurrent = function(imei) {
         for(var i=0; i<  $scope.factoryGetDevices.length; i++){
@@ -31,29 +32,14 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
     function init(){
         getParms++
         if(1<getParms){
-            rfacto()
+            refacto()
             console.log($scope.factoryGetOptions.timeZone)
         }
     }
-    function rfacto() {
+    function refacto() {
         for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
             $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime)
         }
-        $scope
     }
-    function setDate(string) {
-        var arr = ('' + string).split('');
-        var yy = '' + arr[0] + arr[1];
-        var mm = '' + arr[2] + arr[3];
-        mm = parseFloat(mm);
-        mm--;
-        var dd = '' + arr[4] + arr[5];
-        var hh = '' + arr[6] + arr[7];
-        var mi = '' + arr[8] + arr[9];
-        var ss = '' + arr[10] + arr[11];
-        var date = new Date('20' + yy, mm, dd, hh, mi, ss);
-        return date.getTime();
-    }
-
 
 })

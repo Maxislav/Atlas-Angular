@@ -16,6 +16,37 @@ module.exports = function (grunt) {
         'css/index.scss'
     ]
 
+    var jsMapFiles = [
+       "lib/leaflet/leaflet.js",
+           "lib/angular/angular.min.js",
+           "js/extendHttp.js",
+           "lib/angular/angular-animate.js",
+
+
+           "js/map.js",
+           "js/controller/modal-contrl.js",
+           "js/controller/mask-contrl.js",
+           "js/controller/setting-options-contrl.js",
+           "js/controller/objects-contrl.js",
+           "js/controller/footer-contrl.js",
+           "js/controller/map-contrl.js",
+           "js/controller/head-contrl.js",
+
+           "js/service/service-modal.js",
+           "js/directive/main-map.js",
+           "js/directive/block-items.js",
+           "js/directive/directive-modal.js",
+           "js/directive/directive-mask.js",
+           "js/directive/directive-setting-options.js",
+           "js/directive/directive-valid.js",
+
+           "js/factory/factory-setting-options.js",
+           "js/factory/factory-get-options.js",
+           "js/factory/factory-get-devices.js",
+           "js/factory/factory-valid.js",
+           "js/factory/factory-format-date.js"
+    ]
+
 
     // Задачи
     grunt.initConfig({
@@ -70,18 +101,13 @@ module.exports = function (grunt) {
                         ]
                 }
             },
-            forum: {
+            map: {
                 options: {
-                    sourceMap: true,
+                    sourceMap: false,
                     mangle: false
                 },
                 files: {
-                    'forum/build/forum.min.js':
-                        [
-                            'build/md5.min.js',
-                            'forum/js/app.js',
-                            'forum/subjects/general/general.js'
-                        ]
+                    'build/map.min.js': jsMapFiles
                 }
             }
         },
@@ -285,12 +311,8 @@ module.exports = function (grunt) {
             'uglify:md5',
             'uglify:indexUg' ,
             'uglify:registUg',
-           // 'less:login',
             'sass:dev',
-           // 'less:indexCss',
             'watch'
-
-
         ]
     );
     grunt.registerTask('forum',
@@ -303,6 +325,13 @@ module.exports = function (grunt) {
     grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' ,'less:login', 'less:indexCssMy', 'watch']);
 
     //grunt.registerTask('pro', ['protractor']);
-    grunt.registerTask('ss', ['sass:dev']);
+    grunt.registerTask('prod', [
+        'uglify:md5',
+        'uglify:indexUg' ,
+        'uglify:registUg',
+        'uglify:map',
+        'sass:prod'
+
+    ]);
 
 };

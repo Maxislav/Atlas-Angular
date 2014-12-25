@@ -10,7 +10,8 @@ app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
             phone: '439-32032',
             lat: 50.3,
             lng: 31.2,
-            dateTime: 141217180302
+            dateTime: 141217180502,
+            satellites: 3
         },
         {
             'imei': '2222',
@@ -18,7 +19,8 @@ app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
             phone: '439-32032',
             lat: 50.3,
             lng: 31.0,
-            dateTime: 141217180302
+            dateTime: 141217180334,
+            satellites: 5
         }
     ]
 
@@ -29,7 +31,6 @@ app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
             devices.push(tempValue[i]);
 
         }
-        //rfacto();
     }, 3000);
     return devices
 
