@@ -8,7 +8,13 @@ app.controller('headContrl', function ($scope, srvModal, factorySettingOptions, 
     $scope.exitHttp = function () {
         $http.post('php/exit.php')
             .success(function (d) {
-                window.location = d.path
+                switch (d.status){
+                    case 'OK':
+                        window.location = d.path;
+                        break;
+                    default :
+                        console.log(d)
+                }
             })
             .error(function (d) {
                 console.log(d);

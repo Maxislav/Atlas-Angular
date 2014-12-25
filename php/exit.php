@@ -19,6 +19,9 @@ $obj = Array(
     'status' => 'OK',
     'path' => $path
 );
+$key = $_COOKIE['key'];
+$sql = mysql_query("DELETE FROM `session` WHERE `key`='$key'") or die(mysql_error());
 
-//header("Location: ".$_SERVER["SERVER_NAME"].$arr[1]);
+setcookie('key', null, time() - 3600, '/');
 echo json_encode($obj);
+//echo $key;
