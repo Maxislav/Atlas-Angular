@@ -93,6 +93,7 @@ body {
   }
   cursor: pointer;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -149,6 +150,11 @@ body {
 select{
   border-radius: 3px;
   background: #ffffff;
+  padding: 2px 4px;
+  border: none;
+  &:focus{
+    outline: none;
+  }
 }
 
 .float-right {
