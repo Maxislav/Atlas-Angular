@@ -26,10 +26,9 @@ if (mysql_num_rows($res) > 0) {
         $key = md5(rand(100, 10000)."".rand(0, 20));
         $dat=gmdate('Y-m-d H:i:s') ;
         $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
-
-        SetCookie("key", $key, time()+3600*24, "/");
-
+        $id = mysql_insert_id(); //id последней записи
         if($sql){
+            SetCookie("key", $key, time()+3600*24, "/");
             echo 'OK';
         }else{
             echo 'ERR_INSERT_SQL';

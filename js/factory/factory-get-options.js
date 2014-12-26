@@ -1,4 +1,15 @@
-app.factory('factoryGetOptions', function($timeout){
+app.factory('factoryGetOptions', function($timeout, $http){
+
+    $http.post('php/test.php',null)
+        .success(function(d){
+
+        })
+        .error(function(d){
+
+        })
+
+
+
     var params = {};
     $timeout(function(){
         params.map = 'ggl';

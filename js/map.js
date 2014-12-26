@@ -1,11 +1,39 @@
 var app = angular.module('app', ['ngAnimate'])
 
-app.config(function ($httpProvider) {    // [url]http://habrahabr.ru/post/181009/[/url]
-    $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';
-    $httpProvider.defaults.transformRequest = function (data) {
-        return angular.isObject(data) && String(data) !== '[object File]' ? angular.toParam(data) : data;
-    };
-});
+app
+    .config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.transformRequest = function (data) {
+            return angular.isObject(data) && String(data) !== '[object File]' ? angular.toParam(data) : data;
+        };
+
+
+        //Http Intercpetor to check auth failures for xhr requests
+        $httpProvider.interceptors.push('authHttpResponseInterceptor');
+    }])
+    .factory('authHttpResponseInterceptor', ['$q', '$location', function ($q, $location) {
+        return {
+            response: function (response) {
+                if (response.status === 401) {
+                    console.log("Response 401");
+                }
+                return response || $q.when(response);
+            },
+            responseError: function (rejection) {
+                if (rejection.status === 401) {
+                   // console.log("Response Error 401", rejection);
+                    var path = window.location.origin +'/'+ window.location.pathname.split('/')[1]+'/'
+                    console.log(path)
+
+
+                    window.location = path
+                   // $location.path(path)
+                }
+                return $q.reject(rejection);
+            }
+        }
+    }])
+
 
 app.constant('windowSize', {
     width: window.innerWidth,
@@ -15,11 +43,11 @@ app.constant('tileLayers', {
     ggl: new L.TileLayer('http://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile', {maxZoom: 18, minZoom: 3}),
     osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 })
-app.constant('timeZone',(function(){
+app.constant('timeZone', (function () {
     var a = [];
-    for (var i = -23; i<24; i++){
+    for (var i = -23; i < 24; i++) {
         a.push({
-            text: (i<0) ? ''+i : '+'+i,
+            text: (i < 0) ? '' + i : '+' + i,
             value: i
         })
     }
@@ -38,7 +66,7 @@ app.factory('hashLocation', function (map) {
 
     function latlng() {
         lat = map.map.getCenter().lat.toFixed(6),
-        lng = map.map.getCenter().lng.toFixed(6);
+            lng = map.map.getCenter().lng.toFixed(6);
     }
 
     function setHash() {
