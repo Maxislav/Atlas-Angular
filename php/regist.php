@@ -27,7 +27,7 @@ if (!$login || empty($login)) {
 
     $sql = mysql_query("INSERT INTO `user` (id,name,pass) VALUES (NULL,'$login','$pass')");
     $iduser = mysql_insert_id();
-    $sql_opt = mysql_query("INSERT INTO `options` (id,iduser,mapType,timeZone,startZoom,startLat,startLng) VALUES (NULL,'$iduser','ggl','+2','12','51.3','31.4')");
+    $sql_opt = mysql_query("INSERT INTO `options` (id,iduser,mapType,timeZone,startZoom,startLat,startLng) VALUES (NULL,'$iduser','ggl','+2','12','50.454','30.56')");
 
     if ($sql) {
         echo 'OK';

@@ -13,6 +13,14 @@
   select {
     width: 100%;
   }
+  .row{
+    margin-top: 2px;
+  }
+  .opta{
+    background: #ffffff;
+    border-radius: 3px;
+    padding: 2px 4px;
+  }
   border-radius: 3px;
 
   .alert-row{
@@ -42,14 +50,7 @@
       input.checkbox{
         width: 20px;
       }
-      input.text {
 
-        width: 30%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0;
-        float:right;
-      }
     }
   }
   .container-buttons-modal {

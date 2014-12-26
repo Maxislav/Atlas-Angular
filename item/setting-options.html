@@ -28,6 +28,18 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-6">
+            Локация карты
+        </div>
+        <div class="col-6 ">
+            <div class="opta">
+                {{data.lat}} {{data.lng}}
+            </div>
+
+        </div>
+
+    </div>
 
     <div class="title">
         Устройства
@@ -36,15 +48,39 @@
 
     </div>
     <div ng-repeat="device in factoryGetDevices | orderBy:'text'" class="row device-row">
-        <input type="checkbox" class="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device.imei)">
-        <input ng-model="device.phone"  type="text" class="text">
-        <input ng-model="device.imei" valid="int"  type="text"   class="text">
-        <input ng-model="device.text" type="text" class="text">
+        <div class="col-1">
+            <input type="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device.imei)">
+        </div>
+        <div class="col-4">
+            <input ng-model="device.text" type="text" >
+        </div>
+        <div class="col-4">
+            <input ng-model="device.imei" valid="int"  type="text" >
+        </div>
+        <div class="col-3">
+            <input ng-model="device.phone"  type="text">
+        </div>
+
+
+
+
     </div>
     <div class="row device-row">
-        <input ng-model="newDevice.phone" class="text">
-        <input ng-model="newDevice.imei" class="text">
-        <input ng-model="newDevice.text" class="text">
+        <div class="col-1">
+            &nbsp
+        </div>
+        <div class="col-4">
+            <input ng-model="newDevice.text" class="text">
+        </div>
+        <div class="col-4">
+            <input ng-model="newDevice.imei" class="text">
+        </div>
+        <div class="col-3">
+            <input ng-model="newDevice.phone" class="text">
+        </div>
+
+
+
     </div>
     <div class="alert-row text-center" ng-class="alertShow">
         {{alertMess}}
