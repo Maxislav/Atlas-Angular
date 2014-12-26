@@ -223,7 +223,7 @@ module.exports = function (grunt) {
         'string-replace': {
             dev: {
                 files: {
-                    'index.html': 'map.html'
+                    'map.html': 'map.html'
                 },
                 options: {
                     replacements: [
@@ -256,7 +256,7 @@ module.exports = function (grunt) {
             },
             prod: {
                 files: {
-                    'index.html': 'map.html'
+                    'map.html': 'map.html'
                 },
                 options: {
                     replacements: [
@@ -366,7 +366,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');//
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
-    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.loadNpmTasks('grunt-protractor-runner');
@@ -390,7 +390,7 @@ module.exports = function (grunt) {
         'ngtemplates',
         'uglify:map',
         'sass:prod',
-        'string-replace:dev'
+        'string-replace:prod'
     ]);
 
 };
