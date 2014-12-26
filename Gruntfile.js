@@ -220,16 +220,72 @@ module.exports = function (grunt) {
 
             }
         },
-        replace: {
-            example: {
-                src: ['forum/build/forum.css'],             // source files array (supports minimatch)
-                dest: 'forum/build/forum.css',             // destination directory or file
-                replacements: [
-                    {
-                        from: 'forum/build/',                   // string replacement
-                        to: ''
-                    }
-                ]
+        'string-replace': {
+            dev: {
+                files: {
+                    'index.html': 'map.html'
+                },
+                options: {
+                    replacements: [
+                        {
+                            pattern: /\<\!\-\-\$dev\s/,
+                            replacement: function () {
+                                return '<!--$dev-->'
+                            }
+                        },
+                        {
+                            pattern: /\s\&dev\-\-\>/,
+                            replacement: function () {
+                                return '<!--&dev-->'
+                            }
+                        },
+                        {
+                            pattern: /\<\!\-\-\$prod\-\-\>/,
+                            replacement: function () {
+                                return '<!--$prod '
+                            }
+                        },
+                        {
+                            pattern: /\<\!\-\-\&prod\-\-\>/,
+                            replacement: function () {
+                                return ' &prod-->'
+                            }
+                        }
+                    ]
+                }
+            },
+            prod: {
+                files: {
+                    'index.html': 'map.html'
+                },
+                options: {
+                    replacements: [
+                        {
+                            pattern: /\<\!\-\-\$prod\s/,
+                            replacement: function () {
+                                return '<!--$prod-->'
+                            }
+                        },
+                        {
+                            pattern: /\s\&prod\-\-\>/,
+                            replacement: function () {
+                                return '<!--&prod-->'
+                            }
+                        },
+                        {
+                            pattern: /\<\!\-\-\$dev\-\-\>/,
+                            replacement: function () {
+                                return '<!--$dev '
+                            }
+                        },
+                        {
+                            pattern: /\<\!\-\-\&dev\-\-\>/,
+                            replacement: function () {
+                                return ' &dev-->'
+                            }
+                        }
+                    ]
+                }
             }
         },
 
@@ -322,26 +378,19 @@ module.exports = function (grunt) {
             'uglify:indexUg' ,
             'uglify:registUg',
             'sass:dev',
-            'watch'
-        ]
-    );
-    grunt.registerTask('forum',
-        [
-            'less:forum',
+            'string-replace:dev',
             'watch'
         ]
     );
 
-    grunt.registerTask('my', ['replace', 'uglify:md5', 'uglify:indexUg' , 'less:login', 'less:indexCssMy', 'watch']);
-
-    //grunt.registerTask('pro', ['protractor']);
     grunt.registerTask('prod', [
         'uglify:md5',
         'uglify:indexUg' ,
         'uglify:registUg',
         'ngtemplates',
         'uglify:map',
-        'sass:prod'
+        'sass:prod',
+        'string-replace:dev'
     ]);
 
 };

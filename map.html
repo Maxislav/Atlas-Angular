@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, height=device-height,minimum-scale=1.0, maximum-scale=4.0">
     <link rel="stylesheet" href="build/map.css"/>
 
-    <!--<script src="lib/leaflet/leaflet.js"></script>
+    <!--$dev--><script src="lib/leaflet/leaflet.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/extendHttp.js"></script>
     <script src="lib/angular/angular-animate.js"></script>
@@ -31,28 +31,29 @@
     <script src="js/factory/factory-get-options.js"></script>
     <script src="js/factory/factory-get-devices.js"></script>
     <script src="js/factory/factory-valid.js"></script>
-    <script src="js/factory/factory-format-date.js"></script>-->
+    <script src="js/factory/factory-format-date.js"></script><!--&dev-->
 
-    <script src="build/map.min.js"></script>
-
+    <!--$prod
+   <script src="build/map.min.js"></script>
+    &prod-->
 </head>
 <body ng-controller="mapCntrl">
-    <mask ng-controller="maskContrl" ng-show="show" class="animate-mask">
-    </mask>
-    <modal ng-controller="modalCntrl" ng-show="show">
-    </modal>
+   <mask ng-controller="maskContrl" ng-show="show" class="animate-mask">
+   </mask>
+   <modal ng-controller="modalCntrl" ng-show="show">
+   </modal>
 
-    <div class="setting-options" ng-controller="settingOptionsContr" class="setting-options" ng-show="factorySettingOptions.show" ng-class="'none'">
+   <div class="setting-options" ng-controller="settingOptionsContr" class="setting-options" ng-show="factorySettingOptions.show" ng-class="'none'">
 
-    </div>
-    <div class="header" ng-include="'item/header.html'" ng-controller="headContrl">
+   </div>
+   <div class="header" ng-include="'item/header.html'" ng-controller="headContrl">
 
-    </div>
-    <div id="mapMap" class="main-map">
+   </div>
+   <div id="mapMap" class="main-map">
 
-    </div>
-    <div class="footer" ng-include="'item/footer.html'" ng-controller="footerContrl" >
+   </div>
+   <div class="footer" ng-include="'item/footer.html'" ng-controller="footerContrl" >
 
-    </div>
+   </div>
 </body>
 </html>
