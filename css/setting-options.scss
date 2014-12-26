@@ -14,6 +14,17 @@
     width: 100%;
   }
   border-radius: 3px;
+
+  .alert-row{
+    overflow: hidden;
+    height: 0;
+    transition: 0.3s;
+    color: red;
+    &.show{
+      height: 18px;
+    }
+  }
+
   .button-close {
     position: absolute;
     right: 2px;
@@ -44,7 +55,6 @@
   .container-buttons-modal {
     clear: both;
     text-align: center;
-  //  padding: 5px;
     .button {
       background: #323232;
       border-radius: 2px;

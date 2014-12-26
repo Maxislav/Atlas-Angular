@@ -18,7 +18,6 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
             }
         }
     }
-
     $scope.$watch('factoryGetOptions.timeZone', function(){
         if($scope.factoryGetOptions.timeZone){
             init()
@@ -38,7 +37,7 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
     }
     function refacto() {
         for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
-            $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime)
+            $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone)
         }
     }
 

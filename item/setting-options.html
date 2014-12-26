@@ -46,6 +46,9 @@
         <input ng-model="newDevice.imei" class="text">
         <input ng-model="newDevice.text" class="text">
     </div>
+    <div class="alert-row text-center" ng-class="alertShow">
+        {{alertMess}}
+    </div>
 
     <div class="container-buttons-modal">
         <div class="button" ng-click="addDevise()">
