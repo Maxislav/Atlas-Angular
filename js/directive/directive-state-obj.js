@@ -29,6 +29,7 @@ app.directive('stateObj', function () {
             el.css('boxShadow', '1px 1px 2px rgba(0,0,0,0.4')
             el.css('margin', '2px')
             el.css('borderRadius', '50%')
+            el.css('transition', '5s')
         }
     }
 })
