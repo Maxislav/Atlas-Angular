@@ -1,6 +1,5 @@
-app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
+app.factory('factoryGetDevices', function ($timeout, $http) {
     var devices = [];
-    var params = factoryGetOptions;
 
 
     var tempValue = [
@@ -23,15 +22,25 @@ app.factory('factoryGetDevices', function ($timeout, factoryGetOptions) {
             satellites: 5
         }
     ]
+    var isArray = angular.isArray;
+    $http.post('php/get-devices.php', null)
+        .success(function(d){
+            console.log(d)
+            if(isArray(d)){
+                for (var i = 0; i < d.length; i++) {
+                    devices.push(d[i]);
+                }
+            }
+        })
+        .error(function(d){
+            console.log(d)
+        })
 
-
-
-    $timeout(function () {
+   /* $timeout(function () {
         for (var i = 0; i < tempValue.length; i++) {
             devices.push(tempValue[i]);
-
         }
-    }, 3000);
+    }, 3000);*/
     return devices
 
 })
