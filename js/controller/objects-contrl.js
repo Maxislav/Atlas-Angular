@@ -1,4 +1,4 @@
-app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
+app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
     $scope.factoryGetDevices = factoryGetDevices;
     $scope.factoryGetOptions =factoryGetOptions;
     $scope.current = {};
@@ -43,18 +43,17 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
             if(!$scope.factoryGetDevices[i]._timer){
                 $scope.factoryGetDevices[i]._timer = (function(){
                    return interval(i);
-
                 })()
             }
 
         }
         function interval(_i){
             var i= _i;
-           return setInterval(function(){
-             //  console.log( new Date().getTime() - $scope.factoryGetDevices[i]._dateTime)
-            },2000)
+            function setDif(){
+                $scope.factoryGetDevices[i]._elapsedTime  = new Date().getTime() - $scope.factoryGetDevices[i]._dateTime;
+            }
+            return $interval(setDif,2000)
         }
-
     }
 
 

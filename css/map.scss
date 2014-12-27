@@ -150,6 +150,12 @@ body {
     display: inline-block;
   }
 }
+.hidden-line{
+  border-bottom: 1px solid transparent;
+  margin-top: 1px;
+  float: none;
+  clear: both;
+}
 
 .row{
   display: block;
