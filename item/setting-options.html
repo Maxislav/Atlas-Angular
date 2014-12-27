@@ -36,11 +36,8 @@
             <div class="opta">
                 {{data.lat}} {{data.lng}}
             </div>
-
         </div>
-
     </div>
-
     <div class="title">
         Устройства
     </div>
@@ -52,18 +49,14 @@
             <input type="checkbox" ng-model="checkbox[$index]" ng-change="checkboxChange($index, device.imei)">
         </div>
         <div class="col-4">
-            <input ng-model="device.text" type="text" >
+            <input ng-model="device.text" type="text">
         </div>
         <div class="col-4">
-            <input ng-model="device.imei" valid="int"  type="text" >
+            <input ng-model="device.imei" valid="int" type="text">
         </div>
         <div class="col-3">
-            <input ng-model="device.phone"  type="text">
+            <input ng-model="device.phone" type="text">
         </div>
-
-
-
-
     </div>
     <div class="row device-row">
         <div class="col-1">
@@ -73,19 +66,15 @@
             <input ng-model="newDevice.text" class="text">
         </div>
         <div class="col-4">
-            <input ng-model="newDevice.imei" class="text">
+            <input ng-model="newDevice.imei" valid="int" class="text">
         </div>
         <div class="col-3">
             <input ng-model="newDevice.phone" class="text">
         </div>
-
-
-
     </div>
     <div class="alert-row text-center" ng-class="alertShow">
         {{alertMess}}
     </div>
-
     <div class="container-buttons-modal">
         <div class="button" ng-click="addDevise()">
             Добавить

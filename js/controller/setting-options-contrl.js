@@ -1,4 +1,4 @@
-app.controller('settingOptionsContr', function (timeZone, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
+app.controller('settingOptionsContr', function (timeZone, $http, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
 
 
     $scope.factorySettingOptions = factorySettingOptions;
@@ -18,7 +18,7 @@ app.controller('settingOptionsContr', function (timeZone, srvModal, $timeout, ma
     }
     function empty(val) {
 
-        if(!val){
+        if (!val) {
             return true;
         }
 
@@ -95,18 +95,52 @@ app.controller('settingOptionsContr', function (timeZone, srvModal, $timeout, ma
                     action: function () {
                     }
                 }
-
             ]
         })
     }
     $scope.httpAddDevise = function () {
+        var data = {
+            name: $scope.newDevice.text,
+            imei: $scope.newDevice.imei,
+            phone: $scope.newDevice.phone ? $scope.newDevice.phone : ''
+        }
+        $http.post('php/add-device.php', data)
+            .success(function (d) {
+                switch (d){
+                    case 'OK':
+                        $scope.factoryGetDevices.push({
+                            text: $scope.newDevice.text,
+                            imei: $scope.newDevice.imei,
+                            phone: $scope.newDevice.phone
+                        });
+                        for (var opt in $scope.newDevice) {
+                            $scope.newDevice[opt] = null
+                        }
+                        break;
+                    case 'EXIST_CURRENT':
+                        $scope.alertShow = 'show';
+                        $scope.alertMess = 'Устройство зарегистрированно ранее';
+                        clearAlert();
+                        break;
+                    case 'EXIST_OTHER':
+                        $scope.alertShow = 'show';
+                        $scope.alertMess = 'Устройство зарегистрированно на другого пользователя';
+                        clearAlert();
+                        break;
+
+                }
+                console.log(d);
+            })
+            .error(function (d) {
+                console.log(d);
+            })
 
     }
-    function clearAlert(){
-        $timeout(function(){
+    function clearAlert() {
+        $timeout(function () {
             $scope.alertShow = ''
             $scope.alertMess = ''
-        },5000)
+        }, 7000)
     }
 
     $scope.addDevise = function () {
@@ -116,7 +150,7 @@ app.controller('settingOptionsContr', function (timeZone, srvModal, $timeout, ma
             clearAlert();
             return;
         }
-        if ($scope.newDevice.imei && $scope.newDevice.imei.length<10){
+        if ($scope.newDevice.imei && $scope.newDevice.imei.length < 10) {
             $scope.alertShow = 'show'
             $scope.alertMess = 'Идентификатор устройства должен содержать не менее 10 цифр'
             clearAlert();
@@ -131,14 +165,14 @@ app.controller('settingOptionsContr', function (timeZone, srvModal, $timeout, ma
         $scope.httpAddDevise();
 
         /*
-                $scope.factoryGetDevices.push({
-                    text: $scope.newDevice.text,
-                    imei: $scope.newDevice.imei,
-                    phone: $scope.newDevice.phone
-                })
-                for (var opt in $scope.newDevice) {
-                    $scope.newDevice[opt] = null
-                }*/
+         $scope.factoryGetDevices.push({
+         text: $scope.newDevice.text,
+         imei: $scope.newDevice.imei,
+         phone: $scope.newDevice.phone
+         })
+         for (var opt in $scope.newDevice) {
+         $scope.newDevice[opt] = null
+         }*/
     }
 
     $scope.settingsDone = function () {

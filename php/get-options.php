@@ -34,5 +34,5 @@ if (mysql_num_rows($res) > 0) {
     }
 }else{
     setcookie('key', null, time() - 3600, '/');
-    http_response_code(404);
+    http_response_code(401);
 }
