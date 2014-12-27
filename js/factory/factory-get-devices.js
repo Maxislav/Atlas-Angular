@@ -1,4 +1,4 @@
-app.factory('factoryGetDevices', function ($timeout, $http) {
+app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
     var devices = [];
 
 
@@ -23,24 +23,53 @@ app.factory('factoryGetDevices', function ($timeout, $http) {
         }
     ]
     var isArray = angular.isArray;
-    $http.post('php/get-devices.php', null)
-        .success(function(d){
-            console.log(d)
-            if(isArray(d)){
-                for (var i = 0; i < d.length; i++) {
-                    devices.push(d[i]);
+
+    function existEl(imei){
+        if(!imei){
+            return false
+        }
+        for(var i=0; i<devices.length; i++){
+            if(devices[i].imei == imei){
+                return true
+            }
+        }
+        return false
+    }
+
+    function replaceParam(newObj){
+        for(var i = 0; i<devices.length; i++){
+            if(devices[i] && devices[i].imei && devices[i].imei==newObj.imei){
+                var devObj = devices[i];
+                for (var opt in newObj){
+                    if(newObj[opt]!=devObj[opt] && opt!='phone' && opt!='text'){
+                        devObj[opt]=newObj[opt]
+                        console.log(opt)
+                    }
                 }
             }
-        })
-        .error(function(d){
-            console.log(d)
-        })
-
-   /* $timeout(function () {
-        for (var i = 0; i < tempValue.length; i++) {
-            devices.push(tempValue[i]);
         }
-    }, 3000);*/
+    }
+    function reqParm(){
+        $http.post('php/get-devices.php', null)
+            .success(function(d){
+                if(isArray(d)){
+                    for (var i = 0; i < d.length; i++) {
+                        if(!existEl(d[i].imei)){
+                            devices.push(d[i]);
+                        }else{
+                            replaceParam(d[i])
+                        }
+                    }
+                }
+            })
+            .error(function(d){
+                console.log(d)
+            })
+    }
+
+    reqParm();
+    $interval(reqParm,5000);
+
     return devices
 
 })

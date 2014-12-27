@@ -58,8 +58,8 @@ app.controller('objectsContrl', function ($scope,$interval,$timeout,factoryGetDe
         $scope.$watch('factoryGetDevices['+i+'].dateTime', function(){
            if($scope.factoryGetDevices[i]) {
                $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
+
            }
         })
     }
-
 })
