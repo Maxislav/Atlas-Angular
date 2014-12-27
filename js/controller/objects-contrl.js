@@ -1,4 +1,4 @@
-app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
+app.controller('objectsContrl', function ($scope,$interval,$timeout,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
     $scope.factoryGetDevices = factoryGetDevices;
     $scope.factoryGetOptions =factoryGetOptions;
     $scope.current = {};
@@ -28,8 +28,6 @@ app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, ma
             init()
         }
     })
-
-
     function init(){
         getParms++
         if(1<getParms){
@@ -42,6 +40,7 @@ app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, ma
             $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
             $scope.factoryGetDevices[i]._elapsedTime = null;
             if(!$scope.factoryGetDevices[i]._timer){
+                watchers(i)
                 $scope.factoryGetDevices[i]._timer = (function(){
                    return interval(i);
                 })()
@@ -54,6 +53,13 @@ app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, ma
             }
             return $interval(setDif,2000)
         }
+    }
+    function watchers(i){
+        $scope.$watch('factoryGetDevices['+i+'].dateTime', function(){
+           if($scope.factoryGetDevices[i]) {
+               $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
+           }
+        })
     }
 
 })
