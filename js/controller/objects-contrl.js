@@ -28,6 +28,8 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
             init()
         }
     })
+
+
     function init(){
         getParms++
         if(1<getParms){
@@ -37,8 +39,23 @@ app.controller('objectsContrl', function ($scope,factoryGetDevices, map, factory
     }
     function refacto() {
         for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
-            $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone)
+            $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
+            if(!$scope.factoryGetDevices[i]._timer){
+                $scope.factoryGetDevices[i]._timer = (function(){
+                   return interval(i);
+
+                })()
+            }
+
         }
+        function interval(_i){
+            var i= _i;
+           return setInterval(function(){
+             //  console.log( new Date().getTime() - $scope.factoryGetDevices[i]._dateTime)
+            },2000)
+        }
+
     }
+
 
 })

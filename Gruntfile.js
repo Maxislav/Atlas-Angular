@@ -21,6 +21,7 @@ module.exports = function (grunt) {
         "lib/angular/angular.min.js",
         "js/extendHttp.js",
         "lib/angular/angular-animate.js",
+        "lib/angular/angular-timer.js",
 
         "js/map.js",
         "item/template.js",

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngAnimate'])
+var app = angular.module('app', ['ngAnimate','timer'])
 
 app
     .config(['$httpProvider', function ($httpProvider) {

@@ -15,6 +15,13 @@ app.factory('factoryFormatDate', function () {
         var date = new Date('20' + yy, mm, dd, hh, mi, ss);
         return date.getTime();
     }
+
+    function difTime(date){
+
+
+    }
+
+
     return {
         stringToGetTime: stringToGetTime
     }

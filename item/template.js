@@ -2,7 +2,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('item/block-one-object.html',
-    "<div ng-repeat=\"obj in factoryGetDevices | orderBy:'text'\" class=\"block-one-object\" ng-mouseover=\"setCurrent(obj.imei)\"><div class=\"row-head\"><div>{{ (obj._dateTime || null ) | date:'yyyy.MM.dd'}}</div><div class=\"line\">{{obj.text}}</div><div class=\"row-footer-obj\"></div></div></div>"
+    "<div ng-repeat=\"obj in factoryGetDevices | orderBy:'text'\" class=\"block-one-object\" ng-mouseover=\"setCurrent(obj.imei)\"><div class=\"row-head\"><div class=\"row\"><div class=\"col-4\"><div class=\"row\">{{ (obj._dateTime || null ) | date:'yyyy.MM.dd'}}</div><div class=\"row\">{{ (obj._dateTime || null ) | date:'HH.mm.ss'}}</div></div></div><div class=\"line\"></div><div class=\"row-footer-obj\"><h3>{{obj.text}}</h3><p><timer start-time=\"obj._dateTime\">{{days}} days, {{hours}} hours, {{minutes}} min, {{seconds}} sec.</timer></p></div></div></div>"
   );
 
 
