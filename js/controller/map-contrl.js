@@ -35,4 +35,6 @@ app.controller('mapCntrl', function($scope , factoryGetOptions, tileLayers, map)
             }
         }
     }
+
+
 })

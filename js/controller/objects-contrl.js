@@ -40,12 +40,12 @@ app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, ma
     function refacto() {
         for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
             $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
+            $scope.factoryGetDevices[i]._elapsedTime = null;
             if(!$scope.factoryGetDevices[i]._timer){
                 $scope.factoryGetDevices[i]._timer = (function(){
                    return interval(i);
                 })()
             }
-
         }
         function interval(_i){
             var i= _i;
@@ -55,6 +55,5 @@ app.controller('objectsContrl', function ($scope,$interval,factoryGetDevices, ma
             return $interval(setDif,2000)
         }
     }
-
 
 })

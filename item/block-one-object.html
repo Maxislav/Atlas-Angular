@@ -3,11 +3,14 @@
         <div class="row-footer-obj">
 
             <div class="row">
-                <div class="col-11">
+                <div class="col-5">
                     <h3>{{obj.text}}</h3>
                 </div>
-                <div class="col-1">
-                    <div state-obj="obj._elapsedTime">
+                <div class="col-5">
+                    <h3>{{obj.phone}}</h3>
+                </div>
+                <div class="col-2 text-right">
+                    <div state-obj elapsed-time="obj._elapsedTime" speed="obj.speed">
 
                     </div>
                 </div>
@@ -27,6 +30,32 @@
             <div class="row">
                 <timer start-time="obj._dateTime">{{days}} days, {{hours}} hours, {{minutes}} min, {{seconds}} sec.
                 </timer>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="row">
+                        Спутниk
+                    </div>
+                    <div class="row">
+                       {{obj.satellites}}
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        Скорость
+                    </div>
+                    <div class="row">
+                        {{obj.speed}}
+                    </div>
+
+                </div>
+                <div class="col-3">
+
+                </div>
+                <div class="col-3">
+
+                </div>
+
             </div>
 
         </div>

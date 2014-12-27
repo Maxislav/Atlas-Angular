@@ -40,12 +40,14 @@ module.exports = function (grunt) {
         "js/directive/directive-mask.js",
         "js/directive/directive-setting-options.js",
         "js/directive/directive-valid.js",
+        "js/directive/directive-state-obj.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",
         "js/factory/factory-get-devices.js",
         "js/factory/factory-valid.js",
         "js/factory/factory-format-date.js"
+
     ]
 
 

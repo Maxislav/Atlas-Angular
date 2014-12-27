@@ -1,4 +1,4 @@
-app.controller('settingOptionsContr', function (timeZone, $http, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
+app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
 
 
     $scope.factorySettingOptions = factorySettingOptions;
@@ -64,13 +64,14 @@ app.controller('settingOptionsContr', function (timeZone, $http, srvModal, $time
 
     $scope.$watch('data.timeZone', function () {
         //console.log($scope.data.timeZone)
-    })
+    });
 
 
     $scope.delHttp = function () {
         $timeout(function () {
             for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
                 if ($scope.factoryGetDevices[i].imei == selectDevice) {
+                    $interval.cancel($scope.factoryGetDevices[i]._timer)
                     $scope.factoryGetDevices.splice(i, 1);
                     selectDevice = null;
                     for (var i = 0; i < $scope.checkbox.length; i++) {
