@@ -57,6 +57,7 @@ app.constant('timeZone', (function () {
 
 app.service('map', function (tileLayers) {
     var map = L.map('mapMap', {dragging: false});
+    L.Icon.Default.imagePath =  'build/images';
     this.map = map;
     this.lat = null
 })

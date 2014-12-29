@@ -1,4 +1,4 @@
-app.controller('objectsContrl', function ($scope,$interval,$timeout,factoryGetDevices, map, factoryGetOptions, factoryFormatDate){
+app.controller('objectsContrl', function ($scope,$interval,$timeout,factoryGetDevices, map, factoryGetOptions, factoryFormatDate, factoryMarker){
     $scope.factoryGetDevices = factoryGetDevices;
     $scope.factoryGetOptions =factoryGetOptions;
     $scope.current = {};
@@ -58,7 +58,7 @@ app.controller('objectsContrl', function ($scope,$interval,$timeout,factoryGetDe
         $scope.$watch('factoryGetDevices['+i+'].dateTime', function(){
            if($scope.factoryGetDevices[i]) {
                $scope.factoryGetDevices[i]._dateTime = setDate( $scope.factoryGetDevices[i].dateTime, $scope.factoryGetOptions.timeZone);
-
+               factoryMarker.marker(i);
            }
         })
     }

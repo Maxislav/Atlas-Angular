@@ -3,7 +3,7 @@
         <div class="row-footer-obj">
 
             <div class="row">
-                <div class="col-5">
+            <div class="col-5">
                     <h3>{{obj.text}}</h3>
                 </div>
                 <div class="col-5">
@@ -15,46 +15,52 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden-line">
-
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    {{ (obj._dateTime || null ) | date:'yyyy.MM.dd'}}
-                </div>
-                <div class="col-6">
-                    {{ (obj._dateTime || null ) | date:'HH.mm.ss'}}
-                </div>
-            </div>
 
             <div class="row">
                 <timer start-time="obj._dateTime">{{days}} days, {{hours}} hours, {{minutes}} min, {{seconds}} sec.
                 </timer>
             </div>
+            <div class="hidden-line" style="margin-top: 5px">
+
+            </div>
             <div class="row">
-                <div class="col-3">
-                    <div class="row">
-                        Спутниk
+                <div class="col-4">
+                    <div>
+                        {{ (obj._dateTime || null ) | date:'yy.MM.dd'}}
                     </div>
-                    <div class="row">
-                       {{obj.satellites}}
+                    <div>
+                        {{ (obj._dateTime || null ) | date:'HH.mm.ss'}}
                     </div>
+
+
                 </div>
-                <div class="col-3">
+                <div class="col-2">
+
                     <div class="row">
-                        Скорость
+                        Сп
+                    </div>
+                    <div class="row">
+                        {{obj.satellites}}
+                    </div>
+
+                </div>
+                <div class="col-2">
+
+                    <div class="row">
+                        Ск
                     </div>
                     <div class="row">
                         {{obj.speed}}
                     </div>
 
                 </div>
-                <div class="col-3">
 
-                </div>
-                <div class="col-3">
+            </div>
 
-                </div>
+
+
+            <div class="row">
+
 
             </div>
 
