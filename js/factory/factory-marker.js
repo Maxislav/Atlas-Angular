@@ -9,7 +9,7 @@ app.factory('factoryMarker',function(factoryGetDevices, map){
         devices[i]._popup = L.popup({offset:[0,-25]})
             .setLatLng([f(devices[i].lat),f(devices[i].lng)])
             .setContent( devices[i].text)
-            .openOn(map.map);
+            .addTo(map.map);
         return marker;
     }
 
