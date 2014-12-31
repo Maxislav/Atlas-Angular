@@ -89,6 +89,7 @@ module.exports = function (grunt) {
                 files: {
                     'build/index.min.js': [
                         'build/md5.min.js',
+                        'lib/angular/angular-cookies.js',
                         'js/controllers_index.js'
                     ]
                 }

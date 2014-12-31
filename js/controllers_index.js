@@ -1,12 +1,27 @@
-var app = angular.module('app', []);
-app.controller('events', function ($scope, $http) {
+var app = angular.module('app', ['ngCookies']);
+app.controller('events', function ($scope, $http, $cookies) {
     $scope.login = "Login"
     $scope.pass = "Pass"
     $scope.classVhide = 'hide'
     $scope.loginin = $scope.helpin
     $scope.lock = 'lock'
     $scope.loginin = ''
-    $scope.passin = ''
+    $scope.passin = '';
+    $cookies
+
+    if($cookies.key){
+        $http.post('php/isAuth.php')
+            .success(function(d){
+               if(d=='OK'){
+                    window.location.href =window.location.origin+window.location.pathname+'map.html'
+               }
+            })
+            .error(function(d){
+                console.log(d)
+            })
+    }
+
+
     var timeout;
     $scope.show = function (val, type) {
         $scope.classVhide = 'show'
