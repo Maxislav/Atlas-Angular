@@ -7,7 +7,9 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/container-blocks.html',
-    "<div class=\"block-item target\" ng-class=\"item.target\"><div ng-controller=\"objectsContrl\"><div class=\"title\">Объекты<div class=\"button float-right\" ng-click=\"show('target')\">x</div></div><div ng-include=\"'item/block-one-object.html'\" class=\"list-objects\"></div><div class=\"info-object\" ng-include=\"'item/info-object.html'\"></div></div></div><div class=\"block-item rout\" ng-class=\"item.rout\"><div><div class=\"title\">Mаршруты<div class=\"button float-right\" ng-click=\"show('rout')\">x</div></div></div></div><div class=\"block-item zone\" ng-class=\"item.zone\"><div><div class=\"title\">Зоны<div class=\"button float-right\" ng-click=\"show('zone')\">x</div></div></div></div>"
+    "<div class=\"block-item target\" ng-class=\"item.target\"><div ng-controller=\"objectsContrl\"><div class=\"title\">Объекты<div class=\"button float-right\" ng-click=\"show('target')\">x</div></div><div ng-include=\"'item/block-one-object.html'\" class=\"list-objects\"></div><!-- <div class=\"info-object\" ng-include=\"'item/info-object.html'\">\n" +
+    "\n" +
+    "        </div>--></div></div><div class=\"block-item rout\" ng-class=\"item.rout\"><div><div class=\"title\">Mаршруты<div class=\"button float-right\" ng-click=\"show('rout')\">x</div></div></div></div><div class=\"block-item zone\" ng-class=\"item.zone\"><div><div class=\"title\">Зоны<div class=\"button float-right\" ng-click=\"show('zone')\">x</div></div></div></div>"
   );
 
 
@@ -22,7 +24,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/info-object.html',
-    "<div class=\"row\"><div class=\"col-5\">Имя:</div><div class=\"col-7\">{{current.text}}</div></div><div class=\"row\"><div class=\"col-5\">Имеи:</div><div class=\"col-7\">{{current.imei}}</div></div><div class=\"row\"><div class=\"col-5\">Спутников:</div><div class=\"col-7\">{{current.satellites}}</div></div><div class=\"row\"><div class=\"col-5\">Дата:</div><div class=\"col-7\">{{ (current._dateTime || null ) | date:'yyyy.MM.dd'}}</div></div><div class=\"row\"><div class=\"col-5\">Время:</div><div class=\"col-7\">{{ (current._dateTime || null ) | date:'HH:mm:ss'}}</div></div>"
+    "<div class=\"info-object\"><div class=\"row\"><div class=\"col-5\">Имя:</div><div class=\"col-7\">{{factoryGetDevices.current.text}}</div></div><div class=\"row\"><div class=\"col-5\">Имеи:</div><div class=\"col-7\">{{factoryGetDevices.current.imei}}</div></div><div class=\"row\"><div class=\"col-5\">Спутников:</div><div class=\"col-7\">{{factoryGetDevices.current.satellites}}</div></div><div class=\"row\"><div class=\"col-5\">Дата:</div><div class=\"col-7\">{{ (factoryGetDevices.current._dateTime || null ) | date:'yyyy.MM.dd'}}</div></div><div class=\"row\"><div class=\"col-5\">Время:</div><div class=\"col-7\">{{ (factoryGetDevices.current._dateTime || null ) | date:'HH:mm:ss'}}</div></div></div>"
   );
 
 
