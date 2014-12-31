@@ -1,7 +1,7 @@
 app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
     var devices = [];
 
-
+    devices.current = {};
     var tempValue = [
         {
             'imei': '1111',
@@ -24,51 +24,52 @@ app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
     ]
     var isArray = angular.isArray;
 
-    function existEl(imei){
-        if(!imei){
+    function existEl(imei) {
+        if (!imei) {
             return false
         }
-        for(var i=0; i<devices.length; i++){
-            if(devices[i].imei == imei){
+        for (var i = 0; i < devices.length; i++) {
+            if (devices[i].imei == imei) {
                 return true
             }
         }
         return false
     }
 
-    function replaceParam(newObj){
-        for(var i = 0; i<devices.length; i++){
-            if(devices[i] && devices[i].imei && devices[i].imei==newObj.imei){
+    function replaceParam(newObj) {
+        for (var i = 0; i < devices.length; i++) {
+            if (devices[i] && devices[i].imei && devices[i].imei == newObj.imei) {
                 var devObj = devices[i];
-                for (var opt in newObj){
-                    if(newObj[opt]!=devObj[opt] && opt!='phone' && opt!='text'){
-                        devObj[opt]=newObj[opt]
+                for (var opt in newObj) {
+                    if (newObj[opt] != devObj[opt] && opt != 'phone' && opt != 'text') {
+                        devObj[opt] = newObj[opt]
                         console.log(opt)
                     }
                 }
             }
         }
     }
-    function reqParm(){
+
+    function reqParm() {
         $http.post('php/get-devices.php', null)
-            .success(function(d){
-                if(isArray(d)){
+            .success(function (d) {
+                if (isArray(d)) {
                     for (var i = 0; i < d.length; i++) {
-                        if(!existEl(d[i].imei)){
+                        if (!existEl(d[i].imei)) {
                             devices.push(d[i]);
-                        }else{
+                        } else {
                             replaceParam(d[i])
                         }
                     }
                 }
             })
-            .error(function(d){
+            .error(function (d) {
                 console.log(d)
             })
     }
 
     reqParm();
-    $interval(reqParm,5000);
+    $interval(reqParm, 5000);
 
     return devices
 

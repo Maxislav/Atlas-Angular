@@ -3,13 +3,15 @@ module.exports = function (grunt) {
     var sassMapFiles = [
         'css/map.scss',
         'css/leaflet.scss',
+        'css/extendleaflet.scss',
         'css/header.scss',
         'css/block-items.scss',
         'css/animate.scss',
         'css/modal.scss',
         'css/animate-mask.scss',
         'css/setting-options.scss',
-        'css/block-one-object.scss'
+        'css/block-one-object.scss',
+        'css/info-object.scss'
     ]
 
     var sassIndexFiles = [
@@ -41,6 +43,7 @@ module.exports = function (grunt) {
         "js/directive/directive-setting-options.js",
         "js/directive/directive-valid.js",
         "js/directive/directive-state-obj.js",
+        "js/directive/directive-infoobject.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",
