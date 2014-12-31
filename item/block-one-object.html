@@ -1,4 +1,4 @@
-<div ng-repeat="obj in factoryGetDevices | orderBy:'text'" class="block-one-object" ng-mouseover="setCurrent(obj.imei)">
+<div ng-repeat="obj in factoryGetDevices | orderBy:'text'" class="block-one-object" ng-click="setCurrent(obj.imei)">
     <div class="row-head">
         <div class="row-footer-obj">
 
@@ -51,6 +51,16 @@
                     </div>
                     <div class="row">
                         {{obj.speed}}
+                    </div>
+
+                </div>
+                <div class="col-2">
+
+                    <div class="row">
+                        Бат
+                    </div>
+                    <div class="row">
+                        {{obj.zaryad}}
                     </div>
 
                 </div>
