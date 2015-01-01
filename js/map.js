@@ -58,8 +58,39 @@ app.constant('timeZone', (function () {
 app.service('map', function (tileLayers) {
     var map = L.map('mapMap', {dragging: false,  closePopupOnClick: false});
     L.Icon.Default.imagePath =  'build/images';
+    L.DivIcon = L.Icon.extend({
+        createIcon: function (oldIcon) {
+            var div = (oldIcon && oldIcon.tagName === 'DIV') ? oldIcon : document.createElement('div'),
+                options = this.options;
+
+            if (options.html !== false) {
+                if(angular.isElement(options.html)){
+                    div.appendChild(options.html[0])
+                }else{
+                    div.innerHTML = options.html;
+                }
+
+
+            } else {
+                div.innerHTML = '';
+            }
+
+            if (options.bgPos) {
+                div.style.backgroundPosition =
+                    (-options.bgPos.x) + 'px ' + (-options.bgPos.y) + 'px';
+            }
+
+            this._setIconStyles(div, 'icon');
+            return div;
+        }
+    })
+
+
+
     this.map = map;
     this.lat = null
+    this.scope = {};
+    this.name = 'ddd'
 })
 
 app.factory('hashLocation', function (map) {

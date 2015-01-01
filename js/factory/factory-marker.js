@@ -1,12 +1,26 @@
-app.factory('factoryMarker',function(factoryGetDevices, map){
+app.factory('factoryMarker',function(factoryGetDevices, map, $compile){
     var f = parseFloat;
     var devices = factoryGetDevices;
+
+    function divIcon(name){
+        var template = '<marker name="'+name+'"></marker>';
+        var canvas = document.createElement('canvas')
+        var linkFn = $compile(template);
+        var content = linkFn(map.scope);
+
+        var icon = L.divIcon({
+            className: 'my-div',
+            iconAnchor:[15,15],
+            html: content
+        });
+        return icon
+    }
 
     function marker(i){
         devices[i]._marker && map.map.removeLayer(devices[i]._marker);
         devices[i]._popup &&  map.map.removeLayer( devices[i]._popup )
-        devices[i]._marker = L.marker([f(devices[i].lat),f(devices[i].lng)]).addTo(map.map);
-        devices[i]._popup = L.popup({offset:[0,-25]})
+        devices[i]._marker = L.marker([f(devices[i].lat),f(devices[i].lng)],{icon: divIcon(devices[i].text)}).addTo(map.map);
+        devices[i]._popup = L.popup({offset:[0,-10]})
             .setLatLng([f(devices[i].lat),f(devices[i].lng)])
             .setContent( devices[i].text)
             .addTo(map.map);

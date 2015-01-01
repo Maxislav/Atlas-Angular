@@ -44,6 +44,7 @@ module.exports = function (grunt) {
         "js/directive/directive-valid.js",
         "js/directive/directive-state-obj.js",
         "js/directive/directive-infoobject.js",
+        "js/directive/directive-marker.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",
