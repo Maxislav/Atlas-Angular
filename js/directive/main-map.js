@@ -6,6 +6,7 @@ app.directive('mainMap', function(windowSize, map){
             map.scope = scope
 
 
+
         }
     }
 })

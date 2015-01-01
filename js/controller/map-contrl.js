@@ -1,7 +1,9 @@
-app.controller('mapCntrl', function($scope , factoryGetOptions, tileLayers, map){
+app.controller('mapCntrl', function($scope , factoryGetOptions, tileLayers, map, factoryGetDevices){
 
     var load = false;
+    $scope.ll = '44'
     $scope.map=map.map
+    map.scope.factoryGetDevices = factoryGetDevices
     $scope.factoryGetOptions = factoryGetOptions;
     $scope.$watch('factoryGetOptions.map', function(){
         if( $scope.factoryGetOptions.map){

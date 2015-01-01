@@ -3,7 +3,8 @@ app.directive('marker', function(){
     return {
         restrict: 'EA',
         scope: {
-            name:'@name'
+            name:'@name',
+            device: '=device'
         },
         replace: true,
         template: '<canvas width="30" height="30"></canvas>',
@@ -21,6 +22,8 @@ app.directive('marker', function(){
             context.lineWidth = 1;
             context.strokeStyle = '#003300';
             context.stroke();
+
+            console.log($scope.device)
 
         }
     }
