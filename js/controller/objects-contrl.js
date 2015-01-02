@@ -85,13 +85,14 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
         })
         $scope.$watch('factoryGetDevices[' + i + ']._colorState',function(){
             var device = factoryGetDevices[i];
-            if(device._state == 'NO_SIGNAL'  ){
-                device._context && canvasRender.no_signal(device._context, device._colorState)
+            switch (device._state){
+                case 'NO_SIGNAL':
+                    device._context && canvasRender.no_signal(device._context, device._colorState);
+                    break;
+                case 'STOP':
+                    device._context && canvasRender.stop(device._context, device._colorState);
+                    break;
             }
-            if(device._state == 'STOP'){
-                device._context && canvasRender.stop(device._context, device._colorState)
-            }
-
         })
     }
 })
