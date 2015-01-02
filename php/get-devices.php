@@ -45,6 +45,7 @@ function formArr($imeis, $names, $phones){
         $satellites = null;
         $speed = null;
         $zaryad = null;
+        $azimuth = null;
         if (mysql_num_rows($res) > 0) {
             while ($row = mysql_fetch_array($res)) {
                 $imei = $row['imei'];
@@ -54,6 +55,7 @@ function formArr($imeis, $names, $phones){
                 $satellites = $row['sputnik'];
                 $speed = $row['speed'];
                 $zaryad = $row['zaryad'];
+                $azimuth = $row['azimuth'];
             }
         }
         array_push($arr, Array(
@@ -65,7 +67,8 @@ function formArr($imeis, $names, $phones){
             'lat'=>$lat,
             'lng'=>$lng,
             'speed'=>$speed,
-            'zaryad'=>$zaryad
+            'zaryad'=>$zaryad,
+            'azimuth'=>$azimuth
         ));
 
     }

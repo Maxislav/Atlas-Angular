@@ -1,4 +1,5 @@
 app.directive('stateObj', function () {
+    var F = parseFloat;
     return {
         restrict: 'EA',
         scope: {
@@ -9,21 +10,39 @@ app.directive('stateObj', function () {
             function color(milSec) {
                var _color = 'white'
                 if (!milSec) {
-                    _color = 'white'
-                   // return 'white'
+                    _color = 'white';
                 }else if (milSec < 600000) {
-                    _color = '#68FF49'
-                   // return '#68FF49'
+                    if($scope.device._state == 'MOVE'){
+                        _color = 'blue'
+                    }else{
+                        _color = '#68FF49'
+                    }
+
                 } else if (milSec < 1000 * 3600 * 24) {
                     var c =  (255*milSec)/(1000 * 3600 * 24);
                     c = parseInt(c);
                     _color = 'rgb(255,255,'+c+')'
-                    //return 'rgb(255,255,'+c+')'
                 }
                 $scope.device._colorState = _color;
                 return _color;
             }
+
+            function state(){
+                if(!$scope.elapsedTime){
+                    $scope.device._state = 'NO_SIGNAL'
+                }else if($scope.elapsedTime< 600000){
+                    if(1<F($scope.device.speed)){
+                        $scope.device._state = 'MOVE'
+                    }else{
+                        $scope.device._state = 'STOP'
+                    }
+                }else{
+                    $scope.device._state = 'NO_SIGNAL'
+                }
+            }
+
             $scope.$watch('elapsedTime', function () {
+                state();
                 $element.css('backgroundColor', color($scope.elapsedTime));
             })
         },
@@ -31,10 +50,11 @@ app.directive('stateObj', function () {
             el.css('width', '12px')
             el.css('height', '12px');
             el.css('display', 'inline-block')
-            el.css('boxShadow', '1px 1px 2px rgba(0,0,0,0.4')
+            el.css('boxShadow', '1px 1px 2px rgba(0,0,0,0.4)')
             el.css('margin', '2px')
             el.css('borderRadius', '50%')
-            el.css('transition', '5s')
+            el.css('border', '1px solid #003300')
+            el.css('transition', '0.3s')
         }
     }
 })

@@ -1,5 +1,4 @@
-
-app.directive('marker', function(){
+app.directive('marker', function(canvasRender){
     return {
         restrict: 'EA',
         scope: {
@@ -15,23 +14,33 @@ app.directive('marker', function(){
             var centerX = canvas.width / 2;
             var centerY = canvas.height / 2;
             var radius = 7;
-            /*context.beginPath();
-            context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-            context.fillStyle = '#68FF49';
-            context.fill();
-            context.lineWidth = 1;
-            context.strokeStyle = '#003300';
-            context.stroke();*/
+
+            $scope.$watch('device._state', function(){
+                switch ($scope.device._state){
+                    case 'MOVE':
+                        context.clearRect(0,0,30,30);
+                        context.beginPath();
+                        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+                        context.fillStyle = 'blue';
+                        context.fill();
+                        context.lineWidth = 1;
+                        context.strokeStyle = '#003300';
+                        context.stroke();
+                        console.log($scope.device._state)
+                        break;
+                }
+            })
+
             $scope.$watch('device._colorState',function(){
-                context.clearRect(0,0,30,30);
-                context.beginPath();
-                context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                context.fillStyle = $scope.device._colorState;
-                context.fill();
-                context.lineWidth = 1;
-                context.strokeStyle = '#003300';
-                context.stroke();
-                console.log($scope.device._colorState)
+                switch ($scope.device._state){
+                    case 'NO_SIGNAL':
+                        canvasRender.no_signal(context,$scope.device._colorState)
+                        break;
+                    case 'STOP':
+                        canvasRender.stop(context,$scope.device._colorState)
+                        break;
+
+                }
             })
         }
     }
