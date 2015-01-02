@@ -1,4 +1,4 @@
-app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGetDevices, map, factoryGetOptions, factoryFormatDate, factoryMarker) {
+app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGetDevices, map, factoryGetOptions, factoryFormatDate, factoryMarker, canvasRender) {
     $scope.factoryGetDevices = factoryGetDevices;
     $scope.factoryGetOptions = factoryGetOptions;
     $scope.current = {};
@@ -50,12 +50,10 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
         }
         function interval(_i) {
             var i = _i;
-
             function setDif() {
                 $scope.factoryGetDevices[i]._elapsedTime = new Date().getTime() - $scope.factoryGetDevices[i]._dateTime;
             }
-
-            return $interval(setDif, 2000)
+            return $interval(setDif, 1000)
         }
     }
 
@@ -66,8 +64,30 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
                 factoryMarker.marker(i);
             }
         })
-        $scope.$watch('factoryGetDevices[' + i + ']._state', function () {
+        $scope.$watch('factoryGetDevices[' + i + ']._elapsedTime', function () {
+            //factoryMarker.marker(i);
+            var elapsedTime = $scope.factoryGetDevices[i]._elapsedTime
+            var device = $scope.factoryGetDevices[i];
+            if(!elapsedTime){
+                device._state = 'NO_SIGNAL'
+            }else if(elapsedTime< 600000){
+                if(1<F(device.speed)){
+                    device._state = 'MOVE'
+                }else{
+                    device._state = 'STOP'
+                }
+            }else{
+                device._state = 'NO_SIGNAL'
+            }
+        })
+        $scope.$watch('factoryGetDevices[' + i + ']._state',function(){
             factoryMarker.marker(i);
+        })
+        $scope.$watch('factoryGetDevices[' + i + ']._colorState',function(){
+            var device = factoryGetDevices[i];
+            if(device._state == 'NO_SIGNAL'){
+                device._context && canvasRender.no_signal(device._context, device._colorState)
+            }
         })
     }
 })
