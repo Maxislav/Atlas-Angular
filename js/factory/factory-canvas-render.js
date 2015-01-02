@@ -2,7 +2,7 @@ app.factory('canvasRender', function(){
     function move(context,azimuth){
         context.clearRect(0,0,30,30);
         context.beginPath();
-        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        context.arc(30/2, 30/2, 7, 0, 2 * Math.PI, false);
         context.fillStyle = 'blue';
         context.fill();
         context.lineWidth = 1;
