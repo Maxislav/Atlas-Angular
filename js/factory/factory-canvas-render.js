@@ -7,13 +7,15 @@ app.factory('canvasRender', function(){
     function move(context,azimuth){
         context.clearRect(0,0,30,30);
 
-        context.beginPath();
-        context.moveTo(15,2);
-        context.lineTo(22,20);
-        context.lineTo(15,18);
-        context.lineTo(8,20);
         context.translate(15,15);
         context.rotate(getRadianAngle(parseFloat(azimuth)));
+
+        context.beginPath();
+        context.moveTo(15-15,2-15);
+        context.lineTo(22-15,20-15);
+        context.lineTo(15-15,18-15);
+        context.lineTo(8-15,20-15);
+
 
 
         context.fillStyle = 'blue';

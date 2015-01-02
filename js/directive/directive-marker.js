@@ -19,15 +19,7 @@ app.directive('marker', function(canvasRender){
                 switch ($scope.device._state){
                     case 'MOVE':
                         canvasRender.move(context,$scope.device.azimuth)
-                     /*   context.clearRect(0,0,30,30);
-                        context.beginPath();
-                        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                        context.fillStyle = 'blue';
-                        context.fill();
-                        context.lineWidth = 1;
-                        context.strokeStyle = '#003300';
-                        context.stroke();
-                        console.log($scope.device._state)*/
+
                         break;
                 }
             })
