@@ -66,5 +66,8 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
                 factoryMarker.marker(i);
             }
         })
+        $scope.$watch('factoryGetDevices[' + i + ']._state', function () {
+            factoryMarker.marker(i);
+        })
     }
 })

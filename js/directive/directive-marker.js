@@ -21,6 +21,8 @@ app.directive('marker', function(canvasRender){
                         canvasRender.move(context,$scope.device.azimuth)
 
                         break;
+                    case 'NO_SIGNAL':
+                        break
                 }
             })
 
