@@ -17,7 +17,6 @@ app.directive('stateObj', function () {
                     }else{
                         _color = '#68FF49'
                     }
-
                 } else if (milSec < 1000 * 3600 * 24) {
                     var c =  (255*milSec)/(1000 * 3600 * 24);
                     c = parseInt(c);

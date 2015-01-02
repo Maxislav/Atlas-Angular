@@ -36,7 +36,7 @@ app.factory('canvasRender', function(){
         context.lineWidth = 1;
         context.strokeStyle = '#003300';
         context.stroke();
-        console.log(color)
+        console.log('stop:'+color)
     }
     function no_signal(context, color){
         context.clearRect(0,0,30,30);
@@ -47,7 +47,7 @@ app.factory('canvasRender', function(){
         context.lineWidth = 1;
         context.strokeStyle = '#003300';
         context.stroke();
-        console.log(color)
+        console.log('no_signal:'+color)
     }
 
     return {
