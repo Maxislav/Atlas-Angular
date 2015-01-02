@@ -2,21 +2,26 @@ app.directive('stateObj', function () {
     return {
         restrict: 'EA',
         scope: {
+            device: '=device',
             elapsedTime: '=elapsedTime'
         },
         controller: function ($scope, $element, $attrs) {
             function color(milSec) {
+               var _color = 'white'
                 if (!milSec) {
-                    return 'white'
-                }
-                if (milSec < 600000) {
-                    return '#68FF49'
+                    _color = 'white'
+                   // return 'white'
+                }else if (milSec < 600000) {
+                    _color = '#68FF49'
+                   // return '#68FF49'
                 } else if (milSec < 1000 * 3600 * 24) {
                     var c =  (255*milSec)/(1000 * 3600 * 24);
                     c = parseInt(c);
-                    return 'rgb(255,255,'+c+')'
+                    _color = 'rgb(255,255,'+c+')'
+                    //return 'rgb(255,255,'+c+')'
                 }
-                return 'white'
+                $scope.device._colorState = _color;
+                return _color;
             }
             $scope.$watch('elapsedTime', function () {
                 $element.css('backgroundColor', color($scope.elapsedTime));
