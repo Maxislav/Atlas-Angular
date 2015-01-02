@@ -18,7 +18,7 @@ app.factory('canvasRender', function(){
 
 
 
-        context.fillStyle = 'blue';
+        context.fillStyle = '#8080FF';
         context.fill();
         context.closePath();
         context.lineWidth = 1;

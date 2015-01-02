@@ -13,7 +13,7 @@ app.directive('stateObj', function () {
                     _color = 'white';
                 }else if (milSec < 600000) {
                     if($scope.device._state == 'MOVE'){
-                        _color = 'blue'
+                        _color = '#8080FF'
                     }else{
                         _color = '#68FF49'
                     }
