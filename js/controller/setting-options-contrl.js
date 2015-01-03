@@ -1,4 +1,4 @@
-app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices) {
+app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvModal, $timeout, map, $scope, factorySettingOptions, factoryGetOptions, tileLayers, factoryGetDevices, serviceInfo) {
 
 
     $scope.factorySettingOptions = factorySettingOptions;
@@ -12,6 +12,7 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
     $scope.map = map.map;
     $scope.checkbox = [];
     $scope.newDevice = {};
+    $scope.serviceInfo = serviceInfo
     var selectDevice;
     $scope.settingsShow = function () {
         $scope.factorySettingOptions.show = !$scope.factorySettingOptions.show;

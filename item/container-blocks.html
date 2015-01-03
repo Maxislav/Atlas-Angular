@@ -1,14 +1,17 @@
 <div class="block-item target" ng-class="item.target">
     <div ng-controller="objectsContrl">
         <div class="title">
-            Объекты <div class="button float-right" ng-click="show('target')">x</div>
+            <div>
+                Объекты <div class="button float-right" ng-click="show('target')">x</div>
+            </div>
+
+
         </div>
+
         <div ng-include="'item/block-one-object.html'" class="list-objects">
 
         </div>
-       <!-- <div class="info-object" ng-include="'item/info-object.html'">
 
-        </div>-->
     </div>
 </div>
 <div class="block-item rout" ng-class="item.rout">
