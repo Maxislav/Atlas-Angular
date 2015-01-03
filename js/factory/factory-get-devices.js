@@ -2,7 +2,7 @@ app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
     var devices = [];
 
     devices.current = {};
-    devices.currentTime = null;
+    devices.timePost = null;
     var tempValue = [
         {
             'imei': '1111',
@@ -54,7 +54,7 @@ app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
     function reqParm() {
         $http.post('php/get-devices.php', null)
             .success(function (d) {
-                devices.currentTime = new Date().getTime();
+                devices.timePost = new Date().getTime();
                 if (isArray(d)) {
                     for (var i = 0; i < d.length; i++) {
                         if (!existEl(d[i].imei)) {
