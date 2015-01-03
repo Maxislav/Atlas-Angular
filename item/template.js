@@ -12,7 +12,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/elapsed-post.html',
-    "<div class=\"elapsed-post\"><timer start-time=\"factoryGetDevices.currentTime\">{{minutes}} min {{seconds}} sec</timer></div>"
+    "<div class=\"elapsed-post\"><timer start-time=\"factoryGetDevices.timePost\"><div tik>{{minutes}} min {{seconds}} sec</div></timer></div>"
   );
 
 
