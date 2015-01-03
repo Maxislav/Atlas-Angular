@@ -11,7 +11,8 @@ module.exports = function (grunt) {
         'css/animate-mask.scss',
         'css/setting-options.scss',
         'css/block-one-object.scss',
-        'css/info-object.scss'
+        'css/info-object.scss',
+        'css/elapsed-post.scss'
     ]
 
     var sassIndexFiles = [
@@ -46,6 +47,7 @@ module.exports = function (grunt) {
         "js/directive/directive-state-obj.js",
         "js/directive/directive-infoobject.js",
         "js/directive/directive-marker.js",
+        "js/directive/directive-elapsed-post.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",

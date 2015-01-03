@@ -1,3 +1,4 @@
-app.service('serviceInfo', function(){
-    this.showInfo = false
+app.service('serviceShowElements', function(){
+    this.showInfo = false;
+    this.showElapsedPost = false;
 })
