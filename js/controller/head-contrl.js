@@ -1,10 +1,11 @@
-app.controller('headContrl', function ($scope, srvModal, factorySettingOptions, $http) {
+app.controller('headContrl', function ($scope, srvModal, factorySettingOptions, $http, serviceShowElements) {
     $scope.item = {};
     $scope.factorySettingOptions = factorySettingOptions
 
     $scope.show = function (name) {
         $scope.item[name] = ($scope.item[name] == 'show') ? '' : 'show'
     }
+    $scope.serviceShowElements = serviceShowElements
     $scope.exitHttp = function () {
         $http.post('php/exit.php')
             .success(function (d) {

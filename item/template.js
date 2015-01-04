@@ -7,7 +7,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/container-blocks.html',
-    "<div class=\"block-item target\" ng-class=\"item.target\"><div ng-controller=\"objectsContrl\"><div class=\"title\"><div>Объекты<div class=\"button float-right\" ng-click=\"show('target')\">x</div></div></div><div ng-include=\"'item/block-one-object.html'\" class=\"list-objects\"></div></div></div><div class=\"block-item rout\" ng-class=\"item.rout\"><div><div class=\"title\">Mаршруты<div class=\"button float-right\" ng-click=\"show('rout')\">x</div></div></div></div><div class=\"block-item zone\" ng-class=\"item.zone\"><div><div class=\"title\">Зоны<div class=\"button float-right\" ng-click=\"show('zone')\">x</div></div></div></div>"
+    "<div class=\"block-item target\" ng-class=\"item.target\"><div ng-controller=\"objectsContrl\"><div class=\"title\"><div>Объекты<div class=\"button-close float-right\" ng-click=\"show('target')\"></div></div></div><div ng-include=\"'item/block-one-object.html'\" class=\"list-objects\"></div></div></div><div class=\"block-item rout\" ng-class=\"item.rout\"><div><div class=\"title\">Mаршруты<div class=\"button float-right\" ng-click=\"show('rout')\">x</div></div></div></div><div class=\"block-item zone\" ng-class=\"item.zone\"><div><div class=\"title\">Зоны<div class=\"button float-right\" ng-click=\"show('zone')\">x</div></div></div></div>"
   );
 
 
@@ -22,7 +22,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/header.html',
-    "<div style=\"position: absolute\"><div class=\"button\" ng-click=\"show('target')\">Объекты</div><div class=\"button\" ng-click=\"show('rout')\">Маршрут</div><div class=\"button\" ng-click=\"show('zone')\">Зоны</div></div><div style=\"float: right\"><div class=\"button\" ng-click=\"settingsShow()\">Настройки</div><div class=\"button\" ng-click=\"exit()\">Выход</div></div><div class=\"container-blocks\" ng-include=\"'item/container-blocks.html'\"></div>"
+    "<div style=\"position: absolute\"><div class=\"button\" ng-click=\"show('target')\">Объекты</div><div class=\"button\" ng-click=\"show('rout')\">Маршруты</div><div class=\"button\" ng-click=\"show('zone')\">Зоны</div><div class=\"button\" ng-click=\"serviceShowElements.showReport=!serviceShowElements.showReport\">Отчет</div></div><div style=\"float: right\"><div class=\"button\" ng-click=\"settingsShow()\">Настройки</div><div class=\"button\" ng-click=\"exit()\">Выход</div></div><div class=\"container-blocks\" ng-include=\"'item/container-blocks.html'\"></div>"
   );
 
 
@@ -33,6 +33,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('item/modal-exit.html',
     "<div ng-repeat=\"modal in modals\" class=\"animate-repeat\"><div ng-click=\"modal.close()\" class=\"button-close\"></div><div class=\"content-modal\">{{modal.text}}</div><div class=\"container-buttons-modal\"><div class=\"button\" ng-repeat=\"button in modal.buttons\" ng-click=\"button.action()\">{{button.text}}</div></div></div>"
+  );
+
+
+  $templateCache.put('item/report.html',
+    "<div>Отчет<div><calendar date=\"fromDate\"></calendar></div><div><calendar date=\"toDate\"></calendar></div><div>{{fromDate.getTime() | date:'yyyy.MM.dd'}} - {{toDate.getTime() | date:'yyyy.MM.dd'}}</div></div>"
   );
 
 

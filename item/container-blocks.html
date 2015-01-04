@@ -2,16 +2,13 @@
     <div ng-controller="objectsContrl">
         <div class="title">
             <div>
-                Объекты <div class="button float-right" ng-click="show('target')">x</div>
+                Объекты <div class="button-close float-right" ng-click="show('target')"></div>
             </div>
-
-
         </div>
 
         <div ng-include="'item/block-one-object.html'" class="list-objects">
 
         </div>
-
     </div>
 </div>
 <div class="block-item rout" ng-class="item.rout">

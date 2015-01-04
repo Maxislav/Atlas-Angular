@@ -4,6 +4,7 @@ module.exports = function (grunt) {
         'css/map.scss',
         'css/leaflet.scss',
         'css/extendleaflet.scss',
+        'calendar.scss',
         'css/header.scss',
         'css/block-items.scss',
         'css/animate.scss',
@@ -12,7 +13,10 @@ module.exports = function (grunt) {
         'css/setting-options.scss',
         'css/block-one-object.scss',
         'css/info-object.scss',
-        'css/elapsed-post.scss'
+        'css/elapsed-post.scss',
+        'css/report.scss',
+        'css/calendar.scss'
+
     ]
 
     var sassIndexFiles = [
@@ -25,6 +29,7 @@ module.exports = function (grunt) {
         "js/extendHttp.js",
         "lib/angular/angular-animate.js",
         "lib/angular/angular-timer.js",
+        "lib/angular/calendar.js",
 
         "js/map.js",
         "item/template.js",
@@ -37,7 +42,7 @@ module.exports = function (grunt) {
         "js/controller/head-contrl.js",
 
         "js/service/service-modal.js",
-        "js/service/service-info.js",
+        "js/service/service-show-elements.js",
         "js/directive/main-map.js",
         "js/directive/block-items.js",
         "js/directive/directive-modal.js",
@@ -48,6 +53,7 @@ module.exports = function (grunt) {
         "js/directive/directive-infoobject.js",
         "js/directive/directive-marker.js",
         "js/directive/directive-elapsed-post.js",
+        "js/directive/directive-report.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",

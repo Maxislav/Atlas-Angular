@@ -132,13 +132,16 @@ body {
 .col-7{
   width: 58%;
 }
+.col-8{
+  width: 66%;
+}
 .col-10{
   width: 82%;
 }
 .col-11{
   width: 91.6%;
 }
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-10, .col-11{
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-10, .col-11{
   float: left;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -231,3 +234,5 @@ mask {
 @import "setting-options";
 @import "info-object";
 @import "elapsed-post";
+@import "calendar";
+@import "report";

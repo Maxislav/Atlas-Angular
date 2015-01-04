@@ -7,6 +7,7 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
     var F = parseFloat;
     var setDate = factoryFormatDate.stringToGetTime;
 
+
     $scope.setCurrent = function (imei) {
         for (var i = 0; i < $scope.factoryGetDevices.length; i++) {
             if ($scope.factoryGetDevices[i].imei == imei) {

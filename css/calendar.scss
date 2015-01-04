@@ -1,0 +1,173 @@
+$radius: 3px;
+@mixin background-gradient(){
+  background: #ffffff; /* Old browsers */
+
+}
+
+.calendar-label{
+  .col-day{
+    width: 14.2%;
+  }
+  .col-day{
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    &:last-child{
+      float: none;
+      display: inline-block;
+    }
+  }
+
+
+
+
+  position: relative;
+  display: inline-block;
+  background: gainsboro;
+  border-radius: $radius;
+  margin: 5px;
+  border: 1px solid gainsboro;
+  .btn-forward, .btn-back{
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+    &:hover{
+      background: rgb(255, 228, 144);
+    }
+  }
+  .calendar-label-btn{
+    width: 160px;
+    text-align: center;
+   @include background-gradient();
+  }
+  .calendar-label-ico{
+    width: 30px;
+    height: 100%;
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    cursor: pointer;
+    padding: 0;
+    border-left: 1px solid gainsboro;
+    @include background-gradient();
+    &:active{
+      background: #ffffff;
+      box-shadow: inset  0 0 10px gainsboro;
+      -moz-user-select: none;
+      -o-user-select:none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  }
+  .ico-calendar{
+    background: url("../img/calendar.png") no-repeat center;
+    padding: 5px 10px;
+    background-size: 70% 70%;
+  }
+  &>div{
+    display: inline-block;
+    padding: 5px 10px;
+
+  }
+
+}
+.calendar-label .calendar-view{
+  position: absolute;
+  background: rgb(184,186,198); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(184,186,198,1) 1%, rgba(221,223,227,1) 76%, rgba(245,246,246,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(184,186,198,1)), color-stop(76%,rgba(221,223,227,1)), color-stop(100%,rgba(245,246,246,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8bac6', endColorstr='#f5f6f6',GradientType=0 ); /* IE6-9 */
+  top: 30px;
+  left: 100px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px gray;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  border-radius: 3px;
+  .label-close{
+   // position: absolute;
+   /* right: 5px;
+    top: 2px;*/
+    position: relative;
+    //text-align: center;
+    padding: 3px 0;
+  }
+
+  .button-close {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    background: url("../img/close.png") no-repeat center;
+    width: 16px;
+
+    height: 16px;
+    display: inline-block;
+    background-size: 100%;
+    &:active {
+      background-size: 90%;
+    }
+    cursor: pointer;
+  }
+
+  .container-months{
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    background: #ffffff;
+    padding: 5px 10px 2px 5px;
+  }
+  .block-month{
+    //margin: 5px;
+    display: inline-block;
+    min-width: 160px;
+    min-height: 160px;
+   // border: 1px solid gainsboro;
+    overflow: hidden;
+    .col-day{
+      border-radius: 3px;
+    }
+  }
+  .info-block{
+    padding: 10px;
+    text-align: center;
+  }
+  .col-day{
+    cursor: pointer;
+
+    padding: 2px;
+  }
+  .red{
+    color: red;
+  }
+  .name-month{
+    font-style: italic;
+    margin-left: 5px;
+  }
+  .numeric{
+    .col-day{
+      border: 1px solid transparent;
+      &:hover{
+        background: ghostwhite;
+      }
+    }
+    .current{
+      border: 1px solid red;
+    }
+    .select{
+      background: rgb(255, 228, 144);
+      &:hover{
+        background: #ffcf78;
+      }
+    }
+  }
+  .days{
+    border-bottom: 1px solid ghostwhite;
+  }
+
+}

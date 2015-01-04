@@ -1,0 +1,39 @@
+.report{
+  position: absolute;
+  display: none;
+  top: 30px;
+  width: 300px;
+  min-height: 100px;
+  @include background-modals();
+  @include box-shadow-modal();
+  z-index: 2;
+  left: 50%;
+  margin-left: -150px;
+}
+$transition: 0.2s;
+.report {
+  transition: $transition;
+  transform-origin: right top;
+  &.ng-hide-remove {
+    opacity: 0;
+    top: 0;
+    transform: scaleY(0.1);
+    &.ng-hide-remove-active {
+      transform: scaleY(1);
+      opacity: 1;
+      top: 30px;
+      transition: $transition;
+    }
+  }
+  &.ng-hide-add {
+    opacity: 1;
+    top: 30px;
+    transform: scaleY(1);
+    &.ng-hide-add-active {
+      top: 0;
+      transform: scaleY(0.1);
+      opacity: 0;
+      transition: $transition;
+    }
+  }
+}
