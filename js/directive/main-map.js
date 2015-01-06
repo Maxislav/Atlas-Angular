@@ -24,7 +24,7 @@ app.directive('mainMap', function (windowSize, map) {
 
             }
 
-           alert(windowSize.height);
+           alert(window.innerHeight);
             el.css('height', windowSize.height + 'px');
             map.scope = scope
 
