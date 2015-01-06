@@ -37,7 +37,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/report.html',
-    "<div ng-controller=\"reportContrl\">Отчет<div><calendar after=\"after\" before=\"before\" link=\"true\"></calendar></div></div>"
+    "<div ng-controller=\"reportContrl\">Отчет<div><calendar after=\"after\" before=\"before\" link=\"true\"></calendar></div><select ng-model=\"currentImei\" ng-options=\"device.imei as device.text for device in devices\" ng-change=\"changeCurrent()\"></select></div>"
   );
 
 

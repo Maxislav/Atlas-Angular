@@ -7,6 +7,9 @@
 
         </calendar>
     </div>
+    <select ng-model="currentImei"  ng-options="device.imei as device.text for device in devices" ng-change="changeCurrent()">
+
+    </select>
 
 
 </div>
