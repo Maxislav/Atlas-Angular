@@ -16,19 +16,7 @@ $radius: 3px;
   border-radius: $radius;
   margin: 5px;
   border: 1px solid gainsboro;
-  .col-day{
-    width: 14.2%;
-  }
-  .col-day{
-    float: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    &:last-child{
-      float: none;
-      display: inline-block;
-    }
-  }
+
   .calendar-label-btn {
     width: 180px;
     text-align: center;
@@ -69,11 +57,14 @@ $radius: 3px;
 
   }
 }
-.calendar-label .calendar-view {
+.calendar-view {
+  z-index: 3;
   position: absolute;
- @include background-modals();
+  background: #FCF3DC;
+  @include background-modals();
   top: 30px;
-  left: 100px;
+  left: 50%;
+  margin-left: -112px;
   padding: 0;
   overflow: hidden;
   box-shadow: 2px 2px 10px gray;
@@ -81,6 +72,19 @@ $radius: 3px;
   white-space: nowrap;
   font-size: 12px;
   border-radius: 3px;
+  .col-day{
+    width: 14.2%;
+  }
+  .col-day{
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    &:last-child{
+      float: none;
+      display: inline-block;
+    }
+  }
   .container-months {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     background: #ffffff;
@@ -108,7 +112,6 @@ $radius: 3px;
   }
   .col-day {
     cursor: pointer;
-
     padding: 2px;
   }
   .red {
@@ -211,9 +214,10 @@ $radius: 3px;
 }
 
 $transition: 0.2s;
-.calendar-label .calendar-view {
+.calendar-view {
   transition: $transition;
   transform-origin: right top;
+  transform: scaleY(1);
   &.ng-hide-remove {
     opacity: 0;
     top: 0;

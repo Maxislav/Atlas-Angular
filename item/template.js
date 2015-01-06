@@ -37,7 +37,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/report.html',
-    "<div>Отчет<div><calendar date=\"fromDate\"></calendar></div><div><calendar date=\"toDate\"></calendar></div><div>{{fromDate.getTime() | date:'yyyy.MM.dd'}} - {{toDate.getTime() | date:'yyyy.MM.dd'}}</div></div>"
+    "<div ng-controller=\"reportContrl\">Отчет<div><calendar after=\"after\" before=\"before\" link=\"true\"></calendar></div></div>"
   );
 
 
