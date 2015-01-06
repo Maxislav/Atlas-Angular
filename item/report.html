@@ -2,14 +2,33 @@
 
 
     Отчет
-    <div>
-        <calendar after="after" before="before" link="true">
+    <div class="row">
+        <div class="col-4">
+            Дата
 
-        </calendar>
+        </div>
+        <div class="col-8">
+            <calendar after="after" before="before" link="true">
+
+            </calendar>
+        </div>
+
     </div>
-    <select ng-model="currentImei"  ng-options="device.imei as device.text for device in devices" ng-change="changeCurrent()">
+    <div class="row">
+        <div class="col-4">
+            <span>
+                 Устройство
+            </span>
 
-    </select>
+        </div>
+        <div class="col-8">
+            <select ng-model="currentImei"  ng-options="device.imei as device.text for device in devices" ng-change="changeCurrent()">
+
+            </select>
+        </div>
+
+    </div>
+
 
 
 </div>

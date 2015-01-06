@@ -9,8 +9,22 @@
   z-index: 2;
   left: 50%;
   margin-left: -150px;
+  font-size: 13px;
   &>div{
-    padding: 5px;
+    padding: 10px;
+  }
+  select{
+    width: 100%;
+  }
+  .row{
+    margin-top: 5px;
+    display: table;
+  }
+  .col-4, .col-8{
+    float: inherit;
+    display: table-cell;
+    vertical-align: middle;
+
   }
 }
 
@@ -41,4 +55,5 @@ $transition: 0.2s;
       transition: $transition;
     }
   }
+
 }
