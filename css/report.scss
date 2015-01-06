@@ -9,7 +9,12 @@
   z-index: 2;
   left: 50%;
   margin-left: -150px;
+  &>div{
+    padding: 5px;
+  }
 }
+
+
 $transition: 0.2s;
 .report {
   transition: $transition;

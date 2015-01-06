@@ -1,10 +1,21 @@
 $radius: 3px;
-@mixin background-gradient(){
+@mixin background-gradient() {
   background: #ffffff; /* Old browsers */
-
+  background: linear-gradient(to bottom, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
 }
+@mixin  background-gradient-open(){
+  background: #FCF3DC;
+  box-shadow: inset 1px 2px 5px rgba(0,0,0,0.5);
+}
+.calendar-label {
 
-.calendar-label{
+  position: relative;
+  display: inline-block;
+  background: gainsboro;
+  border-radius: $radius;
+  margin: 5px;
+  border: 1px solid gainsboro;
   .col-day{
     width: 14.2%;
   }
@@ -18,30 +29,16 @@ $radius: 3px;
       display: inline-block;
     }
   }
-
-
-
-
-  position: relative;
-  display: inline-block;
-  background: gainsboro;
-  border-radius: $radius;
-  margin: 5px;
-  border: 1px solid gainsboro;
-  .btn-forward, .btn-back{
-    cursor: pointer;
+  .calendar-label-btn {
+    width: 180px;
     text-align: center;
-    border-radius: 3px;
-    &:hover{
-      background: rgb(255, 228, 144);
+    @include background-gradient();
+    transition: 0.1s;
+    &.open{
+      @include background-gradient-open();
     }
   }
-  .calendar-label-btn{
-    width: 160px;
-    text-align: center;
-   @include background-gradient();
-  }
-  .calendar-label-ico{
+  .calendar-label-ico {
     width: 30px;
     height: 100%;
     border-top-right-radius: $radius;
@@ -50,39 +47,31 @@ $radius: 3px;
     padding: 0;
     border-left: 1px solid gainsboro;
     @include background-gradient();
-    &:active{
+    &:active {
       background: #ffffff;
-      box-shadow: inset  0 0 10px gainsboro;
+      box-shadow: inset 0 0 10px gainsboro;
       -moz-user-select: none;
-      -o-user-select:none;
+      -o-user-select: none;
       -khtml-user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
   }
-  .ico-calendar{
+  .ico-calendar {
     background: url("../img/calendar.png") no-repeat center;
     padding: 5px 10px;
     background-size: 70% 70%;
   }
-  &>div{
+  & > div {
     display: inline-block;
     padding: 5px 10px;
 
   }
-
 }
-.calendar-label .calendar-view{
+.calendar-label .calendar-view {
   position: absolute;
-  background: rgb(184,186,198); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(184,186,198,1) 1%, rgba(221,223,227,1) 76%, rgba(245,246,246,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(184,186,198,1)), color-stop(76%,rgba(221,223,227,1)), color-stop(100%,rgba(245,246,246,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(184,186,198,1) 1%,rgba(221,223,227,1) 76%,rgba(245,246,246,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8bac6', endColorstr='#f5f6f6',GradientType=0 ); /* IE6-9 */
+ @include background-modals();
   top: 30px;
   left: 100px;
   padding: 0;
@@ -92,82 +81,181 @@ $radius: 3px;
   white-space: nowrap;
   font-size: 12px;
   border-radius: 3px;
-  .label-close{
-   // position: absolute;
-   /* right: 5px;
-    top: 2px;*/
-    position: relative;
-    //text-align: center;
-    padding: 3px 0;
-  }
-
-  .button-close {
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    background: url("../img/close.png") no-repeat center;
-    width: 16px;
-
-    height: 16px;
-    display: inline-block;
-    background-size: 100%;
-    &:active {
-      background-size: 90%;
-    }
-    cursor: pointer;
-  }
-
-  .container-months{
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  .container-months {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     background: #ffffff;
-    padding: 5px 10px 2px 5px;
-  }
-  .block-month{
-    //margin: 5px;
-    display: inline-block;
-    min-width: 160px;
-    min-height: 160px;
-   // border: 1px solid gainsboro;
-    overflow: hidden;
-    .col-day{
-      border-radius: 3px;
+    padding: 10px 15px;
+    &:last-child{
+      position: absolute;
     }
   }
-  .info-block{
-    padding: 10px;
-    text-align: center;
+
+  .block-month {
+    margin: 5px;
+    display: inline-block;
+    min-width: 180px;
+    min-height: 160px;
+
+    .col-day {
+      // border-radius: 3px;
+    }
   }
-  .col-day{
+  .info-block {
+    padding: 5px 2px;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .col-day {
     cursor: pointer;
 
     padding: 2px;
   }
-  .red{
+  .red {
     color: red;
   }
-  .name-month{
+  .name-month {
     font-style: italic;
-    margin-left: 5px;
+    margin: 5px;
   }
-  .numeric{
-    .col-day{
-      border: 1px solid transparent;
-      &:hover{
+  .numeric {
+    .col-day {
+      &:hover {
         background: ghostwhite;
       }
     }
-    .current{
-      border: 1px solid red;
+    .row {
+      //margin: -3px 0;
+      overflow: hidden;
     }
-    .select{
-      background: rgb(255, 228, 144);
-      &:hover{
+    .current {
+      border: 1px solid red;
+      //background: rgb(255, 228, 144);
+      &:hover {
         background: #ffcf78;
       }
     }
+    .select {
+      background: rgb(180, 199, 223);
+      &:hover {
+        background: rgba(132, 157, 211, 0.65);
+      }
+    }
+
   }
-  .days{
-    border-bottom: 1px solid ghostwhite;
+  .border-line {
+    border-bottom: 1px solid #E0E0E0;
+    position: relative;
+    overflow: inherit;
+    .btn-back, .btn-forward {
+      position: absolute;
+      top: -16px;
+      font-size: 25px;
+      font-weight: bold;
+      color: gray;
+      padding: 0px 5px;
+      cursor: pointer;
+      border-radius: 3px;
+      &:hover {
+        color: black;
+        background: ghostwhite;
+      }
+    }
+    .btn-back {
+      left: -18px;
+
+    }
+    .btn-forward {
+      right: -18px;
+
+    }
+  }
+  table td {
+    vertical-align: top;
+  }
+  .info-label {
+    &>div{
+      display: inline-block;
+    }
+    width: 100%;
+    margin: 8px auto;
+    .info-label-value {
+      padding: 5px 3px;
+      background: #ffffff;
+      margin-left: 5px;
+      border: 1px solid #E0E0E0;
+      border-radius: 3px;
+    }
+    .button {
+      margin-left: 5px;
+      border-radius: 3px;
+    }
+  }
+  .button {
+    @include background-gradient();
+    border: 1px solid #E0E0E0;
+    padding: 5px 3px;
+    cursor: pointer;
+    &:active {
+      background: #ffffff;
+      color: gray;
+    }
   }
 
 }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+$transition: 0.2s;
+.calendar-label .calendar-view {
+  transition: $transition;
+  transform-origin: right top;
+  &.ng-hide-remove {
+    opacity: 0;
+    top: 0;
+    transform: scaleY(0);
+    &.ng-hide-remove-active {
+      transform: scaleY(1);
+      opacity: 1;
+      top: 30px;
+      transition: $transition;
+    }
+  }
+  &.ng-hide-add {
+    opacity: 1;
+    top: 30px;
+    transform: scaleY(1);
+    &.ng-hide-add-active {
+      top: 0;
+      transform: scaleY(0);
+      opacity: 0;
+      transition: $transition;
+    }
+  }
+}
+
+
+$transition: 2s;
+.container-months {
+  transition: $transition linear;
+  transform: rotateY(0deg);
+  &.ng-enter {
+    transform-origin: right;
+    transform: rotateY(90deg);
+    &.ng-enter-active {
+      transform: rotateY(0deg);
+    }
+  }
+  &.ng-leave {
+    transform-origin: left;
+    transform: rotateY(90deg);
+    &.ng-leave-active {
+      transform: rotateY(0deg);
+    }
+  }
+}
+

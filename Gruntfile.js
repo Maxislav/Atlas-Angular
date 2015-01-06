@@ -40,6 +40,7 @@ module.exports = function (grunt) {
         "js/controller/footer-contrl.js",
         "js/controller/map-contrl.js",
         "js/controller/head-contrl.js",
+        "js/controller/report-contrl.js",
 
         "js/service/service-modal.js",
         "js/service/service-show-elements.js",
