@@ -22,7 +22,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/header.html',
-    "<div style=\"position: absolute\"><div class=\"button\" ng-click=\"show('target')\">Объекты</div><div class=\"button\" ng-click=\"show('rout')\">Маршруты</div><div class=\"button\" ng-click=\"show('zone')\">Зоны</div><div class=\"button\" ng-click=\"serviceShowElements.showReport=!serviceShowElements.showReport\">Отчет</div></div><div style=\"float: right\"><div class=\"button\" ng-click=\"settingsShow()\">Настройки</div><div class=\"button\" ng-click=\"exit()\">Выход</div></div><div class=\"container-blocks\" ng-include=\"'item/container-blocks.html'\"></div>"
+    "<div style=\"position: absolute\"><div class=\"button\" ng-click=\"show('target')\">Объекты</div><div class=\"button\" ng-click=\"show('zone')\">Зоны</div><div class=\"button\" ng-click=\"serviceShowElements.showReport=!serviceShowElements.showReport\">Отчет</div></div><div style=\"float: right\"><div class=\"button\" ng-click=\"settingsShow()\">Настройки</div><div class=\"button\" ng-click=\"exit()\">Выход</div></div><div class=\"container-blocks\" ng-include=\"'item/container-blocks.html'\"></div>"
   );
 
 
