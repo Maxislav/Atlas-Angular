@@ -42,16 +42,36 @@ function getTrack($imei, $from, $to){
             imei='$imei'
             AND datetime>= $from
             AND datetime<=$to
-
         )
         ORDER BY datetime   ";
     $res = mysql_query($sel);
     while($row = mysql_fetch_array($res)){
         array_push($track,Array(
-           'imei' =>$row['imei'],
-            'dateTime'=>$row['datetime']
+            'imei' => $row['imei'],
+        'dateTime' => $row['datetime'],
+        'lat' => $row['lat'],
+        'lng' => $row['lng'],
+        'satellites' => $row['sputnik'],
+        'speed' => $row['speed'],
+        'zaryad' => $row['zaryad'],
+        'azimuth' => $row['azimuth']
         ));
     }
+    $res = mysql_query( "SELECT * FROM  log  WHERE imei='$selectUserImei' AND `datetime`>= $fromPeriod AND `datetime`<=$toPeriod  ORDER BY `datetime`   ");
+
+    while($row = mysql_fetch_array($res)){
+        array_push($track,Array(
+            'imei' => $row['imei'],
+            'dateTime' => $row['datetime'],
+            'lat' => $row['lat'],
+            'lng' => $row['lng'],
+            'satellites' => $row['sputnik'],
+            'speed' => $row['speed'],
+            'zaryad' => $row['zaryad'],
+            'azimuth' => $row['azimuth']
+        ));
+    }
+
 
     return $track;
 

@@ -1,4 +1,4 @@
-app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http) {
+app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter) {
     $scope.serviceShowElements = serviceShowElements;
 
     var d = new Date()
@@ -40,7 +40,10 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                     to: to
                 })
                 .success(function (d) {
-                    console.log(d)
+                    //console.log(d)
+                    var orderBy = $filter('orderBy');
+                    var arr = orderBy(d,'dateTime')
+                    console.log(arr)
                 })
 
             //console.log(from+':'+to)
