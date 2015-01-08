@@ -1,4 +1,4 @@
-app.factory('factoryFormatDate', function () {
+app.factory('factoryFormatDate', function (factoryGetOptions) {
 
     function stringToGetTime(string, offset) {
         offset && (offset = parseFloat(offset));
@@ -16,13 +16,18 @@ app.factory('factoryFormatDate', function () {
         return date.getTime();
     }
 
-    function difTime(date){
+    function difTime(d){
 
+    }
 
+    function dateToString(d){
+        var newDate = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() - parseFloat(factoryGetOptions.timeZone))
+        return angular.format.date(newDate, 'yyMMddHHmmss')
     }
 
 
     return {
-        stringToGetTime: stringToGetTime
+        stringToGetTime: stringToGetTime,
+        dateToString: dateToString
     }
 })

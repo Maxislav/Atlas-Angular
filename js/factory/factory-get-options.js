@@ -9,7 +9,7 @@ app.factory('factoryGetOptions', function($timeout, $http){
             params.lng = d.startLng;
             params.mouselat = null;
             params. mouselng = null;
-            console.log('mess from factory ggl')
+            console.log('mess from factory ' + params.map)
         })
         .error(function(d){
             console.log('Error get opt '+d)
