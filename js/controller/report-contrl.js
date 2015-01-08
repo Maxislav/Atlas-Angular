@@ -33,9 +33,15 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
             var before = new Date(b.getFullYear(), b.getMonth(), b.getDate()+1);
             var from = factoryFormatDate.dateToString($scope.after);
             var to = factoryFormatDate.dateToString(before);
-          //  $http.post
+           $http
+               .post('php/showTrack.php',{
+               imei: $scope.devices.current.imei
+           })
+               .success(function(d){
+               console.log(d)
+           })
 
-            console.log(from+':'+to)
+            //console.log(from+':'+to)
         }
 
     }
