@@ -25,6 +25,8 @@ module.exports = function (grunt) {
 
     var jsMapFiles = [
         "lib/leaflet/leaflet.js",
+        "lib/leaflet/L.Symbol.js",
+        "lib/leaflet/L.PolylineDecorator.js",
         "lib/angular/angular.min.js",
         "js/extendHttp.js",
         "lib/angular/angular-animate.js",

@@ -51,11 +51,18 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                         smoothFactor: 1
 
                     });
+                    var pd = L.polylineDecorator(polilyne, {
+                        patterns: [
+                            {offset: 0, repeat: 10, symbol:L.Symbol.arrowHead({pixelSize: 15, polygon: false, pathOptions: {stroke: true}})}
+                        ]
+                    })
+
                    // firstpolyline.addTo(map.map)
                     $scope.devices.current.trackGroup && map.map.removeLayer($scope.devices.current.trackGroup)
-                    $scope.devices.current.trackGroup = L.featureGroup([polilyne])
+                    $scope.devices.current.trackGroup = L.featureGroup([pd,polilyne])
                         .bindPopup('Hello world!')
                         //.on('click', function() { alert('Clicked on a group!'); })
+
 
                     $scope.devices.current.trackGroup.addTo(map.map);
                    // $scope.current.trackGroup.
