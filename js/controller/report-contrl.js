@@ -1,4 +1,4 @@
-app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter','map', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map) {
+app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map) {
     $scope.serviceShowElements = serviceShowElements;
     var F = parseFloat;
     var d = new Date()
@@ -42,46 +42,41 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 .success(function (d) {
                     var orderBy = $filter('orderBy');
                     var arr = orderBy(d, 'dateTime');
-                    console.log(arr);
+                    // console.log(arr);
                     var pointList = setArrLatLngs(arr);
-                    var polilyne =  L.polyline(pointList, {
+                    var polilyne = L.polyline(pointList, {
                         color: 'blue',
-                            weight: 5,
-                            opacity: 0.5,
+                        weight: 5,
+                        opacity: 0.5,
                         smoothFactor: 1
 
                     });
-                    var pd = L.polylineDecorator(polilyne, {
-                        patterns: [
-                            {offset: 0, repeat: 10, symbol:L.Symbol.arrowHead({pixelSize: 15, polygon: false, pathOptions: {stroke: true}})}
-                        ]
-                    })
 
-                   // firstpolyline.addTo(map.map)
+                    var patterns = [
+                        { offset: '5%', repeat: '100px', symbol: new L.Symbol.ArrowHead({pixelSize: 10, headAngle: 45, polygon: false, pathOptions: {stroke: true, weight: 2, color: '#0024ff', opacity: "0.9"}})}
+                    ]
+                    var arrowHead = L.polylineDecorator(polilyne, {patterns: patterns});
                     $scope.devices.current.trackGroup && map.map.removeLayer($scope.devices.current.trackGroup)
-                    $scope.devices.current.trackGroup = L.featureGroup([pd,polilyne])
+                    $scope.devices.current.trackGroup = L.featureGroup([arrowHead, polilyne])
                         .bindPopup('Hello world!')
-                        //.on('click', function() { alert('Clicked on a group!'); })
-
-
+                    //.on('click', function() { alert('Clicked on a group!'); })
                     $scope.devices.current.trackGroup.addTo(map.map);
-                   // $scope.current.trackGroup.
-
                 })
 
         }
     }
 
-    function setArrLatLngs (arr){
+    function setArrLatLngs(arr) {
         var arrLatLngs = []
-        for (var i = 0; i<arr.length; i++){
-            arrLatLngs.push([
-                F(arr[i].lat),
-               F(arr[i].lng)
-            ])
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i].lat && arr[i].lat!='null'){
+                arrLatLngs.push([
+                    F(arr[i].lat),
+                    F(arr[i].lng)
+                ])
+            }
         }
         return arrLatLngs
-
     }
 
 }])
