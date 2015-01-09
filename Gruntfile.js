@@ -64,7 +64,8 @@ module.exports = function (grunt) {
         "js/factory/factory-valid.js",
         "js/factory/factory-format-date.js",
         "js/factory/factory-marker.js",
-        "js/factory/factory-canvas-render.js"
+        "js/factory/factory-canvas-render.js",
+        "js/factory/factory-report-marker.js"
 
     ]
 
