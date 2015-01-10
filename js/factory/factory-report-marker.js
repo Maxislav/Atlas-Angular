@@ -1,17 +1,44 @@
 app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions', function ($compile, map, factoryGetOptions) {
     var f = parseFloat;
+    function getRadianAngle(degreeValue) {
+        degreeValue = f(degreeValue);
+        return degreeValue * Math.PI / 180;
+    }
 
     function render(context, parms) {
         var color = getColor(parms.speed)
 
-        context.clearRect(0, 0, 20, 20);
-        context.beginPath();
-        context.arc(20 / 2, 20 / 2, 5, 0, 2 * Math.PI, false);
-        context.fillStyle = color;
-        context.fill();
-        context.lineWidth = 1;
-        context.strokeStyle = '#003300';
-        context.stroke();
+        if(parms.speed && 0<f(parms.speed)){
+
+            context.translate(10,10);
+            context.rotate(getRadianAngle(parseFloat(parms.azimuth)));
+            context.beginPath();
+
+            context.moveTo(0, -5);
+            context.lineTo(4,5);
+            context.lineTo(-4,5);
+
+            context.fillStyle = color;
+            context.fill();
+            context.closePath();
+            context.lineWidth = 1;
+            context.strokeStyle = '#003300';
+            context.stroke();
+
+
+        }else{
+            context.clearRect(0, 0, 20, 20);
+            context.beginPath();
+            context.arc(20 / 2, 20 / 2, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = color;
+            context.fill();
+            context.lineWidth = 1;
+            context.strokeStyle = '#003300';
+            context.stroke();
+        }
+
+
+
 
         //console.log(color)
     }
