@@ -1,11 +1,6 @@
 <div >
     <div class="row">
-        <div class="col-6">
-            Имя
-        </div>
-        <div class="col-6">
-            {{params.name}}
-        </div>
+        {{device.text}}
     </div>
     <div class="row">
         <div class="col-6">
@@ -23,5 +18,28 @@
             {{params._dateString | date:'HH:mm:ss'}}
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-6">
+            Cкорость
+        </div>
+        <div class="col-6">
+            {{params.speed}}km/h
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            Lat
+        </div>
+        <div class="col-6">
+            {{params.lat}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            Lng
+        </div>
+        <div class="col-6">
+            {{params.lng}}
+        </div>
+    </div>
 </div>

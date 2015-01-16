@@ -104,6 +104,8 @@ app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions','fact
         return icon
     }
 
+
+
     function addMarker(arr, device) {
         var arrMarkers = []
         for (var i = 0; i < arr.length; i++) {

@@ -37,7 +37,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/report-popup.html',
-    "<div><div class=\"row\"><div class=\"col-6\">Имя</div><div class=\"col-6\">{{params.name}}</div></div><div class=\"row\"><div class=\"col-6\">Дата</div><div class=\"col-6\">{{params._dateString | date:'dd.MM.yyyy'}}</div></div><div class=\"row\"><div class=\"col-6\">Время</div><div class=\"col-6\">{{params._dateString | date:'HH:mm:ss'}}</div></div></div>"
+    "<div><div class=\"row\">{{device.text}}</div><div class=\"row\"><div class=\"col-6\">Дата</div><div class=\"col-6\">{{params._dateString | date:'dd.MM.yyyy'}}</div></div><div class=\"row\"><div class=\"col-6\">Время</div><div class=\"col-6\">{{params._dateString | date:'HH:mm:ss'}}</div></div><div class=\"row\"><div class=\"col-6\">Cкорость</div><div class=\"col-6\">{{params.speed}}km/h</div></div><div class=\"row\"><div class=\"col-6\">Lat</div><div class=\"col-6\">{{params.lat}}</div></div><div class=\"row\"><div class=\"col-6\">Lng</div><div class=\"col-6\">{{params.lng}}</div></div></div>"
   );
 
 
