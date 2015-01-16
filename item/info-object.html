@@ -1,13 +1,17 @@
 <div class="info-object" ng-show="serviceShowElements.showInfo">
     <div class="row">
-        {{factoryGetDevices.current.imei}}
 
-
+        {{factoryGetDevices.current.text || 'None'}} {{factoryGetDevices.current.imei}}
     </div>
     <div class="row">
-        {{factoryGetDevices.current.text || 'None'}}
-
+        <div class="col-5">
+            Скорость:
+        </div>
+        <div class="col-7">
+            {{factoryGetDevices.current.speed}}
+        </div>
     </div>
+
     <div class="row" ng-if="factoryGetDevices.current._dateTime">
 
         <timer start-time="factoryGetDevices.current._dateTime">{{days}} days, {{hours}} hours, {{minutes}} min, {{seconds}} sec.
@@ -32,8 +36,4 @@
     <div class="row">
          {{factoryGetDevices.current.lat}} {{factoryGetDevices.current.lng}}
     </div>
-    <div class="row">
-        {{factoryGetDevices.current.speed}}
-    </div>
-
 </div>
