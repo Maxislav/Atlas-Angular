@@ -123,7 +123,9 @@ var app = angular
             event: event
         }
     }).run(function () {
-
+        document.ontouchmove = function(e) {
+            e.preventDefault();
+        }
     })
 
 
