@@ -2,6 +2,7 @@ app.factory('factoryFormatDate', function (factoryGetOptions) {
 
     function stringToGetTime(string, offset) {
         offset && (offset = parseFloat(offset));
+        offset = offset || parseFloat(factoryGetOptions.timeZone);
         var arr = ('' + string).split('');
         var yy = '' + arr[0] + arr[1];
         var mm = '' + arr[2] + arr[3];

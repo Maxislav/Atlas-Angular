@@ -1,0 +1,27 @@
+<div >
+    <div class="row">
+        <div class="col-6">
+            Имя
+        </div>
+        <div class="col-6">
+            {{params.name}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            Дата
+        </div>
+        <div class="col-6">
+            {{params._dateString | date:'dd.MM.yyyy'}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            Время
+        </div>
+        <div class="col-6">
+            {{params._dateString | date:'HH:mm:ss'}}
+        </div>
+    </div>
+
+</div>

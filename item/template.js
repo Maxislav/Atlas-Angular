@@ -36,8 +36,13 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('item/report-popup.html',
+    "<div><div class=\"row\"><div class=\"col-6\">Имя</div><div class=\"col-6\">{{params.name}}</div></div><div class=\"row\"><div class=\"col-6\">Дата</div><div class=\"col-6\">{{params._dateString | date:'dd.MM.yyyy'}}</div></div><div class=\"row\"><div class=\"col-6\">Время</div><div class=\"col-6\">{{params._dateString | date:'HH:mm:ss'}}</div></div></div>"
+  );
+
+
   $templateCache.put('item/report.html',
-    "<div ng-controller=\"reportContrl\">Отчет<div class=\"row\"><div class=\"col-4\">Дата</div><div class=\"col-8\"><calendar after=\"after\" before=\"before\" link=\"true\"></calendar></div></div><div class=\"row\"><div class=\"col-4\"><span>Устройство</span></div><div class=\"col-8\"><select ng-model=\"currentImei\" ng-options=\"device.imei as device.text for device in devices\" ng-change=\"changeCurrent()\"></select></div></div><div class=\"row container-buttons\"><div class=\"button\" ng-click=\"showTrack()\">Отобразить</div><div class=\"button\">Сохранить</div><div class=\"button\">Скрыть</div></div></div>"
+    "<div ng-controller=\"reportContrl\">Отчет<div class=\"row\"><div class=\"col-4\">Дата</div><div class=\"col-8\"><calendar after=\"after\" before=\"before\" link=\"true\"></calendar></div></div><div class=\"row\"><div class=\"col-4\"><span>Устройство</span></div><div class=\"col-8\"><select ng-model=\"currentImei\" ng-options=\"device.imei as device.text for device in devices\" ng-change=\"changeCurrent()\"></select></div></div><div class=\"row container-buttons\"><div class=\"button\" ng-click=\"showTrack()\">Отобразить</div><div class=\"button\">Сохранить</div><div class=\"button\" ng-click=\"hideTrack()\">Скрыть</div></div></div>"
   );
 
 

@@ -60,8 +60,6 @@ var app = angular
                     } else {
                         div.innerHTML = options.html;
                     }
-
-
                 } else {
                     div.innerHTML = '';
                 }
@@ -75,6 +73,30 @@ var app = angular
                 return div;
             }
         })
+
+        /*L.Popup = L.Class.extend({
+            _updateContent: function () {
+                if (!this._content) { return; }
+                var con = this._content;
+                if (typeof this._content === 'string') {
+                    this._contentNode.innerHTML = this._content;
+                } else if (angular.isElement(con)){
+                    while (this._contentNode.hasChildNodes()) {
+                        this._contentNode.removeChild(this._contentNode.firstChild);
+                    }
+                    this._contentNode.appendChild(this._content);
+                }
+
+
+                else {
+                    while (this._contentNode.hasChildNodes()) {
+                        this._contentNode.removeChild(this._contentNode.firstChild);
+                    }
+                    this._contentNode.appendChild(this._content);
+                }
+                this.fire('contentupdate');
+            }
+        })*/
         this.map = map;
         this.lat = null
         this.scope = {};

@@ -1,4 +1,4 @@
-app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions', function ($compile, map, factoryGetOptions) {
+app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions','factoryFormatDate', function ($compile, map, factoryGetOptions, factoryFormatDate) {
     var f = parseFloat;
     function getRadianAngle(degreeValue) {
         degreeValue = f(degreeValue);
@@ -80,8 +80,14 @@ app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions', func
 
     }
 
-    function divIcon(parms) {
+    function divIcon(parms, device) {
+        parms.imei = device.imei;
+        parms.name = device.text;
+        var dateString = factoryFormatDate.stringToGetTime(parms.dateTime)
 
+        parms._time = angular.format.date(new Date(dateString), 'HH:mm:ss');
+        parms._date = angular.format.date(new Date(dateString), 'dd:MM:yyyy');
+        parms._dateString = dateString;
         var stringParrams = JSON.stringify(parms);
         var template = '<canvas width="20" height="20" marker-report='+stringParrams+'></canvas>';
         var linkFn = $compile(template);
@@ -98,10 +104,10 @@ app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions', func
         return icon
     }
 
-    function addMarker(arr) {
+    function addMarker(arr, device) {
         var arrMarkers = []
         for (var i = 0; i < arr.length; i++) {
-            var marker = L.marker([f(arr[i].lat), f(arr[i].lng)], {icon: divIcon(arr[i])})
+            var marker = L.marker([f(arr[i].lat), f(arr[i].lng)], {icon: divIcon(arr[i], device)})
             arrMarkers.push(marker)
         }
 

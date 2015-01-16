@@ -42,7 +42,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 .success(function (d) {
                     var orderBy = $filter('orderBy');
                     var arr = orderBy(d, 'dateTime');
-                    var markers =  factoryReportMarker.addMarker(arr);
+                    var markers =  factoryReportMarker.addMarker(arr, $scope.devices.current);
                     var pointList = setArrLatLngs(arr);
                     var polilyne = L.polyline(pointList, {
                         color: 'blue',
@@ -68,8 +68,12 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
         }
     }
 
+    $scope.hideTrack = function(){
+        $scope.devices.current._trackGroup && map.map.removeLayer($scope.devices.current._trackGroup)
+    }
+
     function setArrLatLngs(arr) {
-        var arrLatLngs = []
+        var arrLatLngs = [];
         for (var i = 0; i < arr.length; i++) {
             if(arr[i].lat && arr[i].lat!='null'){
                 arrLatLngs.push([
