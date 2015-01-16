@@ -57,6 +57,7 @@ module.exports = function (grunt) {
         "js/directive/directive-marker.js",
         "js/directive/directive-elapsed-post.js",
         "js/directive/directive-report.js",
+        "js/directive/directive-marker-report.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",

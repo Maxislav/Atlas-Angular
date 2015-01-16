@@ -42,14 +42,13 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 .success(function (d) {
                     var orderBy = $filter('orderBy');
                     var arr = orderBy(d, 'dateTime');
-                   var markers =  factoryReportMarker.addMarker(arr);
+                    var markers =  factoryReportMarker.addMarker(arr);
                     var pointList = setArrLatLngs(arr);
                     var polilyne = L.polyline(pointList, {
                         color: 'blue',
-                        weight: 5,
-                        opacity: 0.5,
+                        weight: 10,
+                        opacity: 0.3,
                         smoothFactor: 1
-
                     });
 
                     var patterns = [
@@ -62,10 +61,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                     for(var i = 0; i<markers.length; i++){
                         group.push(markers[i])
                     };
-
-                    $scope.devices.current._trackGroup = L.featureGroup(group)
-                        .bindPopup('Hello world!')
-                    //.on('click', function() { alert('Clicked on a group!'); })
+                    $scope.devices.current._trackGroup = L.featureGroup(group);
                     $scope.devices.current._trackGroup.addTo(map.map);
                 })
 

@@ -81,7 +81,9 @@ app.factory('factoryReportMarker', ['$compile', 'map', 'factoryGetOptions', func
     }
 
     function divIcon(parms) {
-        var template = '<canvas width="20" height="20"></canvas>'
+
+        var stringParrams = JSON.stringify(parms);
+        var template = '<canvas width="20" height="20" marker-report='+stringParrams+'></canvas>';
         var linkFn = $compile(template);
         var content = linkFn(map.scope);
         var context = content[0].getContext('2d');

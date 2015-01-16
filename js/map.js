@@ -5,8 +5,6 @@ var app = angular
         $httpProvider.defaults.transformRequest = function (data) {
             return angular.isObject(data) && String(data) !== '[object File]' ? angular.toParam(data) : data;
         };
-
-
         //Http Intercpetor to check auth failures for xhr requests
         $httpProvider.interceptors.push('authHttpResponseInterceptor');
     }])
@@ -23,10 +21,7 @@ var app = angular
                     // console.log("Response Error 401", rejection);
                     var path = window.location.origin + '/' + window.location.pathname.split('/')[1] + '/'
                     console.log(path)
-
-
-                    window.location = path
-                    // $location.path(path)
+                    window.location = path;
                 }
                 return $q.reject(rejection);
             }
@@ -106,29 +101,7 @@ var app = angular
             event: event
         }
     }).run(function () {
-        var ws = new WebSocket('ws://192.168.65.73:8000/AtlasRevolution/php/web-socket.php');
 
-// и навешивает на новый объект три колл-бека:
-
-// первый вызовется, когда соединение будет установлено:
-        ws.onopen =connectionOpen;
-
-        function connectionOpen() {
-            ws.send("Connection opened...");
-        }
-
-
-// второй - когда соединено закроется
-        /*ws.onclose = function () {
-            console.log("Connection closed...")
-        };*/
-
-// и, наконец, третий - каждый раз, когда браузер получает какие-то данные через веб-сокет
-        ws.onmessage = function (evt) {
-            console.log(evt.data)
-        };
-
-        console.log('dfsd')
     })
 
 
