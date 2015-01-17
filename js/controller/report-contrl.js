@@ -56,16 +56,20 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
     function trackAddToMap(device) {
         var orderBy = $filter('orderBy');
         var limit = $filter('limitTo');
+        var myFilter = $filter('myFilter')
         var d = device._trackPoints;
 
         var arr = orderBy(d, 'dateTime');
+        var arrP = myFilter(arr,factoryGetOptions.stepPoints);
         if(d && d.length){
             device._maxSpeed = limit(orderBy(d, function (el) {
                 return F(el.speed)
             }, true), 1)[0].speed;
+
+           // console.log(myFilter(d,factoryGetOptions.stepPoints))
         }
         device._points = d && d.length
-        var markers = factoryReportMarker.addMarker(arr, device);
+        var markers = factoryReportMarker.addMarker(arrP, device);
         var pointList = setArrLatLngs(arr);
         var polilyne = L.polyline(pointList, {
             color: 'blue',
@@ -89,7 +93,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
         device._trackGroup.addTo(map.map);
 
     }
-    $scope.$watch('factoryGetOptions.limitSpeed', function(val){
+    $scope.$watchCollection('[factoryGetOptions.limitSpeed,factoryGetOptions.stepPoints]', function(){
         for (var i = 0; i < $scope.devices.length; i++) {
             if ($scope.devices[i]._trackPoints) {
                 trackAddToMap($scope.devices[i]);
@@ -119,3 +123,26 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
     }
 
 }])
+    .filter('myFilter', function(){
+        return function(input, n, link) {
+           if(link){
+               var k=0;
+               var end = input.length/n
+               while(k<end){
+                   input.splice(k, n-1)
+                   k++
+               }
+               return input;
+           }
+            else {
+               var arr = []
+               for (var i = 0; i<input.length; i++){
+                   if(i%n == 0 || i==input.length-1){
+                       arr.push(input[i])
+                   }
+               }
+               return arr
+           }
+
+        };
+    })
