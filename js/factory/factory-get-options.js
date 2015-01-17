@@ -9,7 +9,7 @@ app.factory('factoryGetOptions', function($timeout, $http){
             params.lng = d.startLng;
             params.mouselat = null;
             params. mouselng = null;
-            params.limitSpeed = "100";
+            params.limitSpeed = 100;
             console.log('mess from factory ' + params.map)
         })
         .error(function(d){

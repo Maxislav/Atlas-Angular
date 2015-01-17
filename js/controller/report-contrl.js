@@ -1,4 +1,4 @@
-app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map','factoryReportMarker', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker) {
+app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', 'factoryReportMarker', 'factoryGetOptions', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker, factoryGetOptions) {
     $scope.serviceShowElements = serviceShowElements;
     var F = parseFloat;
     var d = new Date()
@@ -8,6 +8,8 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
 
     $scope.devices = factoryGetDevices;
     $scope.current;
+    $scope.factoryGetOptions = factoryGetOptions;
+
 
     $scope.$watch('devices.current', function () {
         $scope.devices.current && ($scope.currentImei = $scope.devices.current.imei);
@@ -40,52 +42,73 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                     to: to
                 })
                 .success(function (d) {
-                    var orderBy = $filter('orderBy');
-                    var limit = $filter('limitTo');
-                    var arr = orderBy(d, 'dateTime');
+                    $scope.devices.current._trackPoints = d;
+                    for (var i = 0; i < $scope.devices.length; i++) {
+                        if ($scope.devices[i]._trackPoints) {
+                            trackAddToMap($scope.devices[i]);
+                        }
 
-                  //  $scope.devices.current._maxSpeed = limit(orderBy(d,'speed', true),1);
-                    $scope.devices.current._maxSpeed = limit(orderBy(d, function(el){
-                        return F(el.speed)
-                    }, true), 1)[0].speed;
-                    $scope.devices.current._points = d && d.length
-
-                    var markers =  factoryReportMarker.addMarker(arr, $scope.devices.current);
-                    var pointList = setArrLatLngs(arr);
-                    var polilyne = L.polyline(pointList, {
-                        color: 'blue',
-                        weight: 10,
-                        opacity: 0.3,
-                        smoothFactor: 1
-                    });
-
-                    var patterns = [
-                        { offset: '5%', repeat: '100px', symbol: new L.Symbol.ArrowHead({pixelSize: 10, headAngle: 45, polygon: false, pathOptions: {stroke: true, weight: 2, color: '#0024ff', opacity: "0.9"}})}
-                    ]
-                    var arrowHead = L.polylineDecorator(polilyne, {patterns: patterns});
-                    $scope.devices.current._trackGroup && map.map.removeLayer($scope.devices.current._trackGroup)
-                    var group =[arrowHead, polilyne];
-
-                    for(var i = 0; i<markers.length; i++){
-                        group.push(markers[i])
-                    };
-                    $scope.devices.current._trackGroup = L.featureGroup(group);
-                    $scope.devices.current._trackGroup.addTo(map.map);
+                    }
                 })
-
         }
     }
 
-    $scope.hideTrack = function(){
+    function trackAddToMap(device) {
+        var orderBy = $filter('orderBy');
+        var limit = $filter('limitTo');
+        var d = device._trackPoints;
+
+        var arr = orderBy(d, 'dateTime');
+        if(d && d.length){
+            device._maxSpeed = limit(orderBy(d, function (el) {
+                return F(el.speed)
+            }, true), 1)[0].speed;
+        }
+        device._points = d && d.length
+        var markers = factoryReportMarker.addMarker(arr, device);
+        var pointList = setArrLatLngs(arr);
+        var polilyne = L.polyline(pointList, {
+            color: 'blue',
+            weight: 10,
+            opacity: 0.3,
+            smoothFactor: 1
+        });
+
+        var patterns = [
+            { offset: '5%', repeat: '100px', symbol: new L.Symbol.ArrowHead({pixelSize: 10, headAngle: 45, polygon: false, pathOptions: {stroke: true, weight: 2, color: '#0024ff', opacity: "0.9"}})}
+        ]
+        var arrowHead = L.polylineDecorator(polilyne, {patterns: patterns});
+        device._trackGroup && map.map.removeLayer(device._trackGroup)
+        var group = [arrowHead, polilyne];
+
+        for (var i = 0; i < markers.length; i++) {
+            group.push(markers[i])
+        }
+        ;
+        device._trackGroup = L.featureGroup(group);
+        device._trackGroup.addTo(map.map);
+
+    }
+    $scope.$watch('factoryGetOptions.limitSpeed', function(val){
+        for (var i = 0; i < $scope.devices.length; i++) {
+            if ($scope.devices[i]._trackPoints) {
+                trackAddToMap($scope.devices[i]);
+            }
+        }
+    })
+
+
+    $scope.hideTrack = function () {
         $scope.devices.current._trackGroup && map.map.removeLayer($scope.devices.current._trackGroup);
         $scope.devices.current._maxSpeed && delete  $scope.devices.current._maxSpeed;
         $scope.devices.current._points && delete  $scope.devices.current._points;
+        $scope.devices.current._trackPoints && delete  $scope.devices.current._trackPoints
     }
 
     function setArrLatLngs(arr) {
         var arrLatLngs = [];
         for (var i = 0; i < arr.length; i++) {
-            if(arr[i].lat && arr[i].lat!='null'){
+            if (arr[i].lat && arr[i].lat != 'null') {
                 arrLatLngs.push([
                     F(arr[i].lat),
                     F(arr[i].lng)
