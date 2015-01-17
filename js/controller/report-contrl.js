@@ -43,6 +43,10 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 })
                 .success(function (d) {
                     $scope.devices.current._trackPoints = d;
+                    if(d && d.length){
+                        factoryGetOptions.stepPoints = Math.ceil(d.length/200);
+                    }
+
                     for (var i = 0; i < $scope.devices.length; i++) {
                         if ($scope.devices[i]._trackPoints) {
                             trackAddToMap($scope.devices[i]);
@@ -60,6 +64,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
         var d = device._trackPoints;
 
         var arr = orderBy(d, 'dateTime');
+
         var arrP = myFilter(arr,factoryGetOptions.stepPoints);
         if(d && d.length){
             device._maxSpeed = limit(orderBy(d, function (el) {
