@@ -1,5 +1,5 @@
 app.service('serviceShowElements', function(){
-    this.showInfo = false;
+    this.showInfo = true;
     this.showElapsedPost = false;
     this.showReport = false;
 })
