@@ -41,7 +41,15 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 })
                 .success(function (d) {
                     var orderBy = $filter('orderBy');
+                    var limit = $filter('limitTo');
                     var arr = orderBy(d, 'dateTime');
+
+                  //  $scope.devices.current._maxSpeed = limit(orderBy(d,'speed', true),1);
+                    $scope.devices.current._maxSpeed = limit(orderBy(d, function(el){
+                        return F(el.speed)
+                    }, true), 1)[0].speed;
+                    $scope.devices.current._points = d && d.length
+
                     var markers =  factoryReportMarker.addMarker(arr, $scope.devices.current);
                     var pointList = setArrLatLngs(arr);
                     var polilyne = L.polyline(pointList, {
@@ -69,7 +77,9 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
     }
 
     $scope.hideTrack = function(){
-        $scope.devices.current._trackGroup && map.map.removeLayer($scope.devices.current._trackGroup)
+        $scope.devices.current._trackGroup && map.map.removeLayer($scope.devices.current._trackGroup);
+        $scope.devices.current._maxSpeed && delete  $scope.devices.current._maxSpeed;
+        $scope.devices.current._points && delete  $scope.devices.current._points;
     }
 
     function setArrLatLngs(arr) {

@@ -39,4 +39,23 @@
             Скрыть
         </div>
     </div>
+    <div class="row" ng-if="devices.current._maxSpeed">
+        <div class="col-6">
+                 Max скорость
+        </div>
+        <div class="col-6">
+           {{devices.current._maxSpeed}}
+        </div>
+    </div>
+    <div class="row" ng-if="devices.current._points">
+        <div class="col-6">
+            <span>
+                 Количество точек
+            </span>
+        </div>
+        <div class="col-6">
+            {{devices.current._points}}
+        </div>
+    </div>
+
 </div>
