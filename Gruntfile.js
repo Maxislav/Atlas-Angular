@@ -15,7 +15,8 @@ module.exports = function (grunt) {
         'css/info-object.scss',
         'css/elapsed-post.scss',
         'css/report.scss',
-        'css/calendar.scss'
+        'css/calendar.scss',
+        'css/report-graph.scss'
 
     ]
 
@@ -43,9 +44,12 @@ module.exports = function (grunt) {
         "js/controller/map-contrl.js",
         "js/controller/head-contrl.js",
         "js/controller/report-contrl.js",
+        "js/controller/graph-contrl.js",
 
         "js/service/service-modal.js",
         "js/service/service-show-elements.js",
+        "js/service/service-report.js",
+
         "js/directive/main-map.js",
         "js/directive/block-items.js",
         "js/directive/directive-modal.js",
@@ -58,6 +62,8 @@ module.exports = function (grunt) {
         "js/directive/directive-elapsed-post.js",
         "js/directive/directive-report.js",
         "js/directive/directive-marker-report.js",
+        "js/directive/directive-report-graph.js",
+        "js/directive/directive-svg.js",
 
         "js/factory/factory-setting-options.js",
         "js/factory/factory-get-options.js",

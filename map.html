@@ -5,9 +5,9 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, height=device-height,minimum-scale=1.0, maximum-scale=4.0">
     <link rel="stylesheet" href="build/map.css"/>
 
-    <!--$dev <script src="lib/leaflet/leaflet-src.js"></script>
+    <!--$dev--><script src="lib/leaflet/leaflet-src.js"></script>
     <script src="lib/leaflet/leaflet.polylineDecorator.js"></script>
-    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
     <script src="js/extendHttp.js"></script>
     <script src="lib/angular/angular-animate.js"></script>
     <script src="lib/angular/angular-timer.js"></script>
@@ -23,9 +23,12 @@
     <script src="js/controller/map-contrl.js"></script>
     <script src="js/controller/head-contrl.js"></script>
     <script src="js/controller/report-contrl.js"></script>
+    <script src="js/controller/graph-contrl.js"></script>
 
     <script src="js/service/service-modal.js"></script>
     <script src="js/service/service-show-elements.js"></script>
+    <script src="js/service/service-report.js"></script>
+
     <script src="js/directive/main-map.js"></script>
     <script src="js/directive/block-items.js"></script>
     <script src="js/directive/directive-modal.js"></script>
@@ -38,6 +41,8 @@
     <script src="js/directive/directive-elapsed-post.js"></script>
     <script src="js/directive/directive-report.js"></script>
     <script src="js/directive/directive-marker-report.js"></script>
+    <script src="js/directive/directive-report-graph.js"></script>
+    <script src="js/directive/directive-svg.js"></script>
 
     <script src="js/factory/factory-setting-options.js"></script>
     <script src="js/factory/factory-get-options.js"></script>
@@ -46,10 +51,10 @@
     <script src="js/factory/factory-marker.js"></script>
     <script src="js/factory/factory-canvas-render.js"></script>
     <script src="js/factory/factory-report-marker.js"></script>
-    <script src="js/factory/factory-format-date.js"></script> &dev-->
+    <script src="js/factory/factory-format-date.js"></script><!--&dev-->
 
-    <!--$prod-->   <script src="build/map.min.js"></script>
-   <!--&prod-->
+    <!--$prod    <script src="build/map.min.js"></script>
+    &prod-->
 </head>
 <body ng-controller="mapCntrl">
    <mask ng-controller="maskContrl" ng-show="show" class="animate-mask">
@@ -79,6 +84,10 @@
    <infoobject>
 
    </infoobject>
+
+   <div class="report-graph" ng-if="serviceShowElements.reportGraph">
+ddddd
+   </div>
 
    <div class="footer" ng-include="'item/footer.html'" ng-controller="footerContrl" >
 

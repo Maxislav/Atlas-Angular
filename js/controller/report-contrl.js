@@ -1,10 +1,11 @@
-app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', 'factoryReportMarker', 'factoryGetOptions', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker, factoryGetOptions) {
+app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', 'factoryReportMarker', 'factoryGetOptions','serviceReport', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker, factoryGetOptions, serviceReport) {
     $scope.serviceShowElements = serviceShowElements;
     var F = parseFloat;
-    var d = new Date()
+    var d = new Date();
+    $scope.serviceReport = serviceReport;
 
-    $scope.before = new Date(d.getFullYear(), d.getMonth(), d.getDate())
-    $scope.after = new Date(d.getFullYear(), d.getMonth(), d.getDate())
+    $scope.serviceReport.before = new Date(d.getFullYear(), d.getMonth(), d.getDate())
+    $scope.serviceReport.after = new Date(d.getFullYear(), d.getMonth(), d.getDate())
 
     $scope.devices = factoryGetDevices;
     $scope.current;
@@ -31,9 +32,9 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
 
     $scope.showTrack = function () {
         if ($scope.devices && $scope.devices.current && $scope.devices.current.imei) {
-            var b = $scope.before;
+            var b = $scope.serviceReport.before;
             var before = new Date(b.getFullYear(), b.getMonth(), b.getDate() + 1);
-            var from = factoryFormatDate.dateToString($scope.after);
+            var from = factoryFormatDate.dateToString($scope.serviceReport.after);
             var to = factoryFormatDate.dateToString(before);
             $http
                 .post('php/showTrack.php', {
@@ -70,10 +71,11 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
             device._maxSpeed = limit(orderBy(d, function (el) {
                 return F(el.speed)
             }, true), 1)[0].speed;
-
-           // console.log(myFilter(d,factoryGetOptions.stepPoints))
         }
-        device._points = d && d.length
+        if(d && d.length){
+            device._points = d
+        }
+
         var markers = factoryReportMarker.addMarker(arrP, device);
         var pointList = setArrLatLngs(arr);
         var polilyne = L.polyline(pointList, {

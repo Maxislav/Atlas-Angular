@@ -123,6 +123,9 @@ var app = angular
             event: event
         }
     }).run(function () {
+
+        window.F = parseFloat;
+        String.prototype.f = function(){return parseFloat(this)}
         document.ontouchmove = function(e) {
             e.preventDefault();
         }

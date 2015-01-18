@@ -1,0 +1,41 @@
+.report-graph{
+  position: absolute;
+  z-index: 3;
+  bottom: 40px;
+  background: red;
+  height: 40%;
+  width: 100%;
+  @include background-modals();
+}
+$transition: 0.2s;
+.report-graph {
+  transition: $transition;
+  transform: rotate(0deg);
+  overflow: hidden;
+  &.ng-enter {
+    opacity: 0;
+    max-height: 0;
+    bottom: 0;
+    transform: rotateX(90deg);
+    &.ng-enter-active {
+      opacity: 1;
+      transition: $transition;
+      max-height: 40%;
+      bottom: 40px;
+      transform: rotateX(0deg);
+    }
+  }
+  &.ng-leave {
+    opacity: 1;
+    max-height: 40%;
+    transform-origin: top;
+    bottom: 40px;
+
+    &.ng-leave-active {
+      opacity: 0;
+      max-height: 0;
+      bottom: 0;
+      transition: $transition;
+    }
+  }
+}
