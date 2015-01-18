@@ -16,7 +16,7 @@ app.directive('graphPath', function ($timeout) {
                     string+=' L'+ ks.x +' '+ ks.y
                 }
                 scope.value = string
-                console.log(string)
+             //   console.log(string)
             }
         }
     }

@@ -28,14 +28,14 @@ app.controller('graphContrl',[
         var from = $scope.serviceReport.after.getTime();
         var to = $scope.serviceReport.before.getTime() + (3600*24*1000);
         var k = xx/(to - from);
-        $scope.arrDeviceCoord[_i] = []
-        var koord = $scope.arrDeviceCoord[_i]
+        $scope.arrDeviceCoord[_i] = [];
+        var koord = $scope.arrDeviceCoord[_i];
         for(var i = 0; i<arr.length; i++){
            koord[i] = {
                 x: (k*(arr[i]._dateString - from)).toFixed(0).f(),
-                y: arr[i].speed.f()
+                y: 100-arr[i].speed.f()
            }
         }
-        console.log($scope.arrDeviceCoord[_i])
+        console.log($scope.arrDeviceCoord[_i]);
     }
 }])
