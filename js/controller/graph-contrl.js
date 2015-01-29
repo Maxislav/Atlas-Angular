@@ -17,7 +17,12 @@ app.controller( 'graphContrl', [
 			} );
 			$scope.$watch( 'serviceReport.before', function ( val ) {
 				console.log( val )
-			} )
+			} );
+			$scope.$watch( 'factoryGetOptions.limitSpeed' , function(val){
+				for (var i= 0; i<$scope.factoryGetDevices.length; i++){
+					toCoord( $scope.factoryGetDevices[i]._points, i )
+				}
+			});
 		}
 
 		function toCoord( arr, _i ) {
