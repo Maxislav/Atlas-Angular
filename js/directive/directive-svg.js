@@ -2,15 +2,15 @@ app.directive('reportGraphSvg', function ($timeout) {
     return {
         restrict: 'A',
         scope: {
-            graphPath: '='
+            graphPath: '=',
+            reportHeight: '='
         },
         replace: false,
         //template: '<path d="{{value}}" stroke="red" stroke-width="3" fill="none"></path>',
         link: function (scope, el, attr) {
             scope.graphPath
-         //   console.log( scope.graphPath);
             var template = '';
-
+            el.css('height',scope.reportHeight+'px');
             if(angular.isArray(scope.graphPath)){
                 for(var i = 0; i<scope.graphPath.length; i++ ){
                     var string = 'M'+scope.graphPath[0].x+' '+scope.graphPath[0].y

@@ -37,7 +37,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('item/report-graph.html',
-    "<div><svg report-graph-svg height=\"200\" width=\"100%\" ng-repeat=\"device in arrDeviceCoord\" graph-path=\"device\"></svg></div>"
+    "<div><svg report-graph-svg height=\"200\" width=\"100%\" ng-repeat=\"device in arrDeviceCoord\" graph-path=\"device\" report-height=\"reportGraphHeight\"></svg></div>"
   );
 
 

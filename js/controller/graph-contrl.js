@@ -24,16 +24,18 @@ app.controller( 'graphContrl', [
 			if ( !arr ) {
 				return
 			}
+			var yy = $scope.reportGraphHeight;
 			var xx = window.innerWidth;
 			var from = $scope.serviceReport.after.getTime();
 			var to = $scope.serviceReport.before.getTime() + (3600 * 24 * 1000);
 			var k = xx / (to - from);
+			var ky = F(yy/$scope.factoryGetOptions.limitSpeed);
 			$scope.arrDeviceCoord[_i] = [];
 			var koord = $scope.arrDeviceCoord[_i];
 			for ( var i = 0; i < arr.length; i++ ) {
 				koord[i] = {
 					x: (k * (arr[i]._dateString - from)).toFixed( 0 ).f(),
-					y: 100 - arr[i].speed.f()
+					y: yy - (ky*(arr[i].speed.f()))
 				}
 			}
 			console.log( $scope.arrDeviceCoord[_i] );
