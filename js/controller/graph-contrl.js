@@ -37,12 +37,21 @@ app.controller( 'graphContrl', [
 			var ky = F(yy/$scope.factoryGetOptions.limitSpeed);
 			$scope.arrDeviceCoord[_i] = [];
 			var koord = $scope.arrDeviceCoord[_i];
+
+            koord[0] = {
+                x: (k * (arr[0]._dateString - from)).toFixed( 0 ).f(),
+                y: yy
+            };
 			for ( var i = 0; i < arr.length; i++ ) {
-				koord[i] = {
+				koord.push({
 					x: (k * (arr[i]._dateString - from)).toFixed( 0 ).f(),
 					y: yy - (ky*(arr[i].speed.f()))
-				}
-			}
+				})
+			};
+            koord.push({
+                x: (k * (arr[arr.length-1]._dateString - from)).toFixed( 0 ).f(),
+                y: yy
+            });
 			console.log( $scope.arrDeviceCoord[_i] );
 		}
 	}] );

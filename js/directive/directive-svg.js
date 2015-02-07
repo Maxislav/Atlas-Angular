@@ -14,10 +14,10 @@ app.directive('reportGraphSvg', function ($timeout) {
             if(angular.isArray(scope.graphPath)){
                 for(var i = 0; i<scope.graphPath.length; i++ ){
                     var string = 'M'+scope.graphPath[0].x+' '+scope.graphPath[0].y
-                    for (var i = 1; i < scope.graphPath.length-1; i++) {
+                    for (var i = 1; i < scope.graphPath.length; i++) {
                         var ks = scope.graphPath[i];
                         var ke = scope.graphPath[i+1];
-                        if( ks.x){
+                        if(ks.x){
                             string+=' L'+ ks.x +' '+ ks.y
                         }
 

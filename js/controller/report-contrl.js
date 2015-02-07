@@ -89,13 +89,13 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
             { offset: '5%', repeat: '100px', symbol: new L.Symbol.ArrowHead({pixelSize: 10, headAngle: 45, polygon: false, pathOptions: {stroke: true, weight: 2, color: '#0024ff', opacity: "0.9"}})}
         ]
         var arrowHead = L.polylineDecorator(polilyne, {patterns: patterns});
-        device._trackGroup && map.map.removeLayer(device._trackGroup)
+        device._trackGroup && map.map.removeLayer(device._trackGroup);
         var group = [arrowHead, polilyne];
 
         for (var i = 0; i < markers.length; i++) {
             group.push(markers[i])
         }
-        ;
+
         device._trackGroup = L.featureGroup(group);
         device._trackGroup.addTo(map.map);
 
@@ -134,15 +134,15 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
         return function(input, n, link) {
            if(link){
                var k=0;
-               var end = input.length/n
+               var end = input.length/n;
                while(k<end){
-                   input.splice(k, n-1)
+                   input.splice(k, n-1);
                    k++
                }
                return input;
            }
             else {
-               var arr = []
+               var arr = [];
                for (var i = 0; i<input.length; i++){
                    if(i%n == 0 || i==input.length-1){
                        arr.push(input[i])
@@ -152,4 +152,4 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
            }
 
         };
-    })
+    });
