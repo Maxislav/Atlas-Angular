@@ -33,7 +33,19 @@ var app = angular
     })
     .constant('tileLayers', {
         ggl: new L.TileLayer('http://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile', {maxZoom: 18, minZoom: 3}),
-        osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+        osm: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+        osmVelo: new L.TileLayer('http://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png'), // http://a.tile.thunderforest.com/cycle/16/38322/22116.png
+        huma: new L.TileLayer('http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'), // http://a.tile.thunderforest.com/cycle/16/38322/22116.png
+       // нuma‎: new L.TileLayer('http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'), // http://a.tile.openstreetmap.fr/hot/13/4792/2762.png
+        mapia:  new L.tileLayer('http://{s}{hash}.wikimapia.org/?x={x}&y={y}&zoom={z}&r=7071412&type=&lng=1', {
+            // Fix L.Util.template to use this
+            hash: function (data) {
+                return data.x % 4 + (data.y % 4) *4;
+            }
+            , subdomains : 'i'
+            , maxZoom: 18
+            , attribution: '<a href="http://wikimapia.org" target="_blank">Wikimapia.org</a>'
+        })
     })
 
     .constant('timeZone', (function () {
@@ -126,9 +138,10 @@ var app = angular
 
         window.F = parseFloat;
         String.prototype.f = function(){return parseFloat(this)}
-        document.ontouchmove = function(e) {
+        //todo функция запрета передвижения контента
+       /* document.ontouchmove = function(e) {
             e.preventDefault();
-        }
+        }*/
     })
 
 

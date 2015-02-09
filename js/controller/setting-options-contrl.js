@@ -40,7 +40,7 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
         } else {
             selectDevice = null
         }
-    }
+    };
 
 
     function textMapDecode(map) {
@@ -51,8 +51,17 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
             case 'osm':
                 return 'OSM'
                 break;
+            case 'mapia':
+                return 'Mapia'
+                break;
+            case 'osmVelo':
+                return 'Velo'
+                break;
+            case 'huma':
+                return 'Humanitarian‎'
+                break;
             default :
-                return 'Google'
+                return ''+map
         }
     }
 
