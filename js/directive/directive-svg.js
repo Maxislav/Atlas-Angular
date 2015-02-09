@@ -1,4 +1,4 @@
-app.directive('reportGraphSvg', function ($timeout) {
+app.directive('reportGraphSvg',['serviceReport', function (serviceReport) {
     return {
         restrict: 'A',
         scope: {
@@ -9,7 +9,11 @@ app.directive('reportGraphSvg', function ($timeout) {
         replace: false,
         //template: '<path d="{{value}}" stroke="red" stroke-width="3" fill="none"></path>',
         link: function (scope, el, attr) {
-            scope.graphPath
+
+            scope.graphPath;
+            scope.serviceReport= serviceReport;
+
+
             var template = '';
             el.css('height',scope.reportHeight+'px');
             el.css('width', scope.reportWidth +'px' );
@@ -27,10 +31,10 @@ app.directive('reportGraphSvg', function ($timeout) {
 
                 }
                 template = '<path d="'+string+'" fill="white" stroke="red" />'
-                el.html(template)
+                el.html(template);
                // el.css('width','500%')
             }
 
         }
     }
-});
+}]);

@@ -17,32 +17,30 @@ app.directive('reportGraph', ['serviceShowElements','serviceReport',
             scope.$watch('serviceReport.scale',function(){
                 scope.reportGraphWidth = (serviceReport.scale) * window.document.body.clientWidth ;
             });
+            var startX, endX, dx;
+            var body = angular.element(document.body)
 
+           /* el.on('mousedown',moveMoveOn);
+            el.on('mouseup',function(){
+                mouseMoveOff()
+                console.log('up')
+            });
 
-
-            var x, y;
-            el
-                .on('mousedown',function(e){
-                    moveMoveOn()
-            })
-                .on('mouseup',function(e){
-                    mouseMoveOff()
-                })
-
-
-            function moveMoveOn(){
-                el.on('mousemove', move)
+            function moveMoveOn(e){
+                 startX = e.x;
+                 el.off('mousedown');
+                 body.bind('mousemove', move);
+                 console.log('down1')
             }
             function mouseMoveOff(){
-                el.off('mousemove', move)
+                body.unbind('mousemove',move);
+                el.on('mousedown',moveMoveOn)
             }
             function move(e){
-                //console.log(e.x)
-            }
-
-
-
-
+                dx = e.clientX - startX;
+                serviceReport.left = dx;
+              //  console.log(dx);
+            }*/
         }
     }
 }])
