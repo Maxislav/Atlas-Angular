@@ -10,6 +10,20 @@
   left: 50%;
   margin-left: -150px;
   font-size: 13px;
+  input[type="checkbox"]{
+    width: initial;
+  }
+  .title{
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    .button-close{
+      position: absolute;
+      right: -5px;
+      top: -5px;
+    }
+    margin-bottom: 10px;
+  }
   &>div{
     padding: 10px;
   }

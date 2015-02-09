@@ -1,4 +1,5 @@
-app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', 'factoryReportMarker', 'factoryGetOptions','serviceReport', function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker, factoryGetOptions, serviceReport) {
+app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevices', 'factoryFormatDate', '$http', '$filter', 'map', 'factoryReportMarker', 'factoryGetOptions','serviceReport',
+        function ($scope, serviceShowElements, factoryGetDevices, factoryFormatDate, $http, $filter, map, factoryReportMarker, factoryGetOptions, serviceReport) {
     $scope.serviceShowElements = serviceShowElements;
     var F = parseFloat;
     var d = new Date();
