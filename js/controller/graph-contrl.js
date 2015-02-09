@@ -6,6 +6,12 @@ app.controller( 'graphContrl', [
 		$scope.factoryGetOptions = factoryGetOptions;
 		$scope.arrDeviceCoord = [];
 
+        $scope.scalePlus = function(){
+
+            $scope.serviceReport.scale = $scope.serviceReport.scale*2;
+        }
+
+
 
 		for ( var i = 0; i < $scope.factoryGetDevices.length; i++ ) {
 			watchers( i )
@@ -24,13 +30,18 @@ app.controller( 'graphContrl', [
 				}
 			});
 		}
+        $scope.$watch('reportGraphWidth', function(val){
+            for (var i= 0; i<$scope.factoryGetDevices.length; i++){
+                toCoord( $scope.factoryGetDevices[i]._points, i );
+            }
+        });
 
 		function toCoord( arr, _i ) {
 			if ( !arr ) {
 				return
 			}
 			var yy = $scope.reportGraphHeight;
-			var xx = window.innerWidth;
+			var xx = $scope.reportGraphWidth;
 			var from = $scope.serviceReport.after.getTime();
 			var to = $scope.serviceReport.before.getTime() + (3600 * 24 * 1000);
 			var k = xx / (to - from);

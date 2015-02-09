@@ -3,7 +3,8 @@ app.directive('reportGraphSvg', function ($timeout) {
         restrict: 'A',
         scope: {
             graphPath: '=',
-            reportHeight: '='
+            reportHeight: '=',
+            reportWidth: '='
         },
         replace: false,
         //template: '<path d="{{value}}" stroke="red" stroke-width="3" fill="none"></path>',
@@ -11,6 +12,7 @@ app.directive('reportGraphSvg', function ($timeout) {
             scope.graphPath
             var template = '';
             el.css('height',scope.reportHeight+'px');
+            el.css('width', scope.reportWidth +'px' );
             if(angular.isArray(scope.graphPath)){
                 for(var i = 0; i<scope.graphPath.length; i++ ){
                     var string = 'M'+scope.graphPath[0].x+' '+scope.graphPath[0].y
@@ -28,6 +30,7 @@ app.directive('reportGraphSvg', function ($timeout) {
                 el.html(template)
                // el.css('width','500%')
             }
+
         }
     }
 });

@@ -1,5 +1,14 @@
 <div>
-   <svg report-graph-svg  height="200" width="100%" ng-repeat="device in arrDeviceCoord" graph-path="device" report-height="reportGraphHeight">
+
+   <svg report-graph-svg  height="200" width="100%" ng-repeat="device in arrDeviceCoord" graph-path="device" report-height="reportGraphHeight" report-width="reportGraphWidth">
 
    </svg>
+    <div class="control-scale-xx">
+        <div >
+            -
+        </div>
+        <div ng-click="scalePlus()">
+            +
+        </div>
+    </div>
 </div>
