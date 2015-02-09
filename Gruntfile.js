@@ -25,11 +25,11 @@ module.exports = function (grunt) {
     ]
 
     var jsMapFiles = [
-        "lib/leaflet/leaflet-src.js",
+       // "lib/leaflet/leaflet-src.js",
         "lib/leaflet/leaflet.polylineDecorator.js",
-        "lib/angular/angular.min.js",
+       //"lib/angular/angular.min.js",
         "js/extendHttp.js",
-        "lib/angular/angular-animate.js",
+       // "lib/angular/angular-animate.js",
         "lib/angular/angular-timer.js",
         "lib/angular/calendar.js",
         "lib/jquery/dateFormat.js",
@@ -83,12 +83,13 @@ module.exports = function (grunt) {
 
 
         concat: {
-            main: {
-                src: [
-                    'lib/leaflet/leaflet.js'
-                ],
-                dest: 'build/scripts.js'
-            }
+                options: {
+                    separator: ';'
+                },
+                dist: {
+                    src: ['lib/leaflet/leaflet.js', 'lib/angular/angular.min.js', 'lib/angular/angular-animate.min.js', 'build/map.js'],
+                    dest: 'build/map.min.js'
+                }
         },
         // Сжимаем
         uglify: {
@@ -134,7 +135,7 @@ module.exports = function (grunt) {
                     mangle: false
                 },
                 files: {
-                    'build/map.min.js': jsMapFiles
+                    'build/map.js': jsMapFiles
                 }
             }
         },
@@ -398,6 +399,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');//
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-angular-templates');
@@ -420,6 +422,7 @@ module.exports = function (grunt) {
         'ngtemplates',
         'uglify:map',
         'sass:prod',
+        'concat',
         'string-replace:prod'
     ]);
 
