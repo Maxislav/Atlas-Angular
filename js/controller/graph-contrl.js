@@ -65,4 +65,10 @@ app.controller( 'graphContrl', [
             });
 			console.log( $scope.arrDeviceCoord[_i] );
 		}
+
+
+        $scope.dragEnd = function(){
+            alert('dd')
+        }
+
 	}] );

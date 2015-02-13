@@ -32,6 +32,7 @@ module.exports = function (grunt) {
        // "lib/angular/angular-animate.js",
         "lib/angular/angular-timer.js",
         "lib/angular/calendar.js",
+        "lib/angular/ngDraggable.js",
         "lib/jquery/dateFormat.js",
 
         "js/map.js",

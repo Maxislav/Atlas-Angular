@@ -4,7 +4,8 @@ app.directive('reportGraphSvg',['serviceReport', function (serviceReport) {
         scope: {
             graphPath: '=',
             reportHeight: '=',
-            reportWidth: '='
+            reportWidth: '=',
+            offsetLeft: '@'
         },
         replace: false,
         //template: '<path d="{{value}}" stroke="red" stroke-width="3" fill="none"></path>',
@@ -17,6 +18,7 @@ app.directive('reportGraphSvg',['serviceReport', function (serviceReport) {
             var template = '';
             el.css('height',scope.reportHeight+'px');
             el.css('width', scope.reportWidth +'px' );
+            el.css('left', scope.offsetLeft +'px');
             if(angular.isArray(scope.graphPath)){
                 for(var i = 0; i<scope.graphPath.length; i++ ){
                     var string = 'M'+scope.graphPath[0].x+' '+scope.graphPath[0].y
@@ -34,6 +36,13 @@ app.directive('reportGraphSvg',['serviceReport', function (serviceReport) {
                 el.html(template);
                // el.css('width','500%')
             }
+            scope.$watch(function(){
+                return el.attr('offset-left')
+            }, function(val){
+                serviceReport.left = val
+               // console.log(val)
+            })
+
 
         }
     }
