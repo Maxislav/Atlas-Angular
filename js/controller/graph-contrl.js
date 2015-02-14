@@ -7,9 +7,11 @@ app.controller( 'graphContrl', [
 		$scope.arrDeviceCoord = [];
 
         $scope.scalePlus = function(){
-
+            var left = $scope.serviceReport.left;
+            $scope.serviceReport.left =-( (window.document.body.clientWidth/2-left) *2 - window.document.body.clientWidth/2);
             $scope.serviceReport.scale = $scope.serviceReport.scale*2;
-        }
+
+        };
 
 
 
