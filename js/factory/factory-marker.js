@@ -20,7 +20,7 @@ app.factory('factoryMarker',function(factoryGetDevices, map, $compile){
         devices[i]._marker && map.map.removeLayer(devices[i]._marker);
         devices[i]._popup &&  map.map.removeLayer( devices[i]._popup )
         devices[i]._marker = L.marker([f(devices[i].lat),f(devices[i].lng)],{icon: divIcon(i)}).addTo(map.map);
-        devices[i]._popup = L.popup({offset:[0,-10]})
+        devices[i]._popup = L.popup({offset:[0,-10],autoPan:false})
             .setLatLng([f(devices[i].lat),f(devices[i].lng)])
             .setContent( devices[i].text)
             .addTo(map.map);
