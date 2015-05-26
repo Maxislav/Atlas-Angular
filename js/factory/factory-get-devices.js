@@ -42,9 +42,11 @@ app.factory('factoryGetDevices', function ($timeout, $http, $interval) {
             if (devices[i] && devices[i].imei && devices[i].imei == newObj.imei) {
                 var devObj = devices[i];
                 for (var opt in newObj) {
-                    if (newObj[opt] != devObj[opt] && opt != 'phone' && opt != 'text') {
+                    if (newObj[opt] != devObj[opt] && opt != 'phone' && opt != 'text' ) {
                         devObj[opt] = newObj[opt]
-                        console.log(opt)
+                        if(opt =='lng'){
+                            console.log( devObj[opt])
+                        }
                     }
                 }
             }

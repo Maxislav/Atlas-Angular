@@ -34,7 +34,7 @@ app.controller('objectsContrl', function ($scope, $interval, $timeout, factoryGe
         getParms++
         if (1 < getParms) {
             refacto()
-            console.log($scope.factoryGetOptions.timeZone)
+          //  console.log($scope.factoryGetOptions.timeZone)
         }
     }
 

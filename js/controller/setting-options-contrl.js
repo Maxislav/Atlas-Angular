@@ -61,7 +61,7 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
                 return 'Humanitarian‎'
                 break;
             default :
-                return ''+map
+                return '' + map
         }
     }
 
@@ -72,9 +72,28 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
         })
     }
 
-    $scope.$watch('data.timeZone', function () {
-        //console.log($scope.data.timeZone)
+    $scope.$watch('data.timeZone', function (val, oldVal) {
+        if (oldVal !== undefined) {
+
+            setOptions();
+        }
+
     });
+
+    function setOptions() {
+        console.log($scope.data);
+        $http
+            .post('php/set-options.php', $scope.data)
+            .success(success)
+            .error(error)
+        function success(d) {
+            console.log(d)
+        }
+
+        function error(err, b, c, d) {
+            console.log(err)
+        }
+    }
 
 
     $scope.delHttp = function () {
@@ -117,7 +136,7 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
         }
         $http.post('php/add-device.php', data)
             .success(function (d) {
-                switch (d){
+                switch (d) {
                     case 'OK':
                         $scope.factoryGetDevices.push({
                             text: $scope.newDevice.text,

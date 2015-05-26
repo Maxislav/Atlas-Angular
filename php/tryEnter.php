@@ -28,7 +28,7 @@ if (mysql_num_rows($res) > 0) {
         $sql = mysql_query("INSERT INTO  `monitoring`.`session` (`id` ,`key` ,`iduser` ,`date`)VALUES (NULL ,  '$key',  '$id_user', '$dat')");
         $id = mysql_insert_id(); //id последней записи
         if($sql){
-            SetCookie("key", $key, time()+3600*24, "/");
+            SetCookie("key", $key, time()+3600*24*7, "/");
             echo 'OK';
         }else{
             echo 'ERR_INSERT_SQL';
