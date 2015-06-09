@@ -61,7 +61,18 @@ function getTrack($imei, $from, $to)
             'azimuth' => $row['azimuth']
         ));
     }
-    $res = mysql_query("SELECT * FROM  loghistory  WHERE imei='$selectUserImei' AND `datetime`>= $fromPeriod AND `datetime`<=$toPeriod  ORDER BY `datetime`   ");
+
+    $sel = "
+        SELECT * FROM  loghistory
+        WHERE(
+            imei='$imei'
+            AND datetime>= $from
+            AND datetime<=$to
+        )
+        ORDER BY datetime   ";
+
+   // $res = mysql_query("SELECT * FROM  loghistory  WHERE imei='$selectUserImei' AND `datetime`>= $fromPeriod AND `datetime`<=$toPeriod  ORDER BY `datetime`   ");
+    $res = mysql_query($sel);
 
     while ($row = mysql_fetch_array($res)) {
         array_push($track, Array(
