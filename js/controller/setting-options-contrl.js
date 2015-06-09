@@ -79,6 +79,12 @@ app.controller('settingOptionsContr', function (timeZone, $interval, $http, srvM
         }
 
     });
+    $scope.$watch('data.map', function (val, oldVal) {
+        if (oldVal !== undefined) {
+            setOptions();
+        }
+
+    });
 
     function setOptions() {
         console.log($scope.data);

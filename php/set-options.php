@@ -27,9 +27,9 @@ if (mysql_num_rows($res) > 0) {
                 'startLng' => $row['startLng'],
             );
         }
-        if($opt['timeZone']!=$newOpt['timeZone']){
-            $timeZone = $newOpt['timeZone'];
-            mysql_query("UPDATE options SET timeZone='$timeZone' WHERE iduser='$iduser' ");
+        if(updateOpt($opt, $newOpt, $iduser)){
+//            $timeZone = $newOpt['timeZone'];
+//            mysql_query("UPDATE options SET timeZone='$timeZone' WHERE iduser='$iduser' ");
             echo json_encode($newOpt);
         }else{
             echo null;
@@ -45,4 +45,21 @@ if (mysql_num_rows($res) > 0) {
 }else{
     setcookie('key', null, time() - 3600, '/');
     http_response_code(401);
+}
+
+function updateOpt($opt, $newOpt, $iduser){
+    $update = false;
+    if($opt['timeZone']!=$newOpt['timeZone']){
+        $timeZone = $newOpt['timeZone'];
+        mysql_query("UPDATE options SET timeZone='$timeZone' WHERE iduser='$iduser' ");
+        $update = true;
+    }
+    if($opt['mapType']!=$newOpt['mapType']){
+        $mapType = $newOpt['mapType'];
+        mysql_query("UPDATE options SET mapType='$mapType' WHERE iduser='$iduser' ");
+        $update = true;
+    }
+
+    return $update;
+
 }
