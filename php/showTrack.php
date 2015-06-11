@@ -21,10 +21,14 @@ if (mysql_num_rows($res) > 0) {
     }
     $res_d = mysql_query("SELECT * FROM `devices` WHERE `imei`='$imei' ORDER BY id");
     if (mysql_num_rows($res_d) > 0) {
+        $usersIds = [];
         while ($row = mysql_fetch_array($res_d)) {
+
+            array_push($usersIds, $row['iduser']);
             $iduser_d = $row['iduser'];
         }
-        if ($iduser_d == $iduser) {
+        //if ($iduser_d == $iduser) {
+        if (checkExist($usersIds, $iduser)) {
             //echo 'EXIST_CURRENT';
 
             echo json_encode(getTrack($imei, $from, $to));
@@ -35,6 +39,16 @@ if (mysql_num_rows($res) > 0) {
         }
 
     }
+}
+
+function checkExist($array, $id){
+    for($i =0; $i< count($array); $i++){
+        if($array[$i]==$id){
+            return true;
+        }
+    }
+    return false;
+
 }
 
 function getTrack($imei, $from, $to)
