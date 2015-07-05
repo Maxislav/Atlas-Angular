@@ -29,6 +29,12 @@ if(!$_GET["key"]){
     $file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
     /*$reportLine = "ololo";
     fwrite($file, $reportLine)  or die ('Could not write to report file ' . $reportLine); ;*/
+
+    foreach($_POST as $key=>$value)
+    {
+       // echo "$key=$value";
+        fwrite($file, "$key=$value") or die ('Could not write to report file ' . $reportLine);
+    }
     foreach($_POST as $key => $value) {
         $reportLine ="". $key." = ".$value."\n";
         fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
