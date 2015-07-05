@@ -39,8 +39,11 @@ if(!$_GET["key"]){
         $kv = array();
         foreach (${'_'.$_SERVER['REQUEST_METHOD']} as $key => $value) {
             $kv[] = "$key=$value";
-            echo "$key=$value";
+            ///echo "$key=$value";
+            $reportLine = "$key=$value";
+
             fwrite($file, $reportLine);
+            echo "$key=$value";
         }
     }
 
