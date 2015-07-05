@@ -30,13 +30,26 @@ if(!$_GET["key"]){
     /*$reportLine = "ololo";
     fwrite($file, $reportLine)  or die ('Could not write to report file ' . $reportLine); ;*/
 
-    while( list( $field, $value ) = each( $_POST )) {
-        $reportLine = "" . $field . " = " . $value . "\n";
-        //echo "<p>" . $field . " = " . $value . "</p>\n";
+  /*  foreach ($_GET as $key => $value) {
         fwrite($file, "dwew");
-        fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
+        echo $value.'<br/>';
+    }*/
+
+    if (${'_'.$_SERVER['REQUEST_METHOD']}) {
+        $kv = array();
+        foreach (${'_'.$_SERVER['REQUEST_METHOD']} as $key => $value) {
+            $kv[] = "$key=$value";
+            echo "$key=$value";
+            fwrite($file, $reportLine);
+        }
     }
-    foreach($_POST as $key => $value) {
+
+     ;
+    foreach($_FILES as $key => $value){
+        echo $value.'<br/>';
+    }
+
+        foreach($_POST as $key => $value) {
         $reportLine ="". $key." = ".$value."\n";
         fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
     }
