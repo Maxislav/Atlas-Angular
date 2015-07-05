@@ -33,6 +33,7 @@ if(!$_GET["key"]){
     while( list( $field, $value ) = each( $_POST )) {
         $reportLine = "" . $field . " = " . $value . "\n";
         //echo "<p>" . $field . " = " . $value . "</p>\n";
+        fwrite($file, "dwew");
         fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
     }
     foreach($_POST as $key => $value) {
