@@ -17,7 +17,9 @@ if(!$_GET["key"]){
 
 }else{
     $date = new DateTime();
-    $date->setTimezone(new DateTimeZone('GMT'));
+
+
+    $date->setTimezone(new DateTimeZone('Europe/Kiev'));
 
     $dateStr = $date->format('Y-m-d_H-i-s');
     $fileName =$dateStr.'.txt';
