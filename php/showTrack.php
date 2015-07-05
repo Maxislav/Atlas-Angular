@@ -41,9 +41,10 @@ if (mysql_num_rows($res) > 0) {
     }
 }
 
-function checkExist($array, $id){
-    for($i =0; $i< count($array); $i++){
-        if($array[$i]==$id){
+function checkExist($array, $id)
+{
+    for ($i = 0; $i < count($array); $i++) {
+        if ($array[$i] == $id) {
             return true;
         }
     }
@@ -85,7 +86,7 @@ function getTrack($imei, $from, $to)
         )
         ORDER BY datetime   ";
 
-   // $res = mysql_query("SELECT * FROM  loghistory  WHERE imei='$selectUserImei' AND `datetime`>= $fromPeriod AND `datetime`<=$toPeriod  ORDER BY `datetime`   ");
+    // $res = mysql_query("SELECT * FROM  loghistory  WHERE imei='$selectUserImei' AND `datetime`>= $fromPeriod AND `datetime`<=$toPeriod  ORDER BY `datetime`   ");
     $res = mysql_query($sel);
 
     while ($row = mysql_fetch_array($res)) {
