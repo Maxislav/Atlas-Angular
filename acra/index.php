@@ -16,8 +16,11 @@ if(!$_GET["key"]){
 
 
 }else{
+    $date = new DateTime();
+    $date->setTimezone(new DateTimeZone('GMT'));
 
-    $fileName = date('Y-m-d_H-i-s').'.txt';
+    $dateStr = $date->format('Y-m-d_H-i-s');
+    $fileName =$dateStr.'.txt';
     $file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
     foreach($_POST as $key => $value) {
         $reportLine = $key." = ".$value."\n";
