@@ -1,10 +1,29 @@
 <?php
 // Outputs all POST parameters to a text file. The file name is the date_time of the report reception
-$fileName = date('Y-m-d_H-i-s').'.txt';
-$file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
-foreach($_POST as $key => $value) {
-    $reportLine = $key." = ".$value."\n";
-    fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
+
+if(!$_GET["key"]){
+    $arr = glob('*.txt');
+    $count = count($arr);
+    if(!empty($count)){
+        $content = "";
+        for($i = 0; $i < $count; $i++) {
+            $content = $content."<div>".substr($arr[$i], 0, -4)."</div>";
+            $content = $content."<div style = 'margit-bottom: 20px'>".file_get_contents( $arr[$i])."</div>";
+
+        }
+        echo $content;
+    }
+
+
+}else{
+
+    $fileName = date('Y-m-d_H-i-s').'.txt';
+    $file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
+    foreach($_POST as $key => $value) {
+        $reportLine = $key." = ".$value."\n";
+        fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
+    }
+    fclose($file);
 }
-fclose($file);
+
 ?>
