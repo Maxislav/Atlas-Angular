@@ -24,6 +24,7 @@ if(!$_GET["key"]){
     $dateStr = $date->format('Y-m-d_H-i-s');
     $fileName =$dateStr.'.txt';
     $file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
+    chmod($fileName, 777);
     foreach($_POST as $key => $value) {
         $reportLine = $key." = ".$value."\n";
         fwrite($file, $reportLine) or die ('Could not write to report file ' . $reportLine);
