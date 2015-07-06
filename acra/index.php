@@ -6,7 +6,7 @@ $arr = glob('*.txt');
 $count = count($arr);
 if(!empty($count)){
     $content = "";
-    for($i = 0; $i < $count; $i++) {
+    for($i = $count-1;  0<=$i ; $i--) {
         $content = $content."<div style='border-top: 2px solid crimson; margin-bottom: 20px; padding-top: 10px'>"
             ."<a href='list.php?file=$arr[$i]'>".substr($arr[$i], 0, -4)."</a>"
             ."</div>";
