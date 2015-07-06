@@ -5,13 +5,19 @@
 $arr = glob('*.txt');
 $count = count($arr);
 if(!empty($count)){
-    $content = "";
+    $content = "<style>body{margin: 0}    .row:hover{background: rgba(255,243,194,0.7);} </style>";
+    $script = "<script>function click(a){ console.log(a); }</script>";
+    $content = $content.$script;
     for($i = $count-1;  0<=$i ; $i--) {
-        $content = $content."<div style='border-top: 2px solid crimson; margin-bottom: 20px; padding-top: 10px'>"
-            ."<a href='list.php?file=$arr[$i]'>".substr($arr[$i], 0, -4)."</a>"
+
+        $href = "\\'"."$arr[$i]"."\\'";
+        $content = $content."<div onclick='window.location.href=\"list.php?file=$arr[$i]\"' class='row' style='border-bottom: 1px solid #ddd; padding: 10px'>"
+            ."<a style='padding: 10px' href='list.php?file=$arr[$i]'>".substr($arr[$i], 0, -4)."</a>"
             ."</div>";
       //  $content = $content."<div style = 'margin-bottom: 20px'>".file_get_contents( $arr[$i])."</div>";
     }
+    //$script = "<script>function click(a){     window.location.href='list?file='+ a}</script>";
+
     echo $content;
 }
 
