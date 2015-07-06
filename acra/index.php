@@ -7,9 +7,10 @@ $count = count($arr);
 if(!empty($count)){
     $content = "";
     for($i = 0; $i < $count; $i++) {
-        $content = $content."<div style='border-top: 2px solid crimson; margin-bottom: 20px; padding-top: 10px'>".substr($arr[$i], 0, -4)."</div>";
-        $content = $content."<div style = 'margin-bottom: 20px'>".file_get_contents( $arr[$i])."</div>";
-
+        $content = $content."<div style='border-top: 2px solid crimson; margin-bottom: 20px; padding-top: 10px'>"
+            ."<a href='list.php?file=$arr[$i]'>".substr($arr[$i], 0, -4)."</a>"
+            ."</div>";
+      //  $content = $content."<div style = 'margin-bottom: 20px'>".file_get_contents( $arr[$i])."</div>";
     }
     echo $content;
 }
