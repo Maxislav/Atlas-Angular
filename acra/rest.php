@@ -21,7 +21,13 @@ if(!$_GET["key"]){
     $date->setTimezone(new DateTimeZone('Europe/Kiev'));
 
     $dateStr = $date->format('Y-m-d_H-i-s');
-    $fileName =$dateStr.$_GET["app"].'.txt';
+    $appName = "";
+
+    if($_GET["app"]){
+        $appName = "_".$_GET["app"];
+    }
+
+    $fileName =$dateStr.$appName.'.txt';
     $file = fopen($fileName,'w') or die('Could not create report file: ' . $fileName);
     chmod($fileName, 0777);
     fclose($file);
