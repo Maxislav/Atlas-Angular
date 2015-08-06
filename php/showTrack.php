@@ -64,7 +64,7 @@ function getTrack($imei, $from, $to)
 
 
     for($i=0;$i<count($arrLatForDel); $i ++){
-        $sql = mysql_query("DELETE FROM `log` WHERE `lat`=$$arrLatForDel[$i]") or die(mysql_error());
+        $sql = mysql_query("DELETE FROM `log` WHERE `lat`='$$arrLatForDel[$i]'") or die(mysql_error());
     }
 
 
