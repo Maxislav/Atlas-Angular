@@ -16,12 +16,15 @@ include_once 'connect.php';
 $key = $_COOKIE['key'];
 $res = mysql_query("SELECT * FROM `session` WHERE `key`='$key' ORDER BY id");
 if (mysql_num_rows($res) > 0) {
+
     while ($row = mysql_fetch_array($res)) {
         $iduser = $row['iduser'];
     }
-    $res_d = mysql_query("SELECT * FROM `devices` WHERE `imei`='$imei' ORDER BY id");
+
+    $res_d = mysql_query("SELECT * FROM `devices` WHERE `imei`=865790010425429 ORDER BY id");
     if (mysql_num_rows($res_d) > 0) {
         $usersIds = [];
+
         while ($row = mysql_fetch_array($res_d)) {
 
             array_push($usersIds, $row['iduser']);
@@ -56,7 +59,7 @@ function getTrack($imei, $from, $to)
 {
     $arrLatForDel = array();
 
-    $sel =  "SELECT * FROM `log` GROUP BY lat, lng HAVING COUNT(*)>20";
+    $sel =  "SELECT * FROM `log` WHERE `imei`='$imei' GROUP BY lat, lng HAVING COUNT(*)>20";
     $res = mysql_query($sel);
     while ($row = mysql_fetch_array($res)) {
         array_push($arrLatForDel, $row['lat']);
@@ -64,7 +67,7 @@ function getTrack($imei, $from, $to)
 
 
     for($i=0;$i<count($arrLatForDel); $i ++){
-        $sql = mysql_query("DELETE FROM `log` WHERE `lat`='$$arrLatForDel[$i]'") or die(mysql_error());
+        $sql = mysql_query("DELETE FROM `log` WHERE `lat`='$arrLatForDel[$i]'") or die(mysql_error());
     }
 
 

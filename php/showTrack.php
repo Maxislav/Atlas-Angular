@@ -54,9 +54,10 @@ function checkExist($array, $id)
 
 function getTrack($imei, $from, $to)
 {
+
     $arrLatForDel = array();
 
-    $sel =  "SELECT * FROM `log` GROUP BY lat, lng HAVING COUNT(*)>20";
+    $sel =  "SELECT * FROM `log` WHERE `imei`='$imei' GROUP BY lat, lng HAVING COUNT(*)>20";
     $res = mysql_query($sel);
     while ($row = mysql_fetch_array($res)) {
         array_push($arrLatForDel, $row['lat']);
@@ -64,8 +65,9 @@ function getTrack($imei, $from, $to)
 
 
     for($i=0;$i<count($arrLatForDel); $i ++){
-        $sql = mysql_query("DELETE FROM `log` WHERE `lat`='$$arrLatForDel[$i]'") or die(mysql_error());
+        $sql = mysql_query("DELETE FROM `log` WHERE `lat`='$arrLatForDel[$i]'") or die(mysql_error());
     }
+
 
 
     $track = array();
