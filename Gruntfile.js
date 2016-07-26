@@ -18,11 +18,11 @@ module.exports = function (grunt) {
         'css/calendar.scss',
         'css/report-graph.scss'
 
-    ]
+    ];
 
     var sassIndexFiles = [
         'css/index.scss'
-    ]
+    ];
 
     var jsMapFiles = [
        // "lib/leaflet/leaflet-src.js",
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         "js/factory/factory-canvas-render.js",
         "js/factory/factory-report-marker.js"
 
-    ]
+    ];
 
 
     // Задачи
