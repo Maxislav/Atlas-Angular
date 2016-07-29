@@ -2,10 +2,10 @@
   "port": 3000,
   "proxies": [
     {
-      "source": "^\/data.+",
+      "source": "^.+\\.php$",
       "data": {
-        "hostname": "devdat.loyverse.com",
-        "port": 12739
+        "hostname": "http://178.62.44.54/dev",
+        "port": 80
       }
     },
     {

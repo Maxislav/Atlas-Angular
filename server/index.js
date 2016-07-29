@@ -179,13 +179,13 @@ function proxiServ( request, response, _options, timeLong ) {
 	var ph = url.parse( request.url );
 	var options = {
 		port: _options.data.port,
-		hostname: _options.data.hostname,
+		host: _options.data.hostname,
 		method: request.method,
 		path: ph.path,
 		headers: request.headers
 	};
 
-	var proxyRequest = https.request( options );
+	var proxyRequest = http.request( options );
 
 
 	proxyRequest.on( 'response', function ( proxyResponse ) {
