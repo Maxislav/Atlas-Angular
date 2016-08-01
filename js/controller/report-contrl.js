@@ -62,7 +62,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
     function trackAddToMap(device) {
         var orderBy = $filter('orderBy');
         var limit = $filter('limitTo');
-        var myFilter = $filter('myFilter')
+        var myFilter = $filter('myFilter');
         var d = device._trackPoints;
 
         var arr = orderBy(d, 'dateTime');
@@ -88,7 +88,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
 
         var patterns = [
             { offset: '5%', repeat: '100px', symbol: new L.Symbol.ArrowHead({pixelSize: 10, headAngle: 45, polygon: false, pathOptions: {stroke: true, weight: 2, color: '#0024ff', opacity: "0.9"}})}
-        ]
+        ];
         var arrowHead = L.polylineDecorator(polilyne, {patterns: patterns});
         device._trackGroup && map.map.removeLayer(device._trackGroup);
         var group = [arrowHead, polilyne];
@@ -107,7 +107,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
                 trackAddToMap($scope.devices[i]);
             }
         }
-    })
+    });
 
 
     $scope.hideTrack = function () {
@@ -115,7 +115,7 @@ app.controller('reportContrl', ['$scope', 'serviceShowElements', 'factoryGetDevi
         $scope.devices.current._maxSpeed && delete  $scope.devices.current._maxSpeed;
         $scope.devices.current._points && delete  $scope.devices.current._points;
         $scope.devices.current._trackPoints && delete  $scope.devices.current._trackPoints
-    }
+    };
 
     function setArrLatLngs(arr) {
         var arrLatLngs = [];
