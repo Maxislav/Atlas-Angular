@@ -2,6 +2,7 @@
  * Created by mars on 3/2/16.
  */
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 
 var express = require("express" ),
@@ -176,15 +177,18 @@ function sendFile( file, filename, res, timeLong ) {
 function proxiServ( request, response, _options, timeLong ) {
 	'use strict';
 
+	request.headers.host = _options.data.hostname;
 	var ph = url.parse( request.url );
 	var options = {
 		port: _options.data.port,
 		host: _options.data.hostname,
 		method: request.method,
-		path: ph.path,
+		path: _options.prefix+ph.path,
 		headers: request.headers
 	};
+	request
 
+	//options.headers.host =  _options.data.hostname;
 	var proxyRequest = http.request( options );
 
 
