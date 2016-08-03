@@ -194,10 +194,13 @@ function proxiServ( request, response, _options, timeLong ) {
 
 	proxyRequest.on( 'response', function ( proxyResponse ) {
 		proxyResponse.on( 'data', function ( chunk ) {
-			options;
 			var respStr = new Buffer(chunk.toString(), 'binary').toString();
-			proxyResponse;
+			if(response.statusCode!=200){
+				console.log((response.statusCode+'').red);
+			}
 			response.write( chunk, 'binary' );
+
+
 		} );
 		proxyResponse.on( 'end', function () {
 			response.end();
@@ -216,6 +219,7 @@ function proxiServ( request, response, _options, timeLong ) {
 		//response.end( 'No connect' );
 	});
 	request.on( 'data', function ( chunk ) {
+
 		proxyRequest.write( chunk, 'binary' );
 	} );
 	request.on( 'end', function () {

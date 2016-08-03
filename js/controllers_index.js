@@ -24,14 +24,14 @@ app.controller('events', function ($scope, $http, $cookies) {
 
     var timeout;
     $scope.show = function (val, type) {
-        $scope.classVhide = 'show'
-        $scope.helpin = val
+        $scope.classVhide = 'show';
+        $scope.helpin = val;
         $scope.typehelp = type
-    }
+    };
     $scope.hide = function () {
-        $scope.classVhide = 'hide'
+        $scope.classVhide = 'hide';
         $scope.helpin = null
-    }
+    };
 
     $scope.change = function (val, type) {
         $scope.typehelp = type;
