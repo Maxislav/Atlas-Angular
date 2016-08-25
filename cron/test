@@ -1,2 +1,0 @@
-SHELL=/bin/bash
-0,10,20,30,40,50 * * * * /home/maxislav/sh-script/mysql-status.bash
