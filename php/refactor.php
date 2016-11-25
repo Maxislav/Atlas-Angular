@@ -6,7 +6,7 @@ $pass_l = $_POST['pass'];
 //echo $config;
 //echo $brr;
 
-$config_sql = file_get_contents("../config_sql.txt");
+$config_sql = file_get_contents("../../../config_sql.txt");
 $arr_config_sql = explode("!", $config_sql);
 
 $hostname = "$arr_config_sql[1]";
@@ -26,18 +26,8 @@ $db = mysql_connect($hostname, $username, $password) //соединение с �
 $table_db = "$arr_config_sql[4]";
 mysql_select_db($table_db) or die('db not found'); //соединение  с базой данных
 
-$res = mysql_query("SELECT * FROM user WHERE name ='$login'");
 
-if (mysql_num_rows($res) > 0) {
-    while ($row = mysql_fetch_array($res)) {
-        $pass_db = $row['pass'];
-        $options = $row['options'];
-        $device = $row['device'];
-        $options = $row['options'];
-    }
-    // $devices =$device;
-    $devices = json_encode($device);
-    if ($pass_l == $pass_db) {
+
 
         $count = 0;
         $imeis;
@@ -94,14 +84,6 @@ if (mysql_num_rows($res) > 0) {
             echo 'null';
         }
 
-        // include("start.php");
-    } else {
-        mysql_close($db);
-        echo 'Server error1';
-    }
 
 
-} else {
-    echo 'Server error2';
-}
 ?>
